@@ -195,10 +195,47 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .lrow{display:flex;flex-wrap:wrap;gap:6px 16px}
 .hideprov .prov-label{display:none}
 .statbox{display:flex;flex-direction:column;gap:6px}
+.btn.act{background:var(--accent);color:var(--panel);font-weight:600}
+.bd{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bdh{font-size:12.5px;font-weight:700;padding:7px 10px;background:var(--chip)}
+.bdh small{font-weight:400;color:var(--muted)}
+.bdw{max-height:300px;overflow:auto}
+.bd table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+.bd th{position:sticky;top:0;background:var(--panel);font-size:11px;font-weight:600;color:var(--muted);text-align:right;padding:5px 8px;border-bottom:1px solid var(--line);line-height:1.25}
+.bd th:first-child,.bd td:first-child{text-align:left}
+.bd td{padding:4px 8px;text-align:right;border-bottom:1px solid var(--line)}
+.bd tr.z td{color:var(--muted)}
+.bd tfoot td{font-weight:700;background:var(--chip);position:sticky;bottom:0}
+.bd td button{font:inherit;background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:2px}
+.printhdr{display:none}
+body.printing .app{display:block;height:auto}
+body.printing aside{display:none}
+body.printing .printhdr{display:block;width:1060px;padding:0 0 6px;color:#1d2421;background:#fff}
+.printhdr .pt{display:flex;gap:10px;align-items:center}
+.printhdr img{height:54px;width:auto}
+.printhdr .pb{font-size:11px;font-weight:700;letter-spacing:.08em;color:#1f5f4a;text-transform:uppercase}
+.printhdr .pti{font-size:17px;font-weight:700;line-height:1.25}
+.printhdr .ps{font-size:11.5px;color:#5e6a64}
+.printhdr .pl{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;margin-top:5px}
+.printhdr .pl span{display:flex;align-items:center;gap:5px}
+.printhdr .pl i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.printhdr .pl i.lt{background:#b3261e;box-shadow:0 0 0 3px rgba(179,38,30,.3)}
+.printhdr .pl i.ring{background:transparent;border:2px solid}
+@media print{
+  @page{size:A4 landscape;margin:8mm}
+  html,body{height:auto!important;background:#fff!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  aside,.leaflet-control-zoom{display:none!important}
+  .app{display:block!important}
+  .printhdr{display:block!important}
+  #map{page-break-inside:avoid}
+}
 .sth{font-size:12.5px;font-weight:700;color:var(--ink)}
 .sth small{font-weight:400;color:var(--muted)}
 .stall summary{cursor:pointer;font-size:12.5px;color:var(--muted);width:max-content}
-.stall .stats{margin-top:6px}
+.stall .stats{margin-top:4px}
+.sth2{font-size:12px;font-weight:700;margin-top:8px}
+.sth2 small{font-weight:400;color:var(--muted)}
 .stall .stat{background:transparent;border:1px dashed var(--line)}
 .finfo{font-size:13px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
 .grp{border:1px solid var(--line);border-radius:12px;padding:0 12px 12px;background:var(--panel);box-shadow:0 1px 2px rgba(0,0,0,.04)}
@@ -309,9 +346,11 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <h1 id="title">–</h1></div></div>
       <details class="plist" id="plistd" hidden><summary id="plists"></summary><div id="plistn"></div></details>
       <div class="hbtn"><button class="btn sec sm" id="reload" type="button" title="กลับไปหน้าวางไฟล์">เปลี่ยนไฟล์</button><button class="btn sec sm" id="resetall" type="button" title="ล้างตัวกรอง การซ่อนเคส และชั้นข้อมูล กลับเป็นค่าเริ่มต้น">ล้างค่าทั้งหมด</button></div>
+      <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act" id="exportdoc" type="button" title="ส่งออกข้อมูลสรุปฝั่งซ้ายเป็นไฟล์ Word (.docx)">📄 ส่งออก Word</button></div>
     </header>
     <div class="statbox"><div class="sth" id="sth"></div><div class="stats" id="stats"></div>
-      <details class="stall"><summary id="stalls">ดูตัวเลขทั้งไฟล์ (ทุกปี)</summary><div class="stats" id="statsall"></div></details></div>
+      <div class="bd" id="bd" hidden></div>
+      <details class="stall"><summary id="stalls">ดูปีงบก่อนหน้า และทั้งไฟล์</summary><div class="sth2" id="sthp"></div><div class="stats" id="statsprev"></div><div class="sth2" id="stha"></div><div class="stats" id="statsall"></div></details></div>
     <button class="latest" id="latest" type="button" hidden></button>
     <div class="plat" id="plat" hidden></div>
     <details class="finfo" id="finfo"><summary>ข้อมูลไฟล์ที่ใช้</summary><dl id="subtitle"></dl></details>
@@ -362,6 +401,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
     <div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
+  <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
 </div>
 
@@ -415,7 +455,7 @@ const TODAY=(()=>{const d=new Date(Date.now()+7*36e5);return d.toISOString().sli
 function vd(s){ return s&&s>="2000-01-01"&&s<=TODAY?s:null; }
 function ymd(x){ if(x==null||x==="") return null;
   if(x instanceof Date&&!isNaN(x)){ let y=x.getFullYear(); if(y>2400) y-=543; return `${y}-${String(x.getMonth()+1).padStart(2,"0")}-${String(x.getDate()).padStart(2,"0")}`; }
-  if(typeof x==="number"){ const d=XLSX.SSF.parse_date_code(x); return d?`${d.y}-${String(d.m).padStart(2,"0")}-${String(d.d).padStart(2,"0")}`:null; }
+  if(typeof x==="number"){ const d=XLSX.SSF.parse_date_code(x); if(d&&d.y>2400) d.y-=543; return d?`${d.y}-${String(d.m).padStart(2,"0")}-${String(d.d).padStart(2,"0")}`:null; }
   const m=String(x).match(/(\d{4})-(\d{1,2})-(\d{1,2})/); if(m) return `${m[1]}-${m[2].padStart(2,"0")}-${m[3].padStart(2,"0")}`;
   const t=String(x).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(t){ let y=+t[3]; if(y>2400) y-=543; return `${y}-${t[2].padStart(2,"0")}-${t[1].padStart(2,"0")}`; }
   return null; }
@@ -427,7 +467,7 @@ function fixRef(ws){ let mr=0,mc=0; for(const k in ws){ if(k[0]==="!") continue;
   ws["!ref"]=XLSX.utils.encode_range({s:{r:0,c:0},e:{r:mr,c:mc}}); }
 async function readFile(file){
   const buf=await file.arrayBuffer();
-  const wb=XLSX.read(buf,{type:"array",cellDates:true});
+  const wb=XLSX.read(buf,{type:"array",cellDates:false}); /* keep Excel serials: Date objects shift a day in UTC+7 (SheetJS LMT issue) */
   for(const name of wb.SheetNames){ fixRef(wb.Sheets[name]); const rows=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,raw:true,defval:null,blankrows:false});
     const k=kindOf(rows); if(k) return {kind:k,rows:rows.slice(3).filter(r=>r&&r.some(x=>x!=null&&x!=="")),name:file.name}; }
   return {kind:null,name:file.name};
@@ -514,6 +554,7 @@ function buildCases(provs){
 }
 
 /* ---------- map state ---------- */
+let TTL="";
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
@@ -618,7 +659,7 @@ function initData(){
   const T0="สถานการณ์โรคพิษสุนัขบ้าในสัตว์ในพื้นที่";
   const ttl=!MULTI?`${T0} จังหวัด${names[0]} กรมปศุสัตว์`:fullReg?`${T0}ปศุสัตว์เขต ${regs[0]} กรมปศุสัตว์`:regs.length===1?`${T0} ${PROVS.size} จังหวัด กรมปศุสัตว์`:`${T0} จังหวัด${joinTh(names)} กรมปศุสัตว์`;
   const big=!MULTI?`จังหวัด${names[0]}`:fullReg?`ปศุสัตว์เขต ${regs[0]}`:regs.length===1?`${PROVS.size} จังหวัด`:(names.length<=3?`จังหวัด${joinTh(names)}`:`${PROVS.size} จังหวัด (ข้ามเขต)`);
-  document.getElementById("title").textContent=big; document.title="Rabies GeoWatch · "+ttl;
+  document.getElementById("title").textContent=big; document.title="Rabies GeoWatch · "+ttl; TTL=ttl;
   const dmax=CASES.map(c=>c.date).filter(Boolean).sort().pop();
   const nS=files.sample.length, nI=files.inv.length;
   document.getElementById("subtitle").innerHTML=[["จำนวนไฟล์ส่งตัวอย่าง",`${nS} ไฟล์`],["จำนวนไฟล์สอบสวนโรค",nI?`${nI} ไฟล์`:"ไม่มี"],["จำนวนตัวอย่างส่งตรวจ",tot.toLocaleString()],["ผลบวก (ทุกปีในไฟล์)",posN.toLocaleString()],["รับตัวอย่างล่าสุด",thd(dmax)]]
@@ -782,7 +823,7 @@ function render(fit){
   /* stats: latest fiscal year (main) + whole file (dropdown); follow province/amphoe/tambon filters only */
   const LOC=POS.filter(c=>(!fp.value||c.pc===fp.value)&&(!fa.value||c.ak===fa.value)&&(!ft.value||c.tk===ft.value));
   const fyOf=d=>{ const y=+d.slice(0,4), m=+d.slice(5,7); return m>=10?y+1:y; };
-  const FY=POS.length?Math.max(...POS.map(c=>fyOf(c.dd))):null, LF=LOC.filter(c=>fyOf(c.dd)===FY);
+  const FY=latestFY(), LF=LOC.filter(c=>fyOf(c.dd)===FY), LP=LOC.filter(c=>fyOf(c.dd)===FY-1);
   const stat=A=>{ const sum=k=>A.reduce((t,c)=>t+(Number(c[k])||0),0);
     return [[A.length,"เคสผลบวก"],MULTI&&!fp.value?[new Set(A.map(c=>c.pc)).size,"จังหวัด"]:[new Set(A.map(c=>c.ak)).size,"อำเภอ"],[files.inv.length?sum("bitten"):"–","คนถูกกัด"],[files.inv.length?sum("saliva"):"–","คนสัมผัสน้ำลาย"]]
       .map(([n,l])=>`<div class="stat"><b>${typeof n==="number"?n.toLocaleString():n}</b><span>${l}</span></div>`).join(""); };
@@ -790,8 +831,12 @@ function render(fit){
   document.getElementById("sth").innerHTML=FY?`ปีงบประมาณ ${FY+543} <small>(1 ต.ค. ${be(FY-1)} – 30 ก.ย. ${be(FY)})</small>`:"";
   document.getElementById("stats").innerHTML=stat(LF);
   const ds=LOC.map(c=>c.dd).sort();
-  document.getElementById("stalls").textContent=`ดูตัวเลขทั้งไฟล์ (ทุกปี${ds.length?` ${thd(ds[0])} – ${thd(ds[ds.length-1])}`:""})`;
+  document.getElementById("stalls").textContent=`ดูปีงบ ${FY+542} และทั้งไฟล์`;
+  document.getElementById("sthp").innerHTML=`ปีงบประมาณ ${FY+542} <small>(1 ต.ค. ${be(FY-2)} – 30 ก.ย. ${be(FY-1)})</small>`;
+  document.getElementById("statsprev").innerHTML=stat(LP);
+  document.getElementById("stha").innerHTML=`ทั้งไฟล์ <small>(ทุกปี${ds.length?` ${thd(ds[0])} – ${thd(ds[ds.length-1])}`:""})</small>`;
   document.getElementById("statsall").innerHTML=stat(LOC);
+  renderBreakdown();
   const L2=[...ALL].sort((a,b)=>b.dd.localeCompare(a.dd));
   document.getElementById("viscount").textContent=`แสดง ${S.length} จาก ${ALL.length} เคส`;
   document.getElementById("list").innerHTML=L2.length?L2.map(c=>{const off=HIDDEN.has(c.key); return `<div class="case${c===LATEST?" lt":""}${off?" off":""}" data-i="${c.i}" role="button" tabindex="0">
@@ -803,7 +848,7 @@ function render(fit){
   applyProv();
   if(fit&&fp.value&&!fa.value&&!ft.value&&!fc.value&&PBOUNDS[fp.value]){ map.fitBounds(PBOUNDS[fp.value],{padding:[24,24]}); }
   else if(fit&&!fp.value&&!fa.value&&!ft.value&&!fc.value&&Object.keys(PBOUNDS).length){ const b=L.latLngBounds([]); Object.values(PBOUNDS).forEach(x=>b.extend(x)); map.fitBounds(b,{padding:[16,16]}); }
-  else if(fit&&fc.value&&S.length===1){ map.fitBounds(S[0].rings[0].getBounds(),{padding:[30,30]}); setTimeout(()=>S[0].marker.openPopup(),400); }
+  else if(fit&&fc.value&&S.length===1){ map.fitBounds(L.latLng(S[0].lat,S[0].lon).toBounds(10000),{padding:[30,30]}); setTimeout(()=>S[0].marker.openPopup(),400); }
   else if(fit&&(S.length||tb)){ const b=L.latLngBounds(S.map(c=>[c.lat,c.lon])); if(tb) b.extend(tb); map.fitBounds(S.length>1||tb?b.pad(0.12):b,{maxZoom:13,padding:[40,40]}); }
 }
 function zcls(){ if(!map) return; const z=map.getZoom(), el=map.getContainer(); el.classList.toggle("z1",z>=9.75&&z<11); el.classList.toggle("z2",z>=11); }
@@ -844,5 +889,174 @@ document.getElementById("tam").addEventListener("change",e=>e.target.checked?tam
 document.getElementById("satc").addEventListener("change",applyBase);
 document.getElementById("negc").addEventListener("change",e=>e.target.checked?negLayer.addTo(map):map.removeLayer(negLayer));
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>map&&applyBase());
+/* ================= summary helpers (shared by sidebar, print and Word export) ================= */
+const fyOf=d=>{ const y=+d.slice(0,4), m=+d.slice(5,7); return m>=10?y+1:y; };
+function locCases(){ return POS.filter(c=>(!fp.value||c.pc===fp.value)&&(!fa.value||c.ak===fa.value)&&(!ft.value||c.tk===ft.value)); }
+function latestFY(){ const d=CASES.map(c=>c.dd).filter(Boolean); return d.length?Math.max(...d.map(fyOf)):fyOf(TODAY); }
+function sumK(A,k){ return A.reduce((t,c)=>t+(Number(c[k])||0),0); }
+/* breakdown one level below the current filter: region/multi -> provinces, province -> districts, district -> subdistricts */
+function breakdown(){
+  if(ft.value) return null;
+  const LOC=locCases(), FY=latestFY(), rows=new Map();
+  let level, unit, keyOf, label, clickKind;
+  if(fa.value){ level="ตำบล"; const [pc,am]=fa.value.split("|"); keyOf=c=>c.tk; label=k=>"ต."+k.split("|")[2]; clickKind="ft";
+    TAMS.filter(t=>t.c.slice(0,2)===pc&&t.a===am).forEach(t=>rows.set(pc+"|"+am+"|"+t.n,[]));
+  } else if(fp.value||!MULTI){ level="อำเภอ"; const pc=fp.value||[...PROVS][0]; keyOf=c=>c.ak; label=k=>"อ."+k.split("|")[1]; clickKind="fa";
+    GEO.A.filter(a=>a.c.slice(0,2)===pc).forEach(a=>rows.set(pc+"|"+a.n,[]));
+  } else { level="จังหวัด"; keyOf=c=>c.pc; label=k=>"จ."+PN[k]; clickKind="fp"; [...PROVS].forEach(pc=>rows.set(pc,[])); }
+  LOC.forEach(c=>{ const k=keyOf(c); if(!rows.has(k)) rows.set(k,[]); rows.get(k).push(c); });
+  const out=[...rows].map(([k,A])=>{ const F=A.filter(c=>fyOf(c.dd)===FY); return {k,label:label(k),fy:F.length,inv:F.some(c=>c.inv),bit:sumK(F,"bitten"),sal:sumK(F,"saliva"),all:A.length}; })
+    .sort((a,b)=>b.fy-a.fy||b.all-a.all||a.label.localeCompare(b.label,"th"));
+  const tot={fy:out.reduce((t,r)=>t+r.fy,0),bit:out.reduce((t,r)=>t+r.bit,0),sal:out.reduce((t,r)=>t+r.sal,0),all:out.reduce((t,r)=>t+r.all,0)};
+  return {level,rows:out,tot,FY,clickKind};
+}
+function renderBreakdown(){
+  const box=document.getElementById("bd"), B=breakdown();
+  if(!B){ box.hidden=true; return; }
+  const inv=files.inv.length>0, n=x=>inv?x.toLocaleString():"–";
+  box.hidden=false;
+  box.innerHTML=`<div class="bdh">แยกราย${B.level} <small>(${B.rows.length} ${B.level} · กดชื่อเพื่อกรอง)</small></div><div class="bdw"><table><thead><tr><th>${B.level}</th><th title="เคสผลบวก ปีงบประมาณ ${B.FY+543}">ผลบวก<br><small>ปีงบ ${String(B.FY+543).slice(-2)}</small></th><th>ถูกกัด<br><small>ปีงบ ${String(B.FY+543).slice(-2)}</small></th><th>สัมผัส<br>น้ำลาย</th><th>ผลบวก<br><small>ทุกปี</small></th></tr></thead><tbody>`+
+    B.rows.map(r=>`<tr class="${r.all?"":"z"}"><td>${r.all?`<button type="button" data-k="${esc(r.k)}" data-kind="${B.clickKind}">${esc(r.label)}</button>`:esc(r.label)}</td><td><b>${r.fy}</b></td><td>${r.inv?n(r.bit):"–"}</td><td>${r.inv?n(r.sal):"–"}</td><td>${r.all}</td></tr>`).join("")+
+    `</tbody><tfoot><tr><td>รวม</td><td><b>${B.tot.fy}</b></td><td>${n(B.tot.bit)}</td><td>${n(B.tot.sal)}</td><td>${B.tot.all}</td></tr></tfoot></table></div>`;
+}
+document.getElementById("bd").addEventListener("click",e=>{ const b=e.target.closest("button[data-k]"); if(!b) return;
+  const k=b.dataset.k, kind=b.dataset.kind, sel={fp,fa,ft}[kind];
+  if(![...sel.options].some(o=>o.value===k)){ const o=document.createElement("option"); o.value=k; o.textContent=k.split("|").pop(); sel.appendChild(o); }
+  sel.value=k; sel.dispatchEvent(new Event("change")); });
+
+/* ================= filter description ================= */
+function scopeText(){
+  const parts=[];
+  parts.push(fp.value?`จ.${PN[fp.value]}`:MULTI?`${PROVS.size} จังหวัด (${[...PROVS].map(c=>PN[c]).join(", ")})`:`จ.${PN[[...PROVS][0]]}`);
+  if(fa.value) parts.push(`อ.${fa.value.split("|")[1]}`);
+  if(ft.value) parts.push(`ต.${ft.value.split("|")[2]}`);
+  return parts.join(" › ");
+}
+function yearsText(){ const ys=[...checkedYears()].sort((a,b)=>b-a); return (ym.value==="fy"?"ปีงบประมาณ ":"ปีปฏิทิน ")+(ys.length?ys.map(y=>y+543).join(", "):"ไม่ได้เลือกปี"); }
+function nowTh(){ const d=new Date(); return `${d.getDate()}/${d.getMonth()+1}/${String(d.getFullYear()+543).slice(-2)} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")} น.`; }
+
+/* ================= print current map view ================= */
+document.getElementById("printmap").addEventListener("click",()=>{
+  const ph=document.getElementById("printhdr"), m=document.getElementById("map");
+  const ys=[...checkedYears()].sort((a,b)=>b-a);
+  ph.innerHTML=`<div class="pt"><img src="${document.querySelector(".htop .logo").src}" alt=""><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
+    <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()}</div></div></div>
+    <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
+  const center=map.getCenter(), zoom=map.getZoom(), bounds=map.getBounds();
+  document.body.classList.add("printing");
+  m.style.width="1060px"; m.style.height="620px"; map.invalidateSize({animate:false}); map.fitBounds(bounds,{animate:false,padding:[0,0]});
+  let done=false;
+  const restore=()=>{ if(done) return; done=true; document.body.classList.remove("printing"); m.style.width=""; m.style.height=""; map.invalidateSize({animate:false}); map.setView(center,zoom,{animate:false}); };
+  window.addEventListener("afterprint",restore,{once:true});
+  setTimeout(()=>{ window.print(); setTimeout(restore,500); },1300);
+});
+
+/* ================= minimal .docx writer (no external library) ================= */
+const CRC=(()=>{ const t=new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; t[n]=c>>>0; } return t; })();
+function crc32(u){ let c=0xFFFFFFFF; for(let i=0;i<u.length;i++) c=CRC[(c^u[i])&255]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+function zipStore(files){ /* files: [{name, data:Uint8Array}] -> Blob (stored, no compression) */
+  const enc=new TextEncoder(), parts=[], cen=[]; let off=0;
+  const u16=v=>[v&255,(v>>>8)&255], u32=v=>[v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255];
+  for(const f of files){ const nm=enc.encode(f.name), crc=crc32(f.data), sz=f.data.length;
+    const lh=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x5521),...u32(crc),...u32(sz),...u32(sz),...u16(nm.length),...u16(0)]);
+    parts.push(lh,nm,f.data);
+    cen.push(new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x5521),...u32(crc),...u32(sz),...u32(sz),...u16(nm.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)]),nm);
+    off+=lh.length+nm.length+sz; }
+  const cenSize=cen.reduce((t,a)=>t+a.length,0);
+  const end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(files.length),...u16(files.length),...u32(cenSize),...u32(off),...u16(0)]);
+  return new Blob([...parts,...cen,end],{type:"application/vnd.openxmlformats-officedocument.wordprocessingml.document"});
+}
+const X=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const W={
+  run:(t,o={})=>`<w:r><w:rPr>${o.b?"<w:b/><w:bCs/>":""}${o.color?`<w:color w:val="${o.color}"/>`:""}${o.sz?`<w:sz w:val="${o.sz}"/><w:szCs w:val="${o.sz}"/>`:""}</w:rPr><w:t xml:space="preserve">${X(t)}</w:t></w:r>`,
+  p:(runs,o={})=>`<w:p><w:pPr>${o.style?`<w:pStyle w:val="${o.style}"/>`:""}${o.align?`<w:jc w:val="${o.align}"/>`:""}${o.after!=null?`<w:spacing w:after="${o.after}" w:before="${o.before||0}"/>`:""}${o.bullet?`<w:ind w:left="360" w:hanging="240"/>`:""}</w:pPr>${Array.isArray(runs)?runs.join(""):W.run(runs,o)}</w:p>`,
+  h:(t,lvl=1)=>W.p([W.run(t,{b:true,sz:lvl===1?36:30,color:"1F5F4A"})],{after:80,before:lvl===1?120:200}),
+  table:(head,rows,widths,o={})=>{ const tw=widths.reduce((a,b)=>a+b,0), sz=o.sz||28;
+    const cell=(t,w,opt={})=>`<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/>${opt.fill?`<w:shd w:val="clear" w:color="auto" w:fill="${opt.fill}"/>`:""}</w:tcPr><w:p><w:pPr><w:spacing w:after="0"/>${opt.align?`<w:jc w:val="${opt.align}"/>`:""}</w:pPr>${W.run(t,{b:opt.b,sz})}</w:p></w:tc>`;
+    const al=o.align||[];
+    return `<w:tbl><w:tblPr><w:tblW w:w="${tw}" w:type="dxa"/><w:tblBorders>${["top","left","bottom","right","insideH","insideV"].map(s=>`<w:${s} w:val="single" w:sz="4" w:space="0" w:color="BFC8C2"/>`).join("")}</w:tblBorders><w:tblCellMar><w:left w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${widths.map(w=>`<w:gridCol w:w="${w}"/>`).join("")}</w:tblGrid>`+
+      (head?`<w:tr><w:trPr><w:tblHeader/></w:trPr>${head.map((t,i)=>cell(t,widths[i],{b:true,fill:"E3EEE8",align:al[i]})).join("")}</w:tr>`:"")+
+      rows.map(r=>`<w:tr>${r.map((t,i)=>cell(t,widths[i],{align:al[i],b:o.boldLast&&r===rows[rows.length-1],fill:o.boldLast&&r===rows[rows.length-1]?"F3F5F2":null})).join("")}</w:tr>`).join("")+`</w:tbl>`+W.p("",{after:60});
+  }
+};
+async function logoPng(){ const im=document.querySelector(".htop .logo"); const c=document.createElement("canvas"); c.width=im.naturalWidth||200; c.height=im.naturalHeight||230;
+  c.getContext("2d").drawImage(im,0,0,c.width,c.height); const b=await new Promise(r=>c.toBlob(r,"image/png")); return {data:new Uint8Array(await b.arrayBuffer()),w:c.width,h:c.height}; }
+
+document.getElementById("exportdoc").addEventListener("click",async()=>{
+  const btn=document.getElementById("exportdoc"); btn.disabled=true; const old=btn.textContent; btn.textContent="กำลังสร้างไฟล์…";
+  try{
+  const inv=files.inv.length>0, n=x=>inv?Number(x||0).toLocaleString():"–";
+  const FY=latestFY(), LOC=locCases(), LF=LOC.filter(c=>fyOf(c.dd)===FY);
+  const ALL=shown(), S=ALL.filter(c=>!HIDDEN.has(c.key));
+  const unitLbl=MULTI&&!fp.value?"จังหวัด":"อำเภอ", unitN=A=>MULTI&&!fp.value?new Set(A.map(c=>c.pc)).size:new Set(A.map(c=>c.ak)).size;
+  const B=breakdown(), logo=await logoPng(), cx=Math.round(2.0*360000), cy=Math.round(cx*logo.h/logo.w);
+  const body=[];
+  body.push(`<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:after="60"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="1" name="logo"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="1" name="logo.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdLogo"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`);
+  body.push(W.p([W.run("Rabies GeoWatch",{b:true,sz:28,color:"1F5F4A"})],{align:"center",after:0}));
+  body.push(W.p([W.run(TTL.replace(/\s*กรมปศุสัตว์$/,""),{b:true,sz:40})],{align:"center",after:0}));
+  body.push(W.p([W.run("กรมปศุสัตว์",{b:true,sz:32})],{align:"center",after:60}));
+  body.push(W.p([W.run(`ข้อมูลจาก ThaiRabies Net · ส่งออกเมื่อ ${nowTh()}`,{sz:28,color:"5E6A64"})],{align:"center",after:200}));
+  body.push(W.h("ขอบเขตการแสดงผล",2));
+  body.push(W.table(null,[["พื้นที่",scopeText()],["ปีที่เลือก",yearsText()],["เคสที่แสดงบนแผนที่",`${S.length} จาก ${ALL.length} เคส${fc.value?" (เลือกดูเฉพาะเคส)":""}`]],[2600,7000]));
+  body.push(W.h(`สรุปผล ปีงบประมาณ ${FY+543} (1 ต.ค. ${String(FY+542).slice(-2)} – 30 ก.ย. ${String(FY+543).slice(-2)})`,2));
+  body.push(W.table(["","เคสผลบวก",unitLbl,"คนถูกกัด","คนสัมผัสน้ำลาย"],[
+    [`ปีงบประมาณ ${FY+543} (ล่าสุด)`,LF.length.toLocaleString(),unitN(LF),n(sumK(LF,"bitten")),n(sumK(LF,"saliva"))],
+    [`ปีงบประมาณ ${FY+542}`,LOC.filter(c=>fyOf(c.dd)===FY-1).length.toLocaleString(),unitN(LOC.filter(c=>fyOf(c.dd)===FY-1)),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"bitten")),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"saliva"))],
+    ["ทั้งไฟล์ (ทุกปี)",LOC.length.toLocaleString(),unitN(LOC),n(sumK(LOC,"bitten")),n(sumK(LOC,"saliva"))]],[2600,1750,1750,1750,1750],{align:[null,"center","center","center","center"]}));
+  if(B){ body.push(W.h(`แยกราย${B.level}`,2));
+    body.push(W.table([B.level,`ผลบวก ปีงบ ${B.FY+543}`,"คนถูกกัด","คนสัมผัสน้ำลาย","ผลบวก ทุกปี"],
+      [...B.rows.map(r=>[r.label,r.fy,r.inv?n(r.bit):"–",r.inv?n(r.sal):"–",r.all]),["รวม",B.tot.fy,n(B.tot.bit),n(B.tot.sal),B.tot.all]],[3000,1650,1650,1650,1650],{align:[null,"center","center","center","center"],boldLast:true})); }
+  if(LATEST){ const c=LATEST, days=Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5);
+    body.push(W.h("เคสล่าสุดตามตัวกรอง",2));
+    body.push(W.table(null,[["วันที่ผลแล็บออก",`${thd(c.dd)} (ผ่านมา ${days} วัน)`],["สถานที่",`${v(c.place)}${c.moo?" ม."+c.moo:""} ต.${c.tambon} อ.${c.amphoe} จ.${c.pn}`],["ชนิดสัตว์",c.species],["คนถูกกัด / สัมผัสน้ำลาย",c.inv?`${v(c.bitten)} / ${v(c.saliva)} ราย`:"ไม่มีรายงานสอบสวนโรค"]],[2600,7000])); }
+  if(MULTI&&!fp.value&&!fa.value&&!ft.value&&!fc.value){
+    const rows=[...PROVS].map(pc=>({pc,c:ALL.filter(x=>x.pc===pc).sort((a,b)=>b.dd.localeCompare(a.dd))[0]})).sort((a,b)=>(b.c?b.c.dd:"").localeCompare(a.c?a.c.dd:"")||PN[a.pc].localeCompare(PN[b.pc],"th"));
+    body.push(W.h("เคสล่าสุดรายจังหวัด",2));
+    body.push(W.table(["จังหวัด","วันที่ผลแล็บออก","ตำบล / อำเภอ","ชนิดสัตว์","ผ่านมา (วัน)"],rows.map(({pc,c})=>c?[PN[pc],thd(c.dd),`ต.${c.tambon} อ.${c.amphoe}`,c.species,Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5)]:[PN[pc],"–","ไม่มีเคสผลบวกตามปีที่เลือก","",""]),[1900,1700,3300,1300,1400],{align:[null,"center",null,"center","center"]})); }
+  const dmax=CASES.map(c=>c.date).filter(Boolean).sort().pop();
+  body.push(W.h("ข้อมูลไฟล์ที่ใช้",2));
+  body.push(W.table(null,[["จำนวนไฟล์ส่งตัวอย่าง",`${files.sample.length} ไฟล์`],["จำนวนไฟล์สอบสวนโรค",inv?`${files.inv.length} ไฟล์`:"ไม่มี"],["จำนวนตัวอย่างส่งตรวจ",CASES.length.toLocaleString()],["ผลบวก (ทุกปีในไฟล์)",CASES.filter(c=>c.pos).length.toLocaleString()],["รับตัวอย่างล่าสุด",thd(dmax)]],[4000,5600]));
+  /* samples per province, active vs passive (purpose column V) */
+  const kindOf=c=>/รับรอง|ปลอดโรค/.test(c.purpose||"")?"A":/ชันสูตร/.test(c.purpose||"")?"P":"U";
+  const pList=[...PROVS].filter(pc=>!fp.value||pc===fp.value).sort((a,b)=>PN[a].localeCompare(PN[b],"th"));
+  const sampRows=A=>{ const rows=pList.map(pc=>{ const X=A.filter(c=>c.pc===pc), cnt=(k,pos)=>X.filter(c=>kindOf(c)===k&&(!pos||c.pos)).length;
+      return [PN[pc],X.length,cnt("A"),cnt("A",1),cnt("P"),cnt("P",1),cnt("U")]; });
+    if(rows.length>1) rows.push(["รวม",...[1,2,3,4,5,6].map(i=>rows.reduce((t,r)=>t+r[i],0))]);
+    return rows.map(r=>r.map(x=>typeof x==="number"?x.toLocaleString():x)); };
+  const sHead=["จังหวัด","ส่งตรวจทั้งหมด","Active ส่งตรวจ","Active ผลบวก","Passive ส่งตรวจ","Passive ผลบวก","ไม่ระบุ"], sW=[1700,1300,1300,1300,1300,1300,1100], sAl=[null,"center","center","center","center","center","center"];
+  body.push(W.h("จำนวนตัวอย่างส่งตรวจรายจังหวัด แยก Active / Passive",2));
+  body.push(W.p([W.run("Active = เก็บตัวอย่างเพื่อรับรองสถานภาพปลอดโรคพิษสุนัขบ้า · Passive = ส่งชันสูตร (สัตว์ป่วย/ตาย/สงสัย) · ไม่ระบุ = ไม่ได้บันทึกวัตถุประสงค์ (จากช่อง \"วัตถุประสงค์การเก็บตัวอย่าง\" ใน ThaiRabies Net นับตามวันที่ผลแล็บออก)",{sz:26,color:"5E6A64"})],{after:80}));
+  body.push(W.p([W.run(`ปีงบประมาณ ${FY+543}`,{b:true,sz:30})],{after:40}));
+  body.push(W.table(sHead,sampRows(CASES.filter(c=>fyOf(c.dd)===FY)),sW,{align:sAl,boldLast:pList.length>1}));
+  const cd=CASES.map(c=>c.dd).sort();
+  body.push(W.p([W.run(`ทั้งไฟล์ (ทุกปี ${thd(cd[0])} – ${thd(cd[cd.length-1])})`,{b:true,sz:30})],{after:40}));
+  body.push(W.table(sHead,sampRows(CASES),sW,{align:sAl,boldLast:pList.length>1}));
+  const L2=[...S].sort((a,b)=>b.dd.localeCompare(a.dd));
+  body.push(W.h(`รายการเคสผลบวกตามตัวกรอง (${L2.length} เคส)`,2));
+  const multiCol=MULTI&&!fp.value;
+  const head=["ที่","ผลแล็บออก","สัตว์","สถานที่","ตำบล","อำเภอ",...(multiCol?["จังหวัด"]:[]),"ถูกกัด","สัมผัส"];
+  const wid=multiCol?[560,1270,700,1760,1200,1350,1250,740,800]:[560,1300,800,2480,1450,1450,780,810];
+  body.push(W.table(head,L2.map((c,i)=>[i+1,thd(c.dd),c.species,`${v(c.place)}${c.moo?" ม."+c.moo:""}${c.mismatch?" ⚠":""}`,c.tambon,c.amphoe,...(multiCol?[c.pn]:[]),c.inv?v(c.bitten):"–",c.inv?v(c.saliva):"–"]),wid,{sz:24,align:["center","center","center",null,null,null,...(multiCol?[null]:[]),"center","center"]}));
+  body.push(W.h("หมายเหตุ",2));
+  [...document.querySelectorAll("#notes li")].forEach(li=>body.push(W.p([W.run("• "+li.textContent,{sz:28})],{after:40,bullet:true})));
+  body.push(W.h("ผู้พัฒนา",2));
+  document.querySelectorAll("aside .devs > div").forEach(d=>{ const name=d.firstChild.textContent.trim(), pos=d.querySelector("small").textContent;
+    body.push(W.p([W.run(name,{b:true,sz:28})],{after:0})); body.push(W.p([W.run(pos,{sz:26,color:"5E6A64"})],{after:80})); });
+  body.push(W.p([W.run("หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (onwara.rit@gmail.com)",{sz:26,color:"5E6A64"})],{before:120,after:0}));
+  const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>${body.join("")}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr></w:body></w:document>`;
+  const FONT="TH Sarabun New";
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:eastAsia="${FONT}" w:cs="${FONT}"/><w:sz w:val="32"/><w:szCs w:val="32"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
+  const drels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rIdLogo" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/></Relationships>`;
+  const te=new TextEncoder();
+  const blob=zipStore([{name:"[Content_Types].xml",data:te.encode(ct)},{name:"_rels/.rels",data:te.encode(rels)},{name:"word/document.xml",data:te.encode(doc)},{name:"word/styles.xml",data:te.encode(styles)},{name:"word/_rels/document.xml.rels",data:te.encode(drels)},{name:"word/media/logo.png",data:logo.data}]);
+  const d=new Date(), stamp=`${d.getFullYear()+543}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+  const area=fp.value?PN[fp.value]:MULTI?document.getElementById("title").textContent.replace(/\s+/g,""):PN[[...PROVS][0]];
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`RabiesGeoWatch_สรุป_${area}_${stamp}.docx`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  } catch(err){ alert("สร้างไฟล์ Word ไม่สำเร็จ: "+(err&&err.message||err)); }
+  finally{ btn.disabled=false; btn.textContent=old; }
+});
+
 </script>
 </body></html>
