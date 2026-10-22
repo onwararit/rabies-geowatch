@@ -195,6 +195,38 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .lrow{display:flex;flex-wrap:wrap;gap:6px 16px}
 .hideprov .prov-label{display:none}
 .statbox{display:flex;flex-direction:column;gap:6px}
+.sth select{font:inherit;font-weight:700;padding:2px 4px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.btn.act2{width:100%;background:color-mix(in srgb,var(--accent) 14%,var(--panel));color:var(--accent);border:1px solid var(--accent);font-weight:700}
+.ver{font-size:11.5px;color:var(--muted)}
+.dq{font-size:12px;border:1px dashed var(--line);border-radius:8px;padding:0 10px;color:var(--muted)}
+.dq summary{cursor:pointer;padding:7px 0;font-weight:600}
+.dq summary small{font-weight:400}
+.dq ul{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:3px}
+.dq li{display:flex;justify-content:space-between;gap:8px}
+.dq li b{color:var(--ink);font-variant-numeric:tabular-nums}
+.dq p{margin:6px 0 8px;font-size:11px}
+.view2{min-height:100%;background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:16px;max-width:1180px;margin:0 auto}
+.v2bar{display:flex;gap:14px;align-items:center}
+.v2bar .brand{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+.v2bar b{font-size:19px}
+.v2card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.v2card h2{margin:0;font-size:16px}
+.v2ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px}
+.v2ctl select{font:inherit;padding:4px 6px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.v2scope{font-size:12.5px;color:var(--muted)}
+.echart{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.echart svg{display:block;width:100%;height:auto}
+.elegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px}
+.elegend span{display:flex;align-items:center;gap:6px}
+.elegend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.elegend i.med{height:0;border-top:2px dashed var(--ink);border-radius:0;width:20px}
+.elegend .muted{color:var(--muted)}
+.esum{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px}
+.v2note{margin:0;font-size:12px;color:var(--muted)}
+.etable{max-height:460px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.etable table{width:100%;border-collapse:collapse;font-size:12.5px}
+.etable th{position:sticky;top:0;background:var(--chip);text-align:left;padding:6px 8px;font-weight:600;white-space:nowrap}
+.etable td{padding:5px 8px;border-top:1px solid var(--line);vertical-align:top}
 .btn.act{background:var(--accent);color:var(--panel);font-weight:600}
 .bd{border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .bdh{font-size:12.5px;font-weight:700;padding:7px 10px;background:var(--chip)}
@@ -209,7 +241,7 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .bd td button{font:inherit;background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:2px}
 .printhdr{display:none}
 body.printing .app{display:block;height:auto}
-body.printing aside{display:none}
+body.printing aside,body.printing .leaflet-tooltip-pane,body.printing .leaflet-control-zoom{display:none}
 body.printing .printhdr{display:block;width:1060px;padding:0 0 6px;color:#1d2421;background:#fff}
 .printhdr .pt{display:flex;gap:10px;align-items:center}
 .printhdr img{height:54px;width:auto}
@@ -225,7 +257,7 @@ body.printing .printhdr{display:block;width:1060px;padding:0 0 6px;color:#1d2421
   @page{size:A4 landscape;margin:8mm}
   html,body{height:auto!important;background:#fff!important}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
-  aside,.leaflet-control-zoom{display:none!important}
+  aside,.leaflet-control-zoom,.leaflet-tooltip-pane{display:none!important}
   .app{display:block!important}
   .printhdr{display:block!important}
   #map{page-break-inside:avoid}
@@ -334,7 +366,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1 · อัปเดต 22 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -347,8 +379,9 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <details class="plist" id="plistd" hidden><summary id="plists"></summary><div id="plistn"></div></details>
       <div class="hbtn"><button class="btn sec sm" id="reload" type="button" title="กลับไปหน้าวางไฟล์">เปลี่ยนไฟล์</button><button class="btn sec sm" id="resetall" type="button" title="ล้างตัวกรอง การซ่อนเคส และชั้นข้อมูล กลับเป็นค่าเริ่มต้น">ล้างค่าทั้งหมด</button></div>
       <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act" id="exportdoc" type="button" title="ส่งออกข้อมูลสรุปฝั่งซ้ายเป็นไฟล์ Word (.docx)">📄 ส่งออก Word</button></div>
+      <div class="hbtn"><button class="btn sm act2" id="openepi" type="button">📈 Epi curve และข้อมูลรายเคส (Excel) →</button></div>
     </header>
-    <div class="statbox"><div class="sth" id="sth"></div><div class="stats" id="stats"></div>
+    <div class="statbox"><div class="sth"><label>ปีงบประมาณ <select id="mfy" aria-label="เลือกปีงบประมาณหลัก"></select></label> <small id="sth"></small></div><div class="stats" id="stats"></div>
       <div class="bd" id="bd" hidden></div>
       <details class="stall"><summary id="stalls">ดูปีงบก่อนหน้า และทั้งไฟล์</summary><div class="sth2" id="sthp"></div><div class="stats" id="statsprev"></div><div class="sth2" id="stha"></div><div class="stats" id="statsall"></div></details></div>
     <button class="latest" id="latest" type="button" hidden></button>
@@ -396,13 +429,33 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <div class="list" id="list"></div>
     </div>
     <div class="note" id="notes"></div>
+    <details class="dq" id="dq"><summary id="dqs">🔎 ตรวจคุณภาพข้อมูล</summary><div id="dqb"></div></details>
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1 · อัปเดต 22 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
+</div>
+<div class="view2" id="view2" hidden>
+  <div class="v2bar"><button class="btn sec sm" id="backmap" type="button">← กลับไปหน้าแผนที่</button><div><div class="brand">Rabies GeoWatch</div><b>Epidemic curve และข้อมูลรายเคส</b></div></div>
+  <section class="v2card">
+    <h2>📈 Epidemic curve รายสัปดาห์ทางระบาดวิทยา</h2>
+    <div class="v2ctl"><label>ปี (epi year) <select id="ey"></select></label><label>แยกสีตาม <select id="eg"><option value="prov" id="eprov">จังหวัด</option><option value="amp">อำเภอ</option><option value="none">ไม่แยก</option></select></label><button class="btn sec sm" id="epng" type="button">ดาวน์โหลดกราฟ (PNG)</button></div>
+    <div class="v2scope" id="escope"></div>
+    <div class="echart" id="echart"></div>
+    <div class="elegend" id="elegend"></div>
+    <div class="esum" id="esum"></div>
+    <p class="v2note">พื้นที่ของกราฟตามตัวกรองจังหวัด/อำเภอ/ตำบลบนหน้าแผนที่ (ไม่ขึ้นกับปีที่ติ๊ก) · เส้นประ = ค่ามัธยฐานของสัปดาห์เดียวกันใน 5 ปีย้อนหลังเท่าที่มีในไฟล์ · ชี้ที่แท่งเพื่อดูช่วงวันที่และจำนวน</p>
+  </section>
+  <section class="v2card">
+    <h2>📊 ข้อมูลรายเคส (ส่งออก Excel)</h2>
+    <div class="v2ctl"><span id="ecount"></span></div>
+    <div class="v2ctl"><button class="btn sm act" id="xpos" type="button">ส่งออกเคสผลบวกตามตัวกรอง (.xlsx)</button><button class="btn sec sm" id="xall" type="button">ส่งออกตัวอย่างทั้งหมดในพื้นที่ รวมผลลบ ทุกปี (.xlsx)</button></div>
+    <div class="etable" id="etable"></div>
+    <p class="v2note">ไฟล์ Excel ไม่มีชื่อ-ที่อยู่เจ้าของสัตว์ · มีคอลัมน์ epi week ปีงบประมาณ ประเภท Active/Passive และหมายเหตุคุณภาพข้อมูล</p>
+  </section>
 </div>
 
 <script>/* @preserve
@@ -522,6 +575,7 @@ document.getElementById("clearfiles").addEventListener("click",()=>{ files.sampl
 /* ---------- build records ---------- */
 const SYM=[["วิ่งพล่าน","BQ"],["กัดกรง/สิ่งของ","BR"],["เสียงร้องเปลี่ยน","BS"],["ปากอ้า ลิ้นห้อย น้ำลายไหล","BT"],["เดินโซเซ","BU"],["ตะกุยปาก","BV"],["อาเจียน","BW"],["ตัวแข็ง","BX"],["กลืนไม่ได้","BY"],["ตาวาว/ขวาง","BZ"],["ซึม ซุกตัว","CA"],["ดุร้าย","CB"],["ปกติ","CC"]];
 function buildCases(provs){
+  DROPPED=[];
   const g=(r,c)=>{ const x=r[col(c)]; return typeof x==="string"?x.trim():x; };
   const inv={}; files.inv.forEach(f=>f.rows.forEach(r=>{ const k=cellStr(g(r,"A")); if(k) inv[k]=r; })); const seen=new Set();
   const out=[];
@@ -548,13 +602,14 @@ function buildCases(provs){
     c.bad=bad; c.pc=pc; c.pn=PN[pc]; c.ak=pc+"|"+c.amphoe; c.tk=c.ak+"|"+c.tambon;
     c.key=pc+"|"+c.key; const dk=pc+"|"+(c.reg||(c.sample+"|"+c.date)); if(seen.has(dk)) return; seen.add(dk);
     c.pos=c.result==="ผลบวก"; c.hasLL=lat!=null&&lon!=null&&Math.abs(lat)<=90&&Math.abs(lon)<=180&&lat!==0&&lon!==0;
-    if(c.dd) out.push(c);
+    if(c.dd) out.push(c); else DROPPED.push(c);
   }));
   return out;
 }
 
 /* ---------- map state ---------- */
-let TTL="";
+let TTL="", DROPPED=[];
+const APP_VER="1.1", APP_DATE="22 ต.ค. 2569";
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
@@ -651,7 +706,7 @@ function initData(){
   negLayer.clearLayers();
   NEG.forEach(c=>L.circleMarker([c.lat,c.lon],{radius:3.5,color:"#fff",weight:1,fillColor:"#7b8780",fillOpacity:.9}).bindTooltip(`${esc(c.species)} ${esc(c.result)} · รับตัวอย่าง ${thd(c.date)} · ต.${esc(c.tambon)}`).addTo(negLayer));
   if(!document.getElementById("negc").checked) map.removeLayer(negLayer);
-  HIDDEN.clear(); ft.innerHTML=""; fc.innerHTML=""; fillAmp(); fillTam(); fillCase();
+  HIDDEN.clear(); ft.innerHTML=""; fc.innerHTML=""; fillMFY(); fillAmp(); fillTam(); fillCase();
   const tot=CASES.length, posN=CASES.filter(c=>c.pos).length;
   const regs=[...new Set([...PROVS].map(c=>REGION[c]))], fullReg=MULTI&&regs.length===1&&Object.keys(REGION).filter(c=>REGION[c]===regs[0]&&!REG_OPT.has(c)).every(c=>PROVS.has(c));
   const names=[...PROVS].map(c=>PN[c]).sort((a,b)=>a.localeCompare(b,"th"));
@@ -828,7 +883,7 @@ function render(fit){
     return [[A.length,"เคสผลบวก"],MULTI&&!fp.value?[new Set(A.map(c=>c.pc)).size,"จังหวัด"]:[new Set(A.map(c=>c.ak)).size,"อำเภอ"],[files.inv.length?sum("bitten"):"–","คนถูกกัด"],[files.inv.length?sum("saliva"):"–","คนสัมผัสน้ำลาย"]]
       .map(([n,l])=>`<div class="stat"><b>${typeof n==="number"?n.toLocaleString():n}</b><span>${l}</span></div>`).join(""); };
   const be=y=>String(y+543).slice(-2);
-  document.getElementById("sth").innerHTML=FY?`ปีงบประมาณ ${FY+543} <small>(1 ต.ค. ${be(FY-1)} – 30 ก.ย. ${be(FY)})</small>`:"";
+  document.getElementById("sth").textContent=`(1 ต.ค. ${be(FY-1)} – 30 ก.ย. ${be(FY)})`;
   document.getElementById("stats").innerHTML=stat(LF);
   const ds=LOC.map(c=>c.dd).sort();
   document.getElementById("stalls").textContent=`ดูปีงบ ${FY+542} และทั้งไฟล์`;
@@ -836,7 +891,7 @@ function render(fit){
   document.getElementById("statsprev").innerHTML=stat(LP);
   document.getElementById("stha").innerHTML=`ทั้งไฟล์ <small>(ทุกปี${ds.length?` ${thd(ds[0])} – ${thd(ds[ds.length-1])}`:""})</small>`;
   document.getElementById("statsall").innerHTML=stat(LOC);
-  renderBreakdown();
+  renderBreakdown(); renderDQ();
   const L2=[...ALL].sort((a,b)=>b.dd.localeCompare(a.dd));
   document.getElementById("viscount").textContent=`แสดง ${S.length} จาก ${ALL.length} เคส`;
   document.getElementById("list").innerHTML=L2.length?L2.map(c=>{const off=HIDDEN.has(c.key); return `<div class="case${c===LATEST?" lt":""}${off?" off":""}" data-i="${c.i}" role="button" tabindex="0">
@@ -862,7 +917,7 @@ document.getElementById("showall").addEventListener("click",()=>{ HIDDEN.clear()
 document.getElementById("hideall").addEventListener("click",()=>{ shown().forEach(c=>HIDDEN.add(c.key)); map.closePopup(); render(false); });
 document.getElementById("plat").addEventListener("click",e=>{ const b=e.target.closest("button[data-i]"); if(!b) return; flyCase(b); });
 function resetAll(){
-  map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
+  fillMFY(); map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
   buildYears();
   const many=PROVS.size>2;
   [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI],["ampb",true],["tam",true],["provl",true],["ampl",true],["lab",!many],["taml",!many],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
@@ -892,7 +947,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>
 /* ================= summary helpers (shared by sidebar, print and Word export) ================= */
 const fyOf=d=>{ const y=+d.slice(0,4), m=+d.slice(5,7); return m>=10?y+1:y; };
 function locCases(){ return POS.filter(c=>(!fp.value||c.pc===fp.value)&&(!fa.value||c.ak===fa.value)&&(!ft.value||c.tk===ft.value)); }
-function latestFY(){ const d=CASES.map(c=>c.dd).filter(Boolean); return d.length?Math.max(...d.map(fyOf)):fyOf(TODAY); }
+function latestFY(){ const s=document.getElementById("mfy"); return s&&s.value?+s.value:fyOf(TODAY); } /* = main fiscal year chosen in the sidebar (default: current FY) */
 function sumK(A,k){ return A.reduce((t,c)=>t+(Number(c[k])||0),0); }
 /* breakdown one level below the current filter: region/multi -> provinces, province -> districts, district -> subdistricts */
 function breakdown(){
@@ -940,9 +995,10 @@ document.getElementById("printmap").addEventListener("click",()=>{
   const ph=document.getElementById("printhdr"), m=document.getElementById("map");
   const ys=[...checkedYears()].sort((a,b)=>b-a);
   ph.innerHTML=`<div class="pt"><img src="${document.querySelector(".htop .logo").src}" alt=""><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
-    <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()}</div></div></div>
+    <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()} · Rabies GeoWatch v${APP_VER}</div></div></div>
     <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
   const center=map.getCenter(), zoom=map.getZoom(), bounds=map.getBounds();
+  map.eachLayer(l=>{ if(l.closeTooltip) l.closeTooltip(); });
   document.body.classList.add("printing");
   m.style.width="1060px"; m.style.height="620px"; map.invalidateSize({animate:false}); map.fitBounds(bounds,{animate:false,padding:[0,0]});
   let done=false;
@@ -1000,7 +1056,7 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   body.push(W.table(null,[["พื้นที่",scopeText()],["ปีที่เลือก",yearsText()],["เคสที่แสดงบนแผนที่",`${S.length} จาก ${ALL.length} เคส${fc.value?" (เลือกดูเฉพาะเคส)":""}`]],[2600,7000]));
   body.push(W.h(`สรุปผล ปีงบประมาณ ${FY+543} (1 ต.ค. ${String(FY+542).slice(-2)} – 30 ก.ย. ${String(FY+543).slice(-2)})`,2));
   body.push(W.table(["","เคสผลบวก",unitLbl,"คนถูกกัด","คนสัมผัสน้ำลาย"],[
-    [`ปีงบประมาณ ${FY+543} (ล่าสุด)`,LF.length.toLocaleString(),unitN(LF),n(sumK(LF,"bitten")),n(sumK(LF,"saliva"))],
+    [`ปีงบประมาณ ${FY+543} (ปีหลัก)`,LF.length.toLocaleString(),unitN(LF),n(sumK(LF,"bitten")),n(sumK(LF,"saliva"))],
     [`ปีงบประมาณ ${FY+542}`,LOC.filter(c=>fyOf(c.dd)===FY-1).length.toLocaleString(),unitN(LOC.filter(c=>fyOf(c.dd)===FY-1)),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"bitten")),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"saliva"))],
     ["ทั้งไฟล์ (ทุกปี)",LOC.length.toLocaleString(),unitN(LOC),n(sumK(LOC,"bitten")),n(sumK(LOC,"saliva"))]],[2600,1750,1750,1750,1750],{align:[null,"center","center","center","center"]}));
   if(B){ body.push(W.h(`แยกราย${B.level}`,2));
@@ -1017,7 +1073,7 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   body.push(W.h("ข้อมูลไฟล์ที่ใช้",2));
   body.push(W.table(null,[["จำนวนไฟล์ส่งตัวอย่าง",`${files.sample.length} ไฟล์`],["จำนวนไฟล์สอบสวนโรค",inv?`${files.inv.length} ไฟล์`:"ไม่มี"],["จำนวนตัวอย่างส่งตรวจ",CASES.length.toLocaleString()],["ผลบวก (ทุกปีในไฟล์)",CASES.filter(c=>c.pos).length.toLocaleString()],["รับตัวอย่างล่าสุด",thd(dmax)]],[4000,5600]));
   /* samples per province, active vs passive (purpose column V) */
-  const kindOf=c=>/รับรอง|ปลอดโรค/.test(c.purpose||"")?"A":/ชันสูตร/.test(c.purpose||"")?"P":"U";
+  const kindOf=purposeKind;
   const pList=[...PROVS].filter(pc=>!fp.value||pc===fp.value).sort((a,b)=>PN[a].localeCompare(PN[b],"th"));
   const sampRows=A=>{ const rows=pList.map(pc=>{ const X=A.filter(c=>c.pc===pc), cnt=(k,pos)=>X.filter(c=>kindOf(c)===k&&(!pos||c.pos)).length;
       return [PN[pc],X.length,cnt("A"),cnt("A",1),cnt("P"),cnt("P",1),cnt("U")]; });
@@ -1039,10 +1095,13 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   body.push(W.table(head,L2.map((c,i)=>[i+1,thd(c.dd),c.species,`${v(c.place)}${c.moo?" ม."+c.moo:""}${c.mismatch?" ⚠":""}`,c.tambon,c.amphoe,...(multiCol?[c.pn]:[]),c.inv?v(c.bitten):"–",c.inv?v(c.saliva):"–"]),wid,{sz:24,align:["center","center","center",null,null,null,...(multiCol?[null]:[]),"center","center"]}));
   body.push(W.h("หมายเหตุ",2));
   [...document.querySelectorAll("#notes li")].forEach(li=>body.push(W.p([W.run("• "+li.textContent,{sz:28})],{after:40,bullet:true})));
+  { const items=dqItems(); body.push(W.h("ตรวจคุณภาพข้อมูล",2));
+    body.push(W.table(["ประเด็น (ทุกจังหวัดที่เลือก ทุกปี)","จำนวน"],items.map(x=>[x.t,x.A.length.toLocaleString()]),[7600,2000],{sz:26,align:[null,"center"]})); }
   body.push(W.h("ผู้พัฒนา",2));
   document.querySelectorAll("aside .devs > div").forEach(d=>{ const name=d.firstChild.textContent.trim(), pos=d.querySelector("small").textContent;
     body.push(W.p([W.run(name,{b:true,sz:28})],{after:0})); body.push(W.p([W.run(pos,{sz:26,color:"5E6A64"})],{after:80})); });
   body.push(W.p([W.run("หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (onwara.rit@gmail.com)",{sz:26,color:"5E6A64"})],{before:120,after:0}));
+  body.push(W.p([W.run(`Rabies GeoWatch เวอร์ชัน ${APP_VER} · อัปเดต ${APP_DATE}`,{sz:24,color:"5E6A64"})],{after:0}));
   const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>${body.join("")}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr></w:body></w:document>`;
   const FONT="TH Sarabun New";
   const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:eastAsia="${FONT}" w:cs="${FONT}"/><w:sz w:val="32"/><w:szCs w:val="32"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
@@ -1057,6 +1116,123 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   } catch(err){ alert("สร้างไฟล์ Word ไม่สำเร็จ: "+(err&&err.message||err)); }
   finally{ btn.disabled=false; btn.textContent=old; }
 });
+
+/* ================= v1.1: main fiscal year, epi curve page, Excel export, data quality ================= */
+const purposeKind=c=>/รับรอง|ปลอดโรค/.test(c.purpose||"")?"A":/ชันสูตร/.test(c.purpose||"")?"P":"U";
+const KIND_TH={A:"Active (รับรองสถานภาพปลอดโรค)",P:"Passive (ชันสูตร)",U:"ไม่ระบุ"};
+function fillMFY(){ const s=document.getElementById("mfy"), cur=fyOf(TODAY);
+  const ys=[...new Set([cur,...CASES.map(c=>fyOf(c.dd))])].sort((a,b)=>b-a);
+  s.innerHTML=ys.map(y=>`<option value="${y}">${y+543}${y===cur?" (ปัจจุบัน)":""}</option>`).join(""); s.value=String(cur); }
+document.getElementById("mfy").addEventListener("change",()=>render(false));
+const locOK=c=>(!fp.value||c.pc===fp.value)&&(!fa.value||c.ak===fa.value)&&(!ft.value||c.tk===ft.value);
+
+/* ---------- epidemiological week (MMWR: Sunday–Saturday, week 1 contains 4 January) ---------- */
+const DAY=864e5, WEEK=6048e5;
+function epiStart(Y){ const j4=Date.UTC(Y,0,4); return j4-new Date(j4).getUTCDay()*DAY; }
+function epiWeek(s){ const t=Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10)); let Y=+s.slice(0,4);
+  if(t<epiStart(Y)) Y--; else if(t>=epiStart(Y+1)) Y++; return {y:Y,w:Math.floor((t-epiStart(Y))/WEEK)+1}; }
+const weeksIn=Y=>Math.round((epiStart(Y+1)-epiStart(Y))/WEEK);
+const utcTh=t=>{ const d=new Date(t); return `${d.getUTCDate()}/${d.getUTCMonth()+1}/${String(d.getUTCFullYear()+543).slice(-2)}`; };
+const AMP_PAL=["#d1495b","#edae49","#00798c","#30638e","#8e5ea2","#66a182","#e36414","#5f0f40"];
+
+function openEpi(){ document.getElementById("app").hidden=true; document.getElementById("view2").hidden=false; window.scrollTo(0,0);
+  const ys=[...new Set(CASES.filter(c=>c.pos).map(c=>epiWeek(c.dd).y))], cur=epiWeek(TODAY).y; if(!ys.includes(cur)) ys.push(cur); ys.sort((a,b)=>b-a);
+  const ey=document.getElementById("ey"), keep=ey.value; ey.innerHTML=ys.map(y=>`<option value="${y}">${y+543}</option>`).join(""); ey.value=keep&&ys.includes(+keep)?keep:String(cur);
+  const eg=document.getElementById("eg"); if(!eg.dataset.touched) eg.value=MULTI&&!fp.value?"prov":"amp";
+  document.getElementById("eprov").hidden=!(MULTI&&!fp.value);
+  renderEpi(); renderCaseTable(); }
+function closeEpi(){ document.getElementById("view2").hidden=true; document.getElementById("app").hidden=false; map.invalidateSize(); }
+document.getElementById("openepi").addEventListener("click",openEpi);
+document.getElementById("backmap").addEventListener("click",closeEpi);
+document.getElementById("ey").addEventListener("change",renderEpi);
+document.getElementById("eg").addEventListener("change",e=>{ e.target.dataset.touched="1"; renderEpi(); });
+
+let EPI_SVG="";
+function renderEpi(){
+  const Y=+document.getElementById("ey").value, grp=document.getElementById("eg").value, W=weeksIn(Y);
+  const P=CASES.filter(c=>c.pos&&locOK(c)).map(c=>({c,e:epiWeek(c.dd)}));
+  const cur=P.filter(x=>x.e.y===Y);
+  /* groups */
+  let gKey, gName, gCol, keys;
+  if(grp==="prov"){ gKey=x=>x.c.pc; gName=k=>"จ."+PN[k]; gCol=k=>PCOL[k]||"#888"; keys=[...PROVS].filter(k=>cur.some(x=>x.c.pc===k)).sort((a,b)=>cur.filter(x=>x.c.pc===b).length-cur.filter(x=>x.c.pc===a).length); }
+  else if(grp==="amp"){ const cnt=new Map(); cur.forEach(x=>cnt.set(x.c.ak,(cnt.get(x.c.ak)||0)+1)); const top=[...cnt].sort((a,b)=>b[1]-a[1]).slice(0,7).map(a=>a[0]);
+    gKey=x=>top.includes(x.c.ak)?x.c.ak:"อื่น"; gName=k=>k==="อื่น"?"อำเภออื่น ๆ":"อ."+k.split("|")[1]+(MULTI&&!fp.value?` (${PN[k.split("|")[0]]})`:""); gCol=k=>k==="อื่น"?"#9aa6a0":AMP_PAL[top.indexOf(k)]; keys=[...top,...(cnt.size>7?["อื่น"]:[])]; }
+  else { gKey=()=>"all"; gName=()=>"เคสผลบวก"; gCol=()=>"#b3261e"; keys=cur.length?["all"]:[]; }
+  const M=Array.from({length:W+1},()=>new Map()); cur.forEach(x=>{ const k=gKey(x); M[x.e.w].set(k,(M[x.e.w].get(k)||0)+1); });
+  const tot=w=>[...M[w].values()].reduce((a,b)=>a+b,0);
+  /* 5-year median of the same week, using only epi years that are covered by the file */
+  const covered=new Set(CASES.filter(locOK).map(c=>epiWeek(c.dd).y)), prevYs=[1,2,3,4,5].map(i=>Y-i).filter(y=>covered.has(y));
+  const cnt=(y,w)=>P.filter(x=>x.e.y===y&&x.e.w===w).length, med=a=>{ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), m=s.length>>1; return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+  const MED=Array.from({length:W+1},(_,w)=>w?med(prevYs.map(y=>cnt(y,w))):null);
+  const ymax=Math.max(1,...Array.from({length:W},(_,i)=>tot(i+1)),...MED.filter(v=>v!=null));
+  const step=ymax<=5?1:ymax<=10?2:ymax<=25?5:10, top=Math.ceil(ymax/step)*step;
+  const w0=56,w1=980,h0=24,h1=330, bw=(w1-w0)/W, yv=v=>h1-(v/top)*(h1-h0);
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="Sarabun,Tahoma,sans-serif" role="img" aria-label="Epidemic curve">`;
+  s+=`<rect width="1000" height="400" fill="#ffffff"/>`;
+  for(let v=0;v<=top;v+=step){ s+=`<line x1="${w0}" x2="${w1}" y1="${yv(v)}" y2="${yv(v)}" stroke="${v?"#e3e7e4":"#5e6a64"}" stroke-width="1"/><text x="${w0-8}" y="${yv(v)+4}" font-size="12" text-anchor="end" fill="#5e6a64">${v}</text>`; }
+  const nowE=epiWeek(TODAY);
+  if(nowE.y===Y){ const x=w0+(nowE.w-0.5)*bw; s+=`<line x1="${x}" x2="${x}" y1="${h0-8}" y2="${h1}" stroke="#1f5f4a" stroke-dasharray="3 3"/><text x="${x+4}" y="${h0-10}" font-size="11" fill="#1f5f4a">สัปดาห์ปัจจุบัน (${nowE.w})</text>`; }
+  for(let w=1;w<=W;w++){ let acc=0; const x=w0+(w-1)*bw+1.5, st=epiStart(Y)+(w-1)*WEEK;
+    keys.forEach(k=>{ const n=M[w].get(k)||0; if(!n) return; const y1=yv(acc+n), y0=yv(acc);
+      s+=`<rect x="${x.toFixed(1)}" y="${y1.toFixed(1)}" width="${(bw-3).toFixed(1)}" height="${(y0-y1).toFixed(1)}" fill="${gCol(k)}" stroke="#ffffff" stroke-width="0.6"><title>สัปดาห์ที่ ${w} (${utcTh(st)} – ${utcTh(st+6*DAY)}): ${gName(k)} ${n} เคส</title></rect>`; acc+=n; });
+    if(w===1||w%4===0) s+=`<text x="${(w0+(w-0.5)*bw).toFixed(1)}" y="${h1+16}" font-size="11.5" text-anchor="middle" fill="#5e6a64">${w}</text>`; }
+  /* month ticks */
+  for(let m=0;m<12;m++){ const t=Date.UTC(Y,m,1); const wk=(t-epiStart(Y))/WEEK; if(wk<0||wk>W) continue; const x=w0+wk*bw;
+    s+=`<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${h1+22}" y2="${h1+28}" stroke="#9aa6a0"/><text x="${(x+3).toFixed(1)}" y="${h1+38}" font-size="11" fill="#9aa6a0">${["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."][m]}</text>`; }
+  if(prevYs.length){ const pts=MED.map((v,w)=>w&&v!=null?`${(w0+(w-0.5)*bw).toFixed(1)},${yv(v).toFixed(1)}`:null).filter(Boolean).join(" ");
+    s+=`<polyline points="${pts}" fill="none" stroke="#1d2421" stroke-width="2" stroke-dasharray="6 4"/>`; }
+  s+=`<text x="${(w0+w1)/2}" y="${h1+56}" font-size="12.5" text-anchor="middle" fill="#1d2421">สัปดาห์ทางระบาดวิทยา (epidemiological week) ปี ${Y+543}</text>`;
+  s+=`<text transform="translate(16 ${(h0+h1)/2}) rotate(-90)" font-size="12.5" text-anchor="middle" fill="#1d2421">จำนวนเคสผลบวก</text></svg>`;
+  EPI_SVG=s; document.getElementById("echart").innerHTML=s;
+  document.getElementById("elegend").innerHTML=keys.map(k=>`<span><i style="background:${gCol(k)}"></i>${esc(gName(k))} (${cur.filter(x=>gKey(x)===k).length})</span>`).join("")+
+    (prevYs.length?`<span><i class="med"></i>ค่ามัธยฐาน ${prevYs.length} ปีย้อนหลัง (${prevYs.map(y=>y+543).sort().join(", ")})</span>`:`<span class="muted">ไม่มีข้อมูลปีก่อนหน้าในไฟล์ จึงไม่มีเส้นค่ามัธยฐาน</span>`);
+  const wks=[...new Set(cur.map(x=>x.e.w))].sort((a,b)=>a-b), last=cur.length?cur.reduce((a,b)=>a.c.dd>b.c.dd?a:b):null;
+  const above=Array.from({length:W},(_,i)=>i+1).filter(w=>MED[w]!=null&&tot(w)>MED[w]&&tot(w)>0);
+  document.getElementById("esum").innerHTML=[`<b>${cur.length}</b> เคสผลบวกในปี ${Y+543}`,`พบเคสใน <b>${wks.length}</b> สัปดาห์`,last?`เคสล่าสุด สัปดาห์ที่ <b>${last.e.w}</b> (ผลแล็บ ${thd(last.c.dd)})`:"ยังไม่มีเคส",
+    prevYs.length?`สัปดาห์ที่สูงกว่าค่ามัธยฐาน: <b>${!above.length?"ไม่มี":above.length<=12?above.join(", "):above.length+" สัปดาห์"}</b>`:""].filter(Boolean).map(x=>`<span>${x}</span>`).join("");
+  document.getElementById("escope").textContent=`พื้นที่: ${scopeText()} · นับตามวันที่ผลแล็บออก · สัปดาห์เริ่มวันอาทิตย์ (สัปดาห์ที่ 1 = สัปดาห์ที่มีวันที่ 4 ม.ค.)`;
+}
+document.getElementById("epng").addEventListener("click",()=>{ const img=new Image(); img.onload=()=>{ const c=document.createElement("canvas"); c.width=2000; c.height=800; const g=c.getContext("2d"); g.drawImage(img,0,0,2000,800);
+    c.toBlob(b=>{ const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=`RabiesGeoWatch_EpiCurve_${document.getElementById("ey").value*1+543}.png`; document.body.appendChild(a); a.click(); a.remove(); },"image/png"); };
+  img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(EPI_SVG); });
+
+/* ---------- case table + Excel export ---------- */
+function caseRow(c,i){ const e=epiWeek(c.dd);
+  return {"ลำดับ":i+1,"เลขทะเบียนรับ":c.reg,"เลขตัวอย่าง":c.sample,"จังหวัด":c.pn,"อำเภอ":c.amphoe,"ตำบล":c.tambon,"หมู่":c.moo,"สถานที่พบสัตว์":c.place,
+    "ละติจูด":c.hasLL?c.lat:"","ลองจิจูด":c.hasLL?c.lon:"","ชนิดสัตว์":c.species,"เพศ":c.sex,"ผลการตรวจ":c.result,"วัตถุประสงค์":c.purpose,"ประเภทการเฝ้าระวัง":KIND_TH[purposeKind(c)],
+    "วันรับตัวอย่าง (ค.ศ.)":c.date||"","วันที่ผลแล็บออก (ค.ศ.)":c.dd,"ที่มาของวันที่ผลแล็บ":c.ddSrc,"ปี พ.ศ.":+c.dd.slice(0,4)+543,"ปีงบประมาณ":fyOf(c.dd)+543,
+    "epi week ปี":e.y+543,"epi week":e.w,"วันตาย (ค.ศ.)":c.death||"","มีรายงานสอบสวนโรค":c.inv?"มี":"ไม่มี","คนถูกกัด":c.inv?(c.bitten??""):"","คนสัมผัสน้ำลาย":c.inv?(c.saliva??""):"",
+    "พิกัดตกนอกตำบลที่บันทึก":c.mismatch||"","วันที่ผิดปกติ (ไม่ได้ใช้)":(c.bad||[]).join(", ")}; }
+function renderCaseTable(){ const A=[...shown()].sort((a,b)=>b.dd.localeCompare(a.dd));
+  document.getElementById("ecount").textContent=`เคสผลบวกตามตัวกรองบนหน้าแผนที่: ${A.length} เคส (${yearsText()})`;
+  document.getElementById("etable").innerHTML=`<table><thead><tr><th>#</th><th>ผลแล็บออก</th><th>epi wk</th><th>สัตว์</th><th>สถานที่</th><th>ตำบล</th><th>อำเภอ</th>${MULTI?"<th>จังหวัด</th>":""}<th>ประเภท</th><th>ถูกกัด</th><th>สัมผัส</th></tr></thead><tbody>`+
+    A.map((c,i)=>`<tr><td>${i+1}</td><td>${thd(c.dd)}</td><td>${epiWeek(c.dd).w}</td><td>${esc(c.species)}</td><td>${esc(v(c.place))}${c.moo?" ม."+esc(c.moo):""}${c.mismatch?" ⚠":""}</td><td>${esc(c.tambon)}</td><td>${esc(c.amphoe)}</td>${MULTI?`<td>${esc(c.pn)}</td>`:""}<td>${purposeKind(c)==="A"?"Active":purposeKind(c)==="P"?"Passive":"–"}</td><td>${c.inv?v(c.bitten):"–"}</td><td>${c.inv?v(c.saliva):"–"}</td></tr>`).join("")+`</tbody></table>`; }
+function areaTag(){ return fp.value?PN[fp.value]:MULTI?document.getElementById("title").textContent.replace(/\s+/g,""):PN[[...PROVS][0]]; }
+function stampTag(){ const d=new Date(); return `${d.getFullYear()+543}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`; }
+function writeXlsx(rows,sheet,fname,info){ const wb=XLSX.utils.book_new(); const ws=XLSX.utils.json_to_sheet(rows.length?rows:[{"หมายเหตุ":"ไม่มีข้อมูลตามตัวกรอง"}]);
+  const keys=Object.keys(rows[0]||{"หมายเหตุ":1}); ws["!cols"]=keys.map(k=>({wch:Math.min(40,Math.max(8,k.length+2,...rows.slice(0,200).map(r=>String(r[k]??"").length+1)))}));
+  XLSX.utils.book_append_sheet(wb,ws,sheet);
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER} (${APP_DATE})`],["ส่งออกเมื่อ",nowTh()],["หัวข้อ",TTL],...info,["แหล่งข้อมูล","ThaiRabies Net (ไฟล์ส่งตัวอย่าง"+(files.inv.length?" + สอบสวนโรค":"")+")"],["หมายเหตุ","ไม่มีชื่อ-ที่อยู่เจ้าของสัตว์ · วันที่เป็น ค.ศ. รูปแบบ ปปปป-ดด-วว · epi week แบบสัปดาห์เริ่มวันอาทิตย์"]]),"คำอธิบาย");
+  XLSX.writeFile(wb,fname); }
+document.getElementById("xpos").addEventListener("click",()=>{ const A=[...shown()].sort((a,b)=>b.dd.localeCompare(a.dd));
+  writeXlsx(A.map(caseRow),"เคสผลบวก",`RabiesGeoWatch_เคสผลบวก_${areaTag()}_${stampTag()}.xlsx`,[["ขอบเขต",scopeText()],["ปีที่เลือก",yearsText()],["จำนวน",`${A.length} เคส`]]); });
+document.getElementById("xall").addEventListener("click",()=>{ const A=CASES.filter(locOK).sort((a,b)=>b.dd.localeCompare(a.dd));
+  writeXlsx(A.map(caseRow),"ตัวอย่างทั้งหมด",`RabiesGeoWatch_ตัวอย่างทั้งหมด_${areaTag()}_${stampTag()}.xlsx`,[["ขอบเขต",scopeText()+" (ทุกปี ทุกผลตรวจ)"],["จำนวน",`${A.length} ตัวอย่าง`]]); });
+
+/* ---------- data quality ---------- */
+function dqItems(){ const inv=files.inv.length>0;
+  return [
+    {k:"mis",t:"ผลบวกที่พิกัดตกนอกตำบลที่บันทึก",A:POS.filter(c=>c.mismatch),d:c=>`พิกัดอยู่ใน ${c.mismatch}`},
+    {k:"noll",t:"ผลบวกที่ไม่มีพิกัด (ไม่อยู่บนแผนที่)",A:CASES.filter(c=>c.pos&&!c.hasLL),d:()=>"ไม่มีละติจูด/ลองจิจูด"},
+    {k:"bad",t:"ตัวอย่างที่มีวันที่ผิดปกติ (ระบบใช้วันที่อื่นแทน)",A:CASES.filter(c=>c.bad&&c.bad.length),d:c=>c.bad.join(", ")},
+    {k:"drop",t:"ตัวอย่างที่ไม่มีวันที่ใช้ได้เลย (ไม่ถูกนำมาแสดง)",A:DROPPED,d:c=>(c.bad||[]).join(", ")||"ไม่มีวันที่"},
+    {k:"pur",t:"ตัวอย่างที่ไม่ระบุวัตถุประสงค์การเก็บตัวอย่าง",A:CASES.filter(c=>purposeKind(c)==="U"),d:()=>"ช่องวัตถุประสงค์ว่าง"},
+    ...(inv?[{k:"noinv",t:"ผลบวกที่ไม่พบรายงานสอบสวนโรค",A:CASES.filter(c=>c.pos&&!c.inv),d:()=>"ไม่มีในไฟล์สอบสวนโรค"}]:[])]; }
+function renderDQ(){ const items=dqItems(), n=items.reduce((t,x)=>t+x.A.length,0);
+  document.getElementById("dqs").innerHTML=`🔎 ตรวจคุณภาพข้อมูล <small>· ${n?`พบ ${n.toLocaleString()} รายการที่ควรตรวจสอบ`:"ไม่พบประเด็น"}</small>`;
+  document.getElementById("dqb").innerHTML=`<ul>${items.map(x=>`<li><span>${x.t}</span><b>${x.A.length.toLocaleString()}</b></li>`).join("")}</ul><button type="button" class="btn sec sm" id="dqx" ${n?"":"disabled"}>ส่งออกรายการเป็น Excel</button><p>นับจากทุกจังหวัดที่เลือก ทุกปีในไฟล์ · ใช้เป็นรายการแก้ไขใน ThaiRabies Net</p>`;
+  document.getElementById("dqx").addEventListener("click",()=>{ const rows=[]; dqItems().forEach(x=>x.A.forEach(c=>rows.push({"ประเด็น":x.t,"จังหวัด":c.pn||"","เลขทะเบียนรับ":c.reg||"","เลขตัวอย่าง":c.sample||"","วันที่ผลแล็บออก (ค.ศ.)":c.dd||"","ผลการตรวจ":c.result||"","ตำบล":c.tambon||"","อำเภอ":c.amphoe||"","รายละเอียด":x.d(c)})));
+    writeXlsx(rows,"คุณภาพข้อมูล",`RabiesGeoWatch_ตรวจคุณภาพข้อมูล_${areaTag()}_${stampTag()}.xlsx`,[["ขอบเขต",[...PROVS].map(c=>PN[c]).join(", ")+" (ทุกปี)"]]); }); }
 
 </script>
 </body></html>
