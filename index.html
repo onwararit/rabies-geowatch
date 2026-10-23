@@ -195,6 +195,37 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .lrow{display:flex;flex-wrap:wrap;gap:6px 16px}
 .hideprov .prov-label{display:none}
 .statbox{display:flex;flex-direction:column;gap:6px}
+.simrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;font-size:13px}
+.simrow input{font:inherit;font-size:13px;flex:1;min-width:0;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.simrow #simr{flex:0 1 120px}
+.btn.simbtn{width:100%;background:color-mix(in srgb,#7B3FA0 12%,var(--panel));color:#7B3FA0;border:1px solid #7B3FA0;font-weight:700}
+.btn.simbtn.on{background:#7B3FA0;color:#fff}
+.simmsg{font-size:12.5px;color:#7B3FA0;margin:-2px 0 8px;min-height:0}
+.simmsg:empty{display:none}
+.simmsg.err{color:var(--r1)}
+.simit{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:12.5px}
+.simit summary{cursor:pointer;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.simit summary small{color:var(--muted)}
+.simll{color:var(--muted);margin:6px 0;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.simll button{font:inherit;font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--line);background:var(--chip);color:var(--ink);cursor:pointer}
+.simb{margin:6px 0}
+.simn{color:var(--muted);line-height:1.55;margin-top:2px}
+.simn small,.simb small{color:var(--muted)}
+.simw{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#E0741C;border-radius:4px;padding:0 5px;margin-left:4px}
+.simc{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);line-height:1.55}
+.simsum{font-size:12.5px;padding:8px 10px;border-radius:8px;background:color-mix(in srgb,#7B3FA0 8%,var(--panel));margin-bottom:8px}
+.simdot{display:inline-block;width:10px;height:10px;background:#7B3FA0;transform:rotate(45deg);border-radius:2px;margin-right:2px}
+.simpin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px}
+.simpin::before{content:"";position:absolute;inset:3px;background:#7B3FA0;border:2.5px solid #fff;border-radius:4px;transform:rotate(45deg);box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.simpin span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11.5px;font-weight:700;font-family:var(--sans)}
+.simctl button{width:34px;height:34px;border:0;background:var(--panel);font-size:17px;cursor:pointer;display:block}
+.simctl button.on{background:#7B3FA0}
+.simarm,.simarm .leaflet-interactive{cursor:crosshair!important}
+.simarm .leaflet-marker-icon,.simarm .leaflet-tooltip{pointer-events:none!important}
+body.printing .simctl{display:none}
+@media print{.simctl{display:none!important}}
+.simarm .leaflet-marker-icon,.simarm .leaflet-tooltip{pointer-events:none!important}
+.lhint{font-size:12px;color:var(--muted);margin:-4px 0 8px}
 .sth select{font:inherit;font-weight:700;padding:2px 4px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
 .btn.act2{width:100%;background:color-mix(in srgb,var(--accent) 14%,var(--panel));color:var(--accent);border:1px solid var(--accent);font-weight:700}
 .ver{font-size:11.5px;color:var(--muted)}
@@ -366,7 +397,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1 · อัปเดต 22 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.1 · อัปเดต 23 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -402,8 +433,8 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       </div></div>
       <div class="lgrp"><span class="lh">ป้ายชื่อ</span><div class="lrow">
         <label class="tg"><input type="checkbox" id="provl" checked>จังหวัด</label>
-        <label class="tg"><input type="checkbox" id="ampl" checked>อำเภอ</label>
-        <label class="tg"><input type="checkbox" id="taml" checked>ตำบล</label>
+        <label class="tg"><input type="checkbox" id="ampl">อำเภอ</label>
+        <label class="tg"><input type="checkbox" id="taml">ตำบล</label>
         <label class="tg"><input type="checkbox" id="lab" checked>สัตว์+วันที่</label>
       </div></div>
       <div class="lgrp"><span class="lh">อื่น ๆ</span><div class="lrow">
@@ -428,12 +459,22 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <div class="listbar"><span id="viscount"></span><button type="button" id="showall">แสดงทุกเคส</button><button type="button" id="hideall">ซ่อนทุกเคส</button></div>
       <div class="list" id="list"></div>
     </div>
+    <div class="grp" style="--sc:#7B3FA0" id="simcard">
+      <h2>🎯 จำลองจุดเกิดโรค</h2>
+      <div class="lhint">ปักจุดสมมติเพื่อดูขอบเขต · ไม่ใช่เคสจริง ไม่บันทึกลงระบบ</div>
+      <div class="simrow"><button type="button" class="btn sm simbtn" id="simclick" aria-pressed="false">คลิกบนแผนที่เพื่อปักจุด</button></div>
+      <div class="simrow"><input type="text" id="simll" placeholder="หรือวางพิกัด เช่น 16.4362, 103.4968" aria-label="พิกัดจาก Google Maps"><button type="button" class="btn sm sec" id="simadd">ปักจุด</button></div>
+      <div class="simrow"><label for="simr">รัศมี (km)</label><input type="text" id="simr" value="1, 3, 5" aria-label="รัศมี กิโลเมตร คั่นด้วยจุลภาค"></div>
+      <div class="simmsg" id="simmsg"></div>
+      <div id="simlist"></div>
+      <div class="simrow" id="simtools" hidden><button type="button" class="btn sm sec" id="simx">ส่งออก Excel</button><button type="button" class="btn sm sec" id="simclear">ล้างจุดจำลองทั้งหมด</button></div>
+    </div>
     <div class="note" id="notes"></div>
     <details class="dq" id="dq"><summary id="dqs">🔎 ตรวจคุณภาพข้อมูล</summary><div id="dqb"></div></details>
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1 · อัปเดต 22 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.1 · อัปเดต 23 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -609,9 +650,9 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.1", APP_DATE="22 ต.ค. 2569";
+const APP_VER="1.1.1", APP_DATE="23 ต.ค. 2569";
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
-let prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
+let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
 
 function start(){
@@ -653,6 +694,10 @@ function initMap(){
   AF.forEach(a=>{ if(!a.l) return; L.marker([a.l[1],a.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="amp-label">${esc(a.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels); });
   rings={5:L.layerGroup().addTo(map),3:L.layerGroup().addTo(map),1:L.layerGroup().addTo(map)};
   negLayer=L.layerGroup().addTo(map); markers=L.layerGroup().addTo(map); tamSel=L.layerGroup().addTo(map);
+  simRings=L.layerGroup().addTo(map); simLayer=L.layerGroup().addTo(map); SIMS=[]; SIM_N=0; SIM_ARM=false;
+  map.on("click",e=>{ if(!SIM_ARM) return; const s=addSim(e.latlng.lat,e.latlng.lng); armSim(false); simMsg(`ปักจุดจำลอง ${s.n} แล้ว · ${simLoc(s)} · ลากหมุดเพื่อย้ายได้`); setTimeout(()=>s.marker.openPopup(),150); });
+  const SimCtl=L.Control.extend({options:{position:"topleft"},onAdd(){ const d=L.DomUtil.create("div","leaflet-bar simctl"); d.innerHTML='<button type="button" id="simmapbtn" title="จำลองจุดเกิดโรค: คลิกแล้วคลิกบนแผนที่" aria-label="จำลองจุดเกิดโรค">🎯</button>'; L.DomEvent.disableClickPropagation(d); d.querySelector("button").addEventListener("click",()=>{ armSim(!SIM_ARM); const c=document.getElementById("simcard"); c.classList.remove("closed"); }); return d; }});
+  new SimCtl().addTo(map);
   GEO.P.filter(p=>PROVS.has(p.c)&&p.l).forEach(p=>L.marker([p.l[1],p.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="prov-label" data-pc="${p.c}" style="--pc:${PCOL[p.c]}">จ.${esc(p.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels));
   const b=L.geoJSON(PG.filter(f=>PROVS.has(f.properties.c))).getBounds();
   map.fitBounds(b,{padding:[16,16]});
@@ -891,7 +936,7 @@ function render(fit){
   document.getElementById("statsprev").innerHTML=stat(LP);
   document.getElementById("stha").innerHTML=`ทั้งไฟล์ <small>(ทุกปี${ds.length?` ${thd(ds[0])} – ${thd(ds[ds.length-1])}`:""})</small>`;
   document.getElementById("statsall").innerHTML=stat(LOC);
-  renderBreakdown(); renderDQ();
+  renderBreakdown(); renderDQ(); if(SIMS.length){ SIMS.forEach(computeSim); renderSims(); }
   const L2=[...ALL].sort((a,b)=>b.dd.localeCompare(a.dd));
   document.getElementById("viscount").textContent=`แสดง ${S.length} จาก ${ALL.length} เคส`;
   document.getElementById("list").innerHTML=L2.length?L2.map(c=>{const off=HIDDEN.has(c.key); return `<div class="case${c===LATEST?" lt":""}${off?" off":""}" data-i="${c.i}" role="button" tabindex="0">
@@ -920,7 +965,7 @@ function resetAll(){
   fillMFY(); map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
   buildYears();
   const many=PROVS.size>2;
-  [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI],["ampb",true],["tam",true],["provl",true],["ampl",true],["lab",!many],["taml",!many],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
+  [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI],["ampb",true],["tam",true],["provl",true],["ampl",false],["lab",!many],["taml",false],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
   fillAmp(); fillTam(); fillCase(); render(true);
 }
 document.getElementById("resetall").addEventListener("click",resetAll);
@@ -996,7 +1041,7 @@ document.getElementById("printmap").addEventListener("click",()=>{
   const ys=[...checkedYears()].sort((a,b)=>b-a);
   ph.innerHTML=`<div class="pt"><img src="${document.querySelector(".htop .logo").src}" alt=""><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
     <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()} · Rabies GeoWatch v${APP_VER}</div></div></div>
-    <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
+    <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${SIMS.length?`<span><i style="background:#7B3FA0;border-radius:2px;transform:rotate(45deg)"></i>จุดจำลอง (รัศมี ${simRadii().join("/")} km)</span>`:""}${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
   const center=map.getCenter(), zoom=map.getZoom(), bounds=map.getBounds();
   map.eachLayer(l=>{ if(l.closeTooltip) l.closeTooltip(); });
   document.body.classList.add("printing");
@@ -1095,6 +1140,11 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   body.push(W.table(head,L2.map((c,i)=>[i+1,thd(c.dd),c.species,`${v(c.place)}${c.moo?" ม."+c.moo:""}${c.mismatch?" ⚠":""}`,c.tambon,c.amphoe,...(multiCol?[c.pn]:[]),c.inv?v(c.bitten):"–",c.inv?v(c.saliva):"–"]),wid,{sz:24,align:["center","center","center",null,null,null,...(multiCol?[null]:[]),"center","center"]}));
   body.push(W.h("หมายเหตุ",2));
   [...document.querySelectorAll("#notes li")].forEach(li=>body.push(W.p([W.run("• "+li.textContent,{sz:28})],{after:40,bullet:true})));
+  if(SIMS.length){ body.push(W.h(`จุดจำลอง (ไม่ใช่เคสจริง) ${SIMS.length} จุด`,2));
+    body.push(W.p([W.run("จุดสมมติที่ผู้ใช้ปักเพื่อดูขอบเขตรัศมี ไม่ได้มาจาก ThaiRabies Net",{sz:26,color:"5E6A64"})],{after:60}));
+    SIMS.forEach(s=>{ body.push(W.p([W.run(`จุดจำลอง ${s.n}: ${simLoc(s)} (${s.lat}, ${s.lon})`,{b:true,sz:28})],{after:40}));
+      body.push(W.table(["รัศมี","จำนวนตำบล","รายชื่อตำบล"],s.R.map((r,i)=>[`≤ ${r} km`,s.bands[i].length,s.bands[i].map(t=>`ต.${t.n}${!s.home||t.a!==s.home.a||t.p!==s.home.p?` (อ.${t.a}${!s.home||t.p!==s.home.p?" จ."+t.p:""})`:""}`).join(", ")||"–"]),[1300,1500,6838],{sz:24,align:["center","center",null]}));
+      body.push(W.p([W.run(`เคสผลบวกจริงในรัศมี ${s.R[s.R.length-1]} km: ${s.cases.length} เคส (ทุกปีในไฟล์)${s.nearest?` · เคสใกล้สุด ${s.nearest.d.toFixed(1)} km ผลแล็บ ${thd(s.nearest.c.dd)} ต.${s.nearest.c.tambon} อ.${s.nearest.c.amphoe}`:""}`,{sz:26})],{after:120})); }); }
   { const items=dqItems(); body.push(W.h("ตรวจคุณภาพข้อมูล",2));
     body.push(W.table(["ประเด็น (ทุกจังหวัดที่เลือก ทุกปี)","จำนวน"],items.map(x=>[x.t,x.A.length.toLocaleString()]),[7600,2000],{sz:26,align:[null,"center"]})); }
   body.push(W.h("ผู้พัฒนา",2));
@@ -1233,6 +1283,82 @@ function renderDQ(){ const items=dqItems(), n=items.reduce((t,x)=>t+x.A.length,0
   document.getElementById("dqb").innerHTML=`<ul>${items.map(x=>`<li><span>${x.t}</span><b>${x.A.length.toLocaleString()}</b></li>`).join("")}</ul><button type="button" class="btn sec sm" id="dqx" ${n?"":"disabled"}>ส่งออกรายการเป็น Excel</button><p>นับจากทุกจังหวัดที่เลือก ทุกปีในไฟล์ · ใช้เป็นรายการแก้ไขใน ThaiRabies Net</p>`;
   document.getElementById("dqx").addEventListener("click",()=>{ const rows=[]; dqItems().forEach(x=>x.A.forEach(c=>rows.push({"ประเด็น":x.t,"จังหวัด":c.pn||"","เลขทะเบียนรับ":c.reg||"","เลขตัวอย่าง":c.sample||"","วันที่ผลแล็บออก (ค.ศ.)":c.dd||"","ผลการตรวจ":c.result||"","ตำบล":c.tambon||"","อำเภอ":c.amphoe||"","รายละเอียด":x.d(c)})));
     writeXlsx(rows,"คุณภาพข้อมูล",`RabiesGeoWatch_ตรวจคุณภาพข้อมูล_${areaTag()}_${stampTag()}.xlsx`,[["ขอบเขต",[...PROVS].map(c=>PN[c]).join(", ")+" (ทุกปี)"]]); }); }
+
+function simPeriod(){ const Y=latestFY(); return {label:`ปีงบประมาณ ${Y+543}`,test:c=>fyOf(c.dd)===Y}; }
+/* ================= simulated outbreak points (v1.1.1) (local only, never mixed with real data) ================= */
+let SIMS=[], SIM_ARM=false, SIM_N=0;
+const SIM_COL="#7B3FA0";
+function simRadii(){ const a=(document.getElementById("simr").value.match(/\d+(?:\.\d+)?/g)||[]).map(Number).filter(x=>x>0&&x<=50);
+  const u=[...new Set(a)].sort((x,y)=>x-y).slice(0,5); return u.length?u:[1,3,5]; }
+function tambonsWithin(lat,lon,R){ const pad=R/100+0.02, hits=[];
+  allTambons().forEach(t=>{ const [a,b,cc,d]=t.bb; if(lat<a-pad||lat>b+pad||lon<cc-pad||lon>d+pad) return;
+    const dist=distToPoly(lat,lon,t.poly); if(dist<=R) hits.push({...t,dist}); });
+  return hits.sort((x,y)=>x.dist-y.dist); }
+function parseLL(s){ const m=String(s).match(/(-?\d{1,3}(?:\.\d+)?)\s*[,;\s]\s*(-?\d{1,3}(?:\.\d+)?)/); if(!m) return null;
+  let a=+m[1], b=+m[2]; if(Math.abs(a)>90&&Math.abs(b)<=90) [a,b]=[b,a]; if(!isFinite(a)||!isFinite(b)) return null; return {lat:a,lon:b}; }
+const inTH=p=>p.lat>=5.4&&p.lat<=20.6&&p.lon>=97.2&&p.lon<=105.8;
+function simMsg(t,err){ const el=document.getElementById("simmsg"); el.textContent=t; el.className="simmsg"+(err?" err":""); }
+function simIcon(n){ return L.divIcon({className:"",iconSize:[0,0],html:`<div class="simpin"><span>${n}</span></div>`}); }
+function addSim(lat,lon){ if(!map) return; const n=++SIM_N;
+  const s={n,lat:+lat.toFixed(6),lon:+lon.toFixed(6),open:true};
+  s.marker=L.marker([s.lat,s.lon],{icon:simIcon(n),draggable:true,zIndexOffset:2000,title:`จุดจำลอง ${n} (ลากเพื่อย้าย)`}).addTo(simLayer);
+  s.marker.on("dragend",e=>{ const ll=e.target.getLatLng(); s.lat=+ll.lat.toFixed(6); s.lon=+ll.lng.toFixed(6); computeSim(s); drawSims(); renderSims(); });
+  s.marker.bindPopup(()=>simPopup(s),{maxWidth:340});
+  SIMS.push(s); computeSim(s); drawSims(); renderSims(); return s; }
+function computeSim(s){ const R=simRadii(), Rmax=R[R.length-1];
+  const hits=tambonsWithin(s.lat,s.lon,Rmax); s.R=R; s.home=hits.find(h=>h.dist===0)||null;
+  s.bands=R.map(r=>hits.filter(h=>h.dist<=r));
+  const PT=simPeriod().test;
+  s.cases=POS.map(c=>({c,d:km(s,c)})).filter(x=>x.d<=Rmax).sort((a,b)=>a.d-b.d);
+  s.casesPer=s.cases.filter(x=>PT(x.c)).length;
+  s.nearest=POS.length?POS.map(c=>({c,d:km(s,c)})).sort((a,b)=>a.d-b.d)[0]:null; }
+function drawSims(){ simRings.clearLayers(); SIMS.forEach(s=>{ const R=s.R;
+  R.slice().reverse().forEach((r,i)=>{ const k=R.length-1-i; L.circle([s.lat,s.lon],{radius:r*1000,color:SIM_COL,weight:k===R.length-1?1.6:2,opacity:.9,dashArray:"6 5",fillColor:SIM_COL,fillOpacity:.05+0.03*(R.length-1-k),interactive:false}).addTo(simRings); }); }); }
+function simLoc(s){ return s.home?`ต.${s.home.n} อ.${s.home.a} จ.${s.home.p}`:"นอกขอบเขตตำบล (เช่น ในแม่น้ำหรือนอกประเทศ)"; }
+function bandHTML(s,arr,r,isFirst){ const h=s.home, amps=new Set(arr.map(t=>t.p+"|"+t.a)), provs=new Set(arr.map(t=>t.p));
+  const names=arr.map(t=>{ const other=!h||t.a!==h.a||t.p!==h.p; return `${t.dist===0?"<b>":""}ต.${esc(t.n)}${other?` <small>(อ.${esc(t.a)}${!h||t.p!==h.p?` จ.${esc(t.p)}`:""})</small>`:""}${t.dist===0?"</b>":""}`; }).join(", ");
+  const warn=provs.size>1?`<span class="simw">ข้ามจังหวัด</span>`:amps.size>1?`<span class="simw">ข้ามอำเภอ</span>`:"";
+  return `<div class="simb"><div><b>≤ ${r} km</b> · ${arr.length} ตำบล ${warn}</div><div class="simn">${names||"–"}</div></div>`; }
+function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>จุดจำลอง ${s.n} <span class="tag" style="color:${SIM_COL};border:1px solid ${SIM_COL};background:none">ไม่ใช่เคสจริง</span></h3><div class="loc">${esc(simLoc(s))}<br>${s.lat}, ${s.lon}</div>${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</div>`; }
+function simCaseHTML(s){ const Rmax=s.R[s.R.length-1];
+  const near=s.nearest?`เคสจริงที่ใกล้ที่สุด <b>${s.nearest.d.toFixed(1)} km</b> · ผลแล็บ ${thd(s.nearest.c.dd)} · ต.${esc(s.nearest.c.tambon)} อ.${esc(s.nearest.c.amphoe)}`:"ไม่มีเคสผลบวกในไฟล์";
+  return `<div class="simc">เคสผลบวกจริงในรัศมี ${Rmax} km: <b>${s.cases.length}</b> เคส (ทุกปีในไฟล์) · ใน${esc(simPeriod().label)} <b>${s.casesPer}</b> เคส<br>${near}</div>`; }
+function renderSims(){ const box=document.getElementById("simlist");
+  document.getElementById("simtools").hidden=!SIMS.length;
+  if(!SIMS.length){ box.innerHTML=""; return; }
+  let h=SIMS.map(s=>`<details class="simit" data-n="${s.n}" ${s.open?"open":""}><summary><span class="simdot"></span><b>จุดจำลอง ${s.n}</b> <small>${esc(simLoc(s))}</small></summary>
+    <div class="simll">${s.lat}, ${s.lon} <button type="button" data-z="${s.n}">ซูม</button><button type="button" data-d="${s.n}">ลบ</button></div>
+    ${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</details>`).join("");
+  if(SIMS.length>1){ const Rmax=simRadii().slice(-1)[0], cnt=new Map();
+    SIMS.forEach(s=>s.bands[s.bands.length-1].forEach(t=>{ const k=t.c; cnt.set(k,{t,n:(cnt.get(k)?.n||0)+1}); }));
+    const all=[...cnt.values()], ov=all.filter(x=>x.n>1);
+    h+=`<div class="simsum"><b>รวม ${SIMS.length} จุด</b> · ตำบลในรัศมี ${Rmax} km รวม <b>${all.length}</b> ตำบล · อยู่ในรัศมีของมากกว่า 1 จุด <b>${ov.length}</b> ตำบล${ov.length?`<div class="simn">${ov.map(x=>`ต.${esc(x.t.n)} <small>(อ.${esc(x.t.a)})</small> ×${x.n}`).join(", ")}</div>`:""}</div>`; }
+  box.innerHTML=h; }
+function armSim(on){ SIM_ARM=on; const b=document.getElementById("simclick"); b.setAttribute("aria-pressed",String(on)); b.classList.toggle("on",on);
+  b.textContent=on?"คลิกบนแผนที่ 1 ครั้งเพื่อปักจุด… (กดอีกครั้งเพื่อยกเลิก)":"คลิกบนแผนที่เพื่อปักจุด";
+  if(map) map.getContainer().classList.toggle("simarm",on); const mb=document.getElementById("simmapbtn"); if(mb) mb.classList.toggle("on",on); }
+document.getElementById("simclick").addEventListener("click",()=>armSim(!SIM_ARM));
+document.getElementById("simadd").addEventListener("click",()=>{ const p=parseLL(document.getElementById("simll").value);
+  if(!p) return simMsg("อ่านพิกัดไม่ได้ ให้วางในรูปแบบ ละติจูด, ลองจิจูด เช่น 16.4362, 103.4968",true);
+  if(!inTH(p)) return simMsg(`พิกัด ${p.lat}, ${p.lon} อยู่นอกประเทศไทย ตรวจว่าลำดับเป็น ละติจูด, ลองจิจูด`,true);
+  const s=addSim(p.lat,p.lon); document.getElementById("simll").value=""; simMsg(`ปักจุดจำลอง ${s.n} แล้ว · ${simLoc(s)}`); map.setView([s.lat,s.lon],Math.max(map.getZoom(),11)); });
+document.getElementById("simll").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("simadd").click(); } });
+document.getElementById("simr").addEventListener("change",()=>{ document.getElementById("simr").value=simRadii().join(", "); SIMS.forEach(computeSim); drawSims(); renderSims(); });
+document.getElementById("simlist").addEventListener("toggle",e=>{ const d=e.target.closest&&e.target.closest("details[data-n]"); if(!d) return; const s=SIMS.find(x=>x.n===+d.dataset.n); if(s) s.open=d.open; },true);
+document.getElementById("simlist").addEventListener("click",e=>{ const z=e.target.closest("button[data-z]"), d=e.target.closest("button[data-d]");
+  if(z){ const s=SIMS.find(x=>x.n===+z.dataset.z); map.fitBounds(L.latLng(s.lat,s.lon).toBounds(s.R[s.R.length-1]*2000),{padding:[30,30]}); setTimeout(()=>s.marker.openPopup(),400); }
+  if(d){ const i=SIMS.findIndex(x=>x.n===+d.dataset.d); simLayer.removeLayer(SIMS[i].marker); SIMS.splice(i,1); drawSims(); renderSims(); simMsg(""); } });
+document.getElementById("simclear").addEventListener("click",()=>{ SIMS.forEach(s=>simLayer.removeLayer(s.marker)); SIMS=[]; SIM_N=0; drawSims(); renderSims(); simMsg("ล้างจุดจำลองแล้ว"); });
+document.getElementById("simx").addEventListener("click",()=>{ if(!SIMS.length) return; const wb=XLSX.utils.book_new();
+  const pts=SIMS.map(s=>({"จุดจำลอง":s.n,"ละติจูด":s.lat,"ลองจิจูด":s.lon,"ตำบลที่ตั้ง":s.home?s.home.n:"","อำเภอ":s.home?s.home.a:"","จังหวัด":s.home?s.home.p:"",
+    ...Object.fromEntries(s.R.map((r,i)=>[`จำนวนตำบล ≤${r} km`,s.bands[i].length])),[`เคสผลบวกจริง ≤${s.R[s.R.length-1]} km (ทุกปี)`]:s.cases.length,
+    "เคสจริงใกล้สุด (km)":s.nearest?+s.nearest.d.toFixed(2):"","วันที่ผลแล็บเคสใกล้สุด":s.nearest?s.nearest.c.dd:""}));
+  const tams=[]; SIMS.forEach(s=>s.bands[s.bands.length-1].forEach(t=>{ const r=s.R.find(r=>t.dist<=r); tams.push({"จุดจำลอง":s.n,"อยู่ในรัศมี (km)":r,"ตำบล":t.n,"อำเภอ":t.a,"จังหวัด":t.p,"ระยะถึงเขตตำบล (km)":+t.dist.toFixed(2),"จุดอยู่ในตำบลนี้":t.dist===0?"ใช่":""}); }));
+  const cs=[]; SIMS.forEach(s=>s.cases.forEach(x=>cs.push({"จุดจำลอง":s.n,"ระยะ (km)":+x.d.toFixed(2),"วันที่ผลแล็บออก (ค.ศ.)":x.c.dd,"ชนิดสัตว์":x.c.species,"ตำบล":x.c.tambon,"อำเภอ":x.c.amphoe,"จังหวัด":x.c.pn,"เลขทะเบียนรับ":x.c.reg})));
+  const add=(rows,name)=>{ const ws=XLSX.utils.json_to_sheet(rows.length?rows:[{"หมายเหตุ":"ไม่มีข้อมูล"}]); const ks=Object.keys(rows[0]||{"หมายเหตุ":1}); ws["!cols"]=ks.map(k=>({wch:Math.min(36,Math.max(8,k.length+2))})); XLSX.utils.book_append_sheet(wb,ws,name); };
+  add(pts,"จุดจำลอง"); add(tams,"ตำบลในรัศมี"); add(cs,"เคสจริงในรัศมี");
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER}`],["ส่งออกเมื่อ",nowTh()],["หมายเหตุ","จุดจำลองเป็นจุดสมมติที่ผู้ใช้ปักเอง ไม่ใช่เคสจริง และไม่ถูกบันทึกในระบบ"],["รัศมี",simRadii().join(", ")+" km (วัดระยะตรงจากจุด ถึงเขตตำบลที่ใกล้ที่สุด)"],["เคสจริง","นับจากเคสผลบวกที่มีพิกัด ในจังหวัดที่เลือก ทุกปีในไฟล์"]]),"คำอธิบาย");
+  XLSX.writeFile(wb,`RabiesGeoWatch_จุดจำลอง_${stampTag()}.xlsx`); });
 
 </script>
 </body></html>
