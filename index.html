@@ -444,7 +444,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     </div>
     <div class="grp" style="--sc:#2e8b57">
       <h2>🔎 กรองข้อมูล</h2>
-      <div class="filters" style="grid-template-columns:1fr;margin-bottom:8px"><label for="ym">นับปีแบบ<select id="ym"><option value="cal">ปีปฏิทิน (1 ม.ค. – 31 ธ.ค.)</option><option value="fy">ปีงบประมาณ (1 ต.ค. – 30 ก.ย.)</option></select></label></div>
+      <div class="filters" style="grid-template-columns:1fr;margin-bottom:8px"><label for="ym">นับปีแบบ<select id="ym"><option value="cal">ปีปฏิทิน (1 ม.ค. – 31 ธ.ค.)</option><option value="fy" selected>ปีงบประมาณ (1 ต.ค. – 30 ก.ย.)</option></select></label></div>
       <div class="row" id="years" style="margin-bottom:10px"></div>
       <div class="filters" style="grid-template-columns:1fr 1fr">
         <div id="fpw" style="grid-column:1/-1"><label for="fp">จังหวัด<select id="fp"></select></label><span class="plegend" id="plegend"></span></div>
@@ -974,7 +974,7 @@ document.getElementById("showall").addEventListener("click",()=>{ HIDDEN.clear()
 document.getElementById("hideall").addEventListener("click",()=>{ shown().forEach(c=>HIDDEN.add(c.key)); map.closePopup(); render(false); });
 document.getElementById("plat").addEventListener("click",e=>{ const b=e.target.closest("button[data-i]"); if(!b) return; flyCase(b); });
 function resetAll(){
-  fillMFY(); map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
+  ym.value="fy"; fillMFY(); map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
   buildYears();
   const many=PROVS.size>2;
   [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI],["ampb",true],["tam",true],["provl",true],["ampl",false],["lab",!many],["taml",false],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
