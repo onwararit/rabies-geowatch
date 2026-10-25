@@ -397,7 +397,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.2 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.3 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -474,7 +474,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.2 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.3 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -643,9 +643,11 @@ function buildCases(provs){
     const dd=rdate||tdate||recv, ddSrc=rdate?"วันที่แจ้งผล":tdate?"ไม่มีวันแจ้งผล ใช้วันที่ตรวจ":"ไม่มีวันแจ้งผล ใช้วันรับตัวอย่าง";
     const sym=SYM.filter(([,c])=>cellStr(g(r,c))==="ใช่").map(([h])=>h); if(g(r,"CD")) sym.push(scrubText(cellStr(g(r,"CD"))));
     const c={reg,key:reg||cellStr(g(r,"O"))||"row"+out.length,sample:cellStr(g(r,"O")),date:recv,dd,ddSrc,death,deathSrc,result:cellStr(g(r,"CY"))||"ไม่ทราบ",result_date:ymd(g(r,"DB")),lab:cellStr(g(r,"U")),method:cellStr(g(r,"CZ")),purpose:cellStr(g(r,"V")),
+      placeRaw:cellStr(g(r,"AJ")),owner:[cellStr(g(r,"X")),cellStr(g(r,"Y")),cellStr(g(r,"Z"))].filter(x=>x&&x!=="-").join(" ").replace(/^(นาย|นางสาว|นาง|น\.ส\.)\s+/,"$1"),
+      ownerAddr:[["",g(r,"AA")],["ม.",g(r,"AB")],["ซ.",g(r,"AC")],["ถ.",g(r,"AD")],["ต.",g(r,"AE")],["อ.",g(r,"AF")],["จ.",g(r,"AG")]].map(([p,x])=>{const t=cellStr(x); return t&&t!=="-"?p+t:"";}).filter(Boolean).join(" "),
       place:scrubPlace(cellStr(g(r,"AJ")),cellStr(g(r,"X")),cellStr(g(r,"Y")),cellStr(g(r,"Z"))),moo:cellStr(g(r,"AL")),tambon:cellStr(g(r,"AO")),amphoe:cellStr(g(r,"AP")),tamcode:cellStr(g(r,"AZ")),ampcode:cellStr(g(r,"AY")),
       lat,lon,coordtype:cellStr(g(r,"AW")),species:cellStr(g(r,"BA"))||"ไม่ระบุ",sex:cellStr(g(r,"BC")),breed:cellStr(g(r,"BD")),color:cellStr(g(r,"BE")),
-      history:scrubText(cellStr(g(r,"BI"))),vacc:cellStr(g(r,"BK")),death_cause:scrubText(cellStr(g(r,"CW"))),symptoms:sym,inv:!!i};
+      historyRaw:cellStr(g(r,"BI")),history:scrubText(cellStr(g(r,"BI"))),vacc:cellStr(g(r,"BK")),death_cause:scrubText(cellStr(g(r,"CW"))),symptoms:sym,inv:!!i};
     if(i){ const gi=x=>{const y=i[col(x)];return typeof y==="string"?y.trim():y;};
       Object.assign(c,{inv_date:ymd(gi("E")),own_status:cellStr(gi("CX")),age:[num(gi("CV"))?`${num(gi("CV"))} ปี`:"",num(gi("CW"))?`${num(gi("CW"))} เดือน`:""].filter(Boolean).join(" "),
         infect:cellStr(gi("DB")),infect_sp:cellStr(gi("DC")),bitten:num(gi("DZ")),saliva:num(gi("EB")),abit_dog:num(gi("ED")),abit_cat:num(gi("EE")),asal_dog:num(gi("EK")),asal_cat:num(gi("EL")),
@@ -660,7 +662,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.1.2", APP_DATE="25 ต.ค. 2569";
+const APP_VER="1.1.3", APP_DATE="25 ต.ค. 2569";
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
@@ -841,10 +843,10 @@ function tamList(arr,c){ return arr.map(h=>{ const other=h.p!==c.pn; const lab=`
 function popup(c){
   const rows=a=>a.map(([k,x])=>`<tr><td>${k}</td><td>${esc(v(x))}</td></tr>`).join("");
   let h=`<div class="pp"><h3><span>${c.emoji}</span>${esc(c.species)} ผลบวก · ผลแล็บ ${thd(c.dd)} <span class="tag" style="color:${c.yc};border:1px solid ${c.yc};background:none">${YL()} ${c.y+543}</span></h3>
-  <div class="loc">${esc(v(c.place))}${c.moo?` ม.${esc(c.moo)}`:""} ต.${esc(c.tambon)} อ.${esc(c.amphoe)} จ.${esc(c.pn)}${c===LATEST?"<br><b>เคสล่าสุดตามตัวกรอง</b>":""}</div>
-  <table>${rows([["เลขทะเบียนรับ / ตัวอย่าง",`${c.reg||"–"} / ${c.sample||"–"}`],["วันที่ผลแล็บออก",`${thd(c.dd)}${c.ddSrc==="วันที่แจ้งผล"?"":` (${c.ddSrc})`}`],["วันรับตัวอย่าง",thd(c.date)],...(c.bad.length?[["⚠ วันที่ผิดปกติ (ไม่นำมาใช้)",esc(c.bad.join(", "))+" — อยู่ในอนาคตหรือก่อนปี 2543 น่าจะบันทึกผิด"]]:[]),["วันตาย",c.death?`${thd(c.death)} (${c.deathSrc})`:"ไม่ทราบ"],
+  <div class="loc">${esc(v(c.placeRaw||c.place))}${c.moo?` ม.${esc(c.moo)}`:""} ต.${esc(c.tambon)} อ.${esc(c.amphoe)} จ.${esc(c.pn)}${c===LATEST?"<br><b>เคสล่าสุดตามตัวกรอง</b>":""}</div>
+  <table>${rows([...(c.owner||c.ownerAddr?[["เจ้าของสัตว์",c.owner||"–"],["ที่อยู่เจ้าของ",c.ownerAddr||"–"]]:[]),["เลขทะเบียนรับ / ตัวอย่าง",`${c.reg||"–"} / ${c.sample||"–"}`],["วันที่ผลแล็บออก",`${thd(c.dd)}${c.ddSrc==="วันที่แจ้งผล"?"":` (${c.ddSrc})`}`],["วันรับตัวอย่าง",thd(c.date)],...(c.bad.length?[["⚠ วันที่ผิดปกติ (ไม่นำมาใช้)",esc(c.bad.join(", "))+" — อยู่ในอนาคตหรือก่อนปี 2543 น่าจะบันทึกผิด"]]:[]),["วันตาย",c.death?`${thd(c.death)} (${c.deathSrc})`:"ไม่ทราบ"],
     ["ห้องปฏิบัติการ (วิธี)",`${v(c.lab)} (${v(c.method)})`],["เพศ / พันธุ์ / สี",`${v(c.sex)} / ${v(c.breed)} / ${v(c.color)}`],["อายุ",c.age||"ไม่ทราบ"],
-    ["ประวัติสัตว์",c.own_status||c.history],["วัคซีนพิษสุนัขบ้า",c.vacc],["อาการ",c.symptoms.length?c.symptoms.join(", "):"–"],["สาเหตุการตาย",c.death_cause]])}</table>`;
+    ["ประวัติสัตว์",c.own_status||c.historyRaw||c.history],["วัคซีนพิษสุนัขบ้า",c.vacc],["อาการ",c.symptoms.length?c.symptoms.join(", "):"–"],["สาเหตุการตาย",c.death_cause]])}</table>`;
   if(c.inv) h+=`<div class="sec">การสัมผัสโรค (รายงานสอบสวน ${thd(c.inv_date)})</div><table>${rows([
       ["ได้รับเชื้อโดย",`${v(c.infect)}${c.infect_sp?` (${c.infect_sp})`:""}`],["คนถูกกัด / สัมผัสน้ำลาย",`${v(c.bitten)} / ${v(c.saliva)} ราย`],["คนได้รับวัคซีน",c.pep?`${c.pep} ราย`:"–"],
       ["สัตว์ถูกกัด (สุนัข/แมว)",`${v(c.abit_dog)} / ${v(c.abit_cat)}`],["สัตว์สัมผัสน้ำลาย (สุนัข/แมว)",`${v(c.asal_dog)} / ${v(c.asal_cat)}`],["กักสัตว์ดูอาการ",c.quarantine?`${c.quarantine} ตัว`:"–"],
@@ -1049,7 +1051,7 @@ function nowTh(){ const d=new Date(); return `${d.getDate()}/${d.getMonth()+1}/$
 document.getElementById("printmap").addEventListener("click",()=>{
   const ph=document.getElementById("printhdr"), m=document.getElementById("map");
   const ys=[...checkedYears()].sort((a,b)=>b-a);
-  ph.innerHTML=`<div class="pt"><img src="${document.querySelector(".htop .logo").src}" alt=""><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
+  ph.innerHTML=`<div class="pt"><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
     <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()} · Rabies GeoWatch v${APP_VER}</div></div></div>
     <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${SIMS.length?`<span><i style="background:#7B3FA0;border-radius:2px;transform:rotate(45deg)"></i>จุดจำลอง (รัศมี ${simRadii().join("/")} km)</span>`:""}${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
   const center=map.getCenter(), zoom=map.getZoom(), bounds=map.getBounds();
@@ -1100,9 +1102,8 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   const FY=latestFY(), LOC=locCases(), LF=LOC.filter(c=>fyOf(c.dd)===FY);
   const ALL=shown(), S=ALL.filter(c=>!HIDDEN.has(c.key));
   const unitLbl=MULTI&&!fp.value?"จังหวัด":"อำเภอ", unitN=A=>MULTI&&!fp.value?new Set(A.map(c=>c.pc)).size:new Set(A.map(c=>c.ak)).size;
-  const B=breakdown(), logo=await logoPng(), cx=Math.round(2.0*360000), cy=Math.round(cx*logo.h/logo.w);
+  const B=breakdown();
   const body=[];
-  body.push(`<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:after="60"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="1" name="logo"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="1" name="logo.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdLogo"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`);
   body.push(W.p([W.run("Rabies GeoWatch",{b:true,sz:28,color:"1F5F4A"})],{align:"center",after:0}));
   body.push(W.p([W.run(TTL.replace(/\s*กรมปศุสัตว์$/,""),{b:true,sz:40})],{align:"center",after:0}));
   body.push(W.p([W.run("กรมปศุสัตว์",{b:true,sz:32})],{align:"center",after:60}));
@@ -1157,9 +1158,6 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
       body.push(W.p([W.run(`เคสผลบวกจริงในรัศมี ${s.R[s.R.length-1]} km: ${s.cases.length} เคส (ทุกปีในไฟล์)${s.nearest?` · เคสใกล้สุด ${s.nearest.d.toFixed(1)} km ผลแล็บ ${thd(s.nearest.c.dd)} ต.${s.nearest.c.tambon} อ.${s.nearest.c.amphoe}`:""}`,{sz:26})],{after:120})); }); }
   { const items=dqItems(); body.push(W.h("ตรวจคุณภาพข้อมูล",2));
     body.push(W.table(["ประเด็น (ทุกจังหวัดที่เลือก ทุกปี)","จำนวน"],items.map(x=>[x.t,x.A.length.toLocaleString()]),[7600,2000],{sz:26,align:[null,"center"]})); }
-  body.push(W.h("ผู้พัฒนา",2));
-  document.querySelectorAll("aside .devs > div").forEach(d=>{ const name=d.firstChild.textContent.trim(), pos=d.querySelector("small").textContent;
-    body.push(W.p([W.run(name,{b:true,sz:28})],{after:0})); body.push(W.p([W.run(pos,{sz:26,color:"5E6A64"})],{after:80})); });
   body.push(W.p([W.run("หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (onwara.rit@gmail.com)",{sz:26,color:"5E6A64"})],{before:120,after:0}));
   body.push(W.p([W.run(`Rabies GeoWatch เวอร์ชัน ${APP_VER} · อัปเดต ${APP_DATE}`,{sz:24,color:"5E6A64"})],{after:0}));
   const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>${body.join("")}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr></w:body></w:document>`;
@@ -1167,9 +1165,9 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:eastAsia="${FONT}" w:cs="${FONT}"/><w:sz w:val="32"/><w:szCs w:val="32"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
   const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>`;
   const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
-  const drels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rIdLogo" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/></Relationships>`;
+  const drels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
   const te=new TextEncoder();
-  const blob=zipStore([{name:"[Content_Types].xml",data:te.encode(ct)},{name:"_rels/.rels",data:te.encode(rels)},{name:"word/document.xml",data:te.encode(doc)},{name:"word/styles.xml",data:te.encode(styles)},{name:"word/_rels/document.xml.rels",data:te.encode(drels)},{name:"word/media/logo.png",data:logo.data}]);
+  const blob=zipStore([{name:"[Content_Types].xml",data:te.encode(ct)},{name:"_rels/.rels",data:te.encode(rels)},{name:"word/document.xml",data:te.encode(doc)},{name:"word/styles.xml",data:te.encode(styles)},{name:"word/_rels/document.xml.rels",data:te.encode(drels)}]);
   const d=new Date(), stamp=`${d.getFullYear()+543}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
   const area=fp.value?PN[fp.value]:MULTI?document.getElementById("title").textContent.replace(/\s+/g,""):PN[[...PROVS][0]];
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`RabiesGeoWatch_สรุป_${area}_${stamp}.docx`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
