@@ -397,7 +397,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.1 · อัปเดต 23 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.2 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -474,7 +474,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.1 · อัปเดต 23 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.2 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -545,6 +545,16 @@ const REG_OPT=new Set(["10","11","45","92"]); /* not in the DLD region list give
   const ro=new ResizeObserver(fit); window.addEventListener("load",()=>document.querySelectorAll(".logo+div").forEach(d=>ro.observe(d))); window.__fitLogo=fit; })();
 const REGION={"10": "1", "11": "2", "12": "1", "13": "1", "14": "1", "15": "1", "16": "1", "17": "1", "18": "1", "19": "1", "20": "2", "21": "2", "22": "2", "23": "2", "24": "2", "25": "2", "26": "2", "27": "2", "30": "3", "31": "3", "32": "3", "33": "3", "34": "3", "35": "3", "36": "3", "37": "3", "38": "4", "39": "4", "40": "4", "41": "4", "42": "4", "43": "4", "44": "4", "45": "4", "46": "4", "47": "4", "48": "4", "49": "4", "50": "5", "51": "5", "52": "5", "53": "6", "54": "5", "55": "5", "56": "5", "57": "5", "58": "5", "60": "6", "61": "6", "62": "6", "63": "6", "64": "6", "65": "6", "66": "6", "67": "6", "70": "7", "71": "7", "72": "7", "73": "7", "74": "7", "75": "7", "76": "7", "77": "7", "80": "8", "81": "8", "82": "8", "83": "8", "84": "8", "85": "8", "86": "8", "90": "9", "91": "9", "92": "9", "93": "9", "94": "9", "95": "9", "96": "9"};
 function cellStr(x){ return x==null?"":String(x).replace(/\s+/g," ").trim(); }
+/* privacy: strip personal names typed into free-text fields */
+const PTITLE="(?:นางสาว|น\\.ส\\.|นาย|นาง|ด\\.ช\\.|ด\\.ญ\\.|เด็กชาย|เด็กหญิง)";
+const PNEXT="\\s*[ก-ฮเแโใไ][^\\s,()]*(?:\\s+(?!ม\\.?\\s*\\d|หมู่)[ก-ฮเแโใไ][^\\s,()]*)?";
+const RX_PNAME=new RegExp("(^|[\\s(,/:]|ของ|โดย|คือ|ชื่อ|กัด|ให้)"+PTITLE+PNEXT+"|(บ้าน)(?:นางสาว|น\\.ส\\.|นาย)"+PNEXT,"g");
+const RX_TITLEONLY=new RegExp("(^|\\s)"+PTITLE+"(?=\\s|$)","g");
+const RX_ORG=/อบต|อปท|เทศบาล|องค์การ|ทต\.|วัด|โรงเรียน|ไม่มีเจ้าของ|จรจัด|\./;
+function scrubText(t){ return t?t.replace(RX_PNAME,(m,p1,p2)=>(p1||p2||"")+"(ชื่อบุคคล)"):t; }
+function scrubPlace(place,X,Y,Z){ if(!place) return place; let s=place.replace(RX_PNAME,(m,p1)=>p1||"");
+  if(new RegExp("^"+PTITLE+"$").test(X)&&Y.length>1&&Z.length>1&&Y!==Z&&!RX_ORG.test(Y+Z)){ const q=x=>x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); s=s.replace(new RegExp("(?:"+PTITLE+")?\\s*"+q(Y)+"\\s*"+q(Z),"g")," "); }
+  s=s.replace(/\(\s*\)/g,"").replace(/\s+/g," ").trim(); return s===place?place:(s?"บ้านเจ้าของสัตว์ "+s:"บ้านเจ้าของสัตว์"); }
 const TODAY=(()=>{const d=new Date(Date.now()+7*36e5);return d.toISOString().slice(0,10);})();
 function vd(s){ return s&&s>="2000-01-01"&&s<=TODAY?s:null; }
 function ymd(x){ if(x==null||x==="") return null;
@@ -631,11 +641,11 @@ function buildCases(provs){
     const death=ddInv||ddS, deathSrc=ddInv?"รายงานสอบสวนโรค":ddS?"แบบส่งตัวอย่าง":"";
     const rdate=chk("วันที่แจ้งผล",ymd(g(r,"DB"))), tdate=chk("วันที่ตรวจ",ymd(g(r,"DA")));
     const dd=rdate||tdate||recv, ddSrc=rdate?"วันที่แจ้งผล":tdate?"ไม่มีวันแจ้งผล ใช้วันที่ตรวจ":"ไม่มีวันแจ้งผล ใช้วันรับตัวอย่าง";
-    const sym=SYM.filter(([,c])=>cellStr(g(r,c))==="ใช่").map(([h])=>h); if(g(r,"CD")) sym.push(cellStr(g(r,"CD")));
+    const sym=SYM.filter(([,c])=>cellStr(g(r,c))==="ใช่").map(([h])=>h); if(g(r,"CD")) sym.push(scrubText(cellStr(g(r,"CD"))));
     const c={reg,key:reg||cellStr(g(r,"O"))||"row"+out.length,sample:cellStr(g(r,"O")),date:recv,dd,ddSrc,death,deathSrc,result:cellStr(g(r,"CY"))||"ไม่ทราบ",result_date:ymd(g(r,"DB")),lab:cellStr(g(r,"U")),method:cellStr(g(r,"CZ")),purpose:cellStr(g(r,"V")),
-      place:cellStr(g(r,"AJ")),moo:cellStr(g(r,"AL")),tambon:cellStr(g(r,"AO")),amphoe:cellStr(g(r,"AP")),tamcode:cellStr(g(r,"AZ")),ampcode:cellStr(g(r,"AY")),
+      place:scrubPlace(cellStr(g(r,"AJ")),cellStr(g(r,"X")),cellStr(g(r,"Y")),cellStr(g(r,"Z"))),moo:cellStr(g(r,"AL")),tambon:cellStr(g(r,"AO")),amphoe:cellStr(g(r,"AP")),tamcode:cellStr(g(r,"AZ")),ampcode:cellStr(g(r,"AY")),
       lat,lon,coordtype:cellStr(g(r,"AW")),species:cellStr(g(r,"BA"))||"ไม่ระบุ",sex:cellStr(g(r,"BC")),breed:cellStr(g(r,"BD")),color:cellStr(g(r,"BE")),
-      history:cellStr(g(r,"BI")),vacc:cellStr(g(r,"BK")),death_cause:cellStr(g(r,"CW")),symptoms:sym,inv:!!i};
+      history:scrubText(cellStr(g(r,"BI"))),vacc:cellStr(g(r,"BK")),death_cause:scrubText(cellStr(g(r,"CW"))),symptoms:sym,inv:!!i};
     if(i){ const gi=x=>{const y=i[col(x)];return typeof y==="string"?y.trim():y;};
       Object.assign(c,{inv_date:ymd(gi("E")),own_status:cellStr(gi("CX")),age:[num(gi("CV"))?`${num(gi("CV"))} ปี`:"",num(gi("CW"))?`${num(gi("CW"))} เดือน`:""].filter(Boolean).join(" "),
         infect:cellStr(gi("DB")),infect_sp:cellStr(gi("DC")),bitten:num(gi("DZ")),saliva:num(gi("EB")),abit_dog:num(gi("ED")),abit_cat:num(gi("EE")),asal_dog:num(gi("EK")),asal_cat:num(gi("EL")),
@@ -650,7 +660,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.1.1", APP_DATE="23 ต.ค. 2569";
+const APP_VER="1.1.2", APP_DATE="25 ต.ค. 2569";
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
@@ -1288,13 +1298,15 @@ function simPeriod(){ const Y=latestFY(); return {label:`ปีงบประ�
 /* ================= simulated outbreak points (v1.1.1) (local only, never mixed with real data) ================= */
 let SIMS=[], SIM_ARM=false, SIM_N=0;
 const SIM_COL="#7B3FA0";
-function simRadii(){ const a=(document.getElementById("simr").value.match(/\d+(?:\.\d+)?/g)||[]).map(Number).filter(x=>x>0&&x<=50);
+function simRadii(){ const a=(document.getElementById("simr").value.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).filter(x=>x>0&&x<=50);
   const u=[...new Set(a)].sort((x,y)=>x-y).slice(0,5); return u.length?u:[1,3,5]; }
 function tambonsWithin(lat,lon,R){ const pad=R/100+0.02, hits=[];
   allTambons().forEach(t=>{ const [a,b,cc,d]=t.bb; if(lat<a-pad||lat>b+pad||lon<cc-pad||lon>d+pad) return;
     const dist=distToPoly(lat,lon,t.poly); if(dist<=R) hits.push({...t,dist}); });
   return hits.sort((x,y)=>x.dist-y.dist); }
-function parseLL(s){ const m=String(s).match(/(-?\d{1,3}(?:\.\d+)?)\s*[,;\s]\s*(-?\d{1,3}(?:\.\d+)?)/); if(!m) return null;
+function parseLL(s){ const dms=String(s).match(/(\d{1,3})°\s*(\d{1,2})'\s*([\d.]+)"?\s*([NS])[\s,]+(\d{1,3})°\s*(\d{1,2})'\s*([\d.]+)"?\s*([EW])/i);
+  if(dms){ const f=(d,m,x,h)=>(+d+m/60+x/3600)*(/[SW]/i.test(h)?-1:1); return {lat:+f(dms[1],dms[2],dms[3],dms[4]).toFixed(6),lon:+f(dms[5],dms[6],dms[7],dms[8]).toFixed(6)}; }
+  const m=String(s).match(/(-?\d{1,3}(?:\.\d+)?)\s*[,;\s]\s*(-?\d{1,3}(?:\.\d+)?)/); if(!m) return null;
   let a=+m[1], b=+m[2]; if(Math.abs(a)>90&&Math.abs(b)<=90) [a,b]=[b,a]; if(!isFinite(a)||!isFinite(b)) return null; return {lat:a,lon:b}; }
 const inTH=p=>p.lat>=5.4&&p.lat<=20.6&&p.lon>=97.2&&p.lon<=105.8;
 function simMsg(t,err){ const el=document.getElementById("simmsg"); el.textContent=t; el.className="simmsg"+(err?" err":""); }
