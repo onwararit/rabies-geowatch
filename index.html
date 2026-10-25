@@ -1248,7 +1248,7 @@ function renderEpi(){
   const above=Array.from({length:W},(_,i)=>i+1).filter(w=>MED[w]!=null&&tot(w)>MED[w]&&tot(w)>0);
   document.getElementById("esum").innerHTML=[`<b>${cur.length}</b> เคสผลบวกในปี ${Y+543}`,`พบเคสใน <b>${wks.length}</b> สัปดาห์`,last?`เคสล่าสุด สัปดาห์ที่ <b>${last.e.w}</b> (ผลแล็บ ${thd(last.c.dd)})`:"ยังไม่มีเคส",
     prevYs.length?`สัปดาห์ที่สูงกว่าค่ามัธยฐาน: <b>${!above.length?"ไม่มี":above.length<=12?above.join(", "):above.length+" สัปดาห์"}</b>`:""].filter(Boolean).map(x=>`<span>${x}</span>`).join("");
-  document.getElementById("escope").textContent=`พื้นที่: ${scopeText()} · นับตามวันที่ผลแล็บออก · สัปดาห์เริ่มวันอาทิตย์ (สัปดาห์ที่ 1 = สัปดาห์ที่มีวันที่ 4 ม.ค.)`;
+  document.getElementById("escope").textContent=`พื้นที่: ${scopeText()} · นับตามวันที่ผลแล็บออก · สัปดาห์เริ่มวันอาทิตย์`;
 }
 document.getElementById("epng").addEventListener("click",()=>{ const img=new Image(); img.onload=()=>{ const c=document.createElement("canvas"); c.width=2000; c.height=800; const g=c.getContext("2d"); g.drawImage(img,0,0,2000,800);
     c.toBlob(b=>{ const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=`RabiesGeoWatch_EpiCurve_${document.getElementById("ey").value*1+543}.png`; document.body.appendChild(a); a.click(); a.remove(); },"image/png"); };
@@ -1270,7 +1270,7 @@ function stampTag(){ const d=new Date(); return `${d.getFullYear()+543}${String(
 function writeXlsx(rows,sheet,fname,info){ const wb=XLSX.utils.book_new(); const ws=XLSX.utils.json_to_sheet(rows.length?rows:[{"หมายเหตุ":"ไม่มีข้อมูลตามตัวกรอง"}]);
   const keys=Object.keys(rows[0]||{"หมายเหตุ":1}); ws["!cols"]=keys.map(k=>({wch:Math.min(40,Math.max(8,k.length+2,...rows.slice(0,200).map(r=>String(r[k]??"").length+1)))}));
   XLSX.utils.book_append_sheet(wb,ws,sheet);
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER} (${APP_DATE})`],["ส่งออกเมื่อ",nowTh()],["หัวข้อ",TTL],...info,["แหล่งข้อมูล","ThaiRabies Net (ไฟล์ส่งตัวอย่าง"+(files.inv.length?" + สอบสวนโรค":"")+")"],["หมายเหตุ","ไม่มีชื่อ-ที่อยู่เจ้าของสัตว์ · วันที่เป็น ค.ศ. รูปแบบ ปปปป-ดด-วว · epi week แบบสัปดาห์เริ่มวันอาทิตย์"]]),"คำอธิบาย");
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER} (${APP_DATE})`],["ส่งออกเมื่อ",nowTh()],["หัวข้อ",TTL],...info,["แหล่งข้อมูล","ThaiRabies Net (ไฟล์ส่งตัวอย่าง"+(files.inv.length?" + สอบสวนโรค":"")+")"],["หมายเหตุ","ไม่มีชื่อ-ที่อยู่เจ้าของสัตว์ · วันที่เป็น ค.ศ. รูปแบบ ปปปป-ดด-วว · epi week แบบสัปดาห์เริ่มวันอาทิตย์ (สัปดาห์ที่ 1 = สัปดาห์ที่มีวันที่ 4 ม.ค. ตามนิยาม MMWR)"]]),"คำอธิบาย");
   XLSX.writeFile(wb,fname); }
 document.getElementById("xpos").addEventListener("click",()=>{ const A=[...shown()].sort((a,b)=>b.dd.localeCompare(a.dd));
   writeXlsx(A.map(caseRow),"เคสผลบวก",`RabiesGeoWatch_เคสผลบวก_${areaTag()}_${stampTag()}.xlsx`,[["ขอบเขต",scopeText()],["ปีที่เลือก",yearsText()],["จำนวน",`${A.length} เคส`]]); });
