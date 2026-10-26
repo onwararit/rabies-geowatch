@@ -198,9 +198,9 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .simrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;font-size:13px}
 .simrow input{font:inherit;font-size:13px;flex:1;min-width:0;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
 .simrow #simr{flex:0 1 120px}
-.btn.simbtn{width:100%;background:color-mix(in srgb,#7B3FA0 12%,var(--panel));color:#7B3FA0;border:1px solid #7B3FA0;font-weight:700}
-.btn.simbtn.on{background:#7B3FA0;color:#fff}
-.simmsg{font-size:12.5px;color:#7B3FA0;margin:-2px 0 8px;min-height:0}
+.btn.simbtn{width:100%;background:color-mix(in srgb,#0A7CFF 12%,var(--panel));color:#0A7CFF;border:1px solid #0A7CFF;font-weight:700}
+.btn.simbtn.on{background:#0A7CFF;color:#fff}
+.simmsg{font-size:12.5px;color:#0A7CFF;margin:-2px 0 8px;min-height:0}
 .simmsg:empty{display:none}
 .simmsg.err{color:var(--r1)}
 .simit{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:12.5px}
@@ -213,13 +213,13 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .simn small,.simb small{color:var(--muted)}
 .simw{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#E0741C;border-radius:4px;padding:0 5px;margin-left:4px}
 .simc{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);line-height:1.55}
-.simsum{font-size:12.5px;padding:8px 10px;border-radius:8px;background:color-mix(in srgb,#7B3FA0 8%,var(--panel));margin-bottom:8px}
-.simdot{display:inline-block;width:10px;height:10px;background:#7B3FA0;transform:rotate(45deg);border-radius:2px;margin-right:2px}
+.simsum{font-size:12.5px;padding:8px 10px;border-radius:8px;background:color-mix(in srgb,#0A7CFF 8%,var(--panel));margin-bottom:8px}
+.simdot{display:inline-block;width:10px;height:10px;background:#0A7CFF;transform:rotate(45deg);border-radius:2px;margin-right:2px}
 .simpin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px}
-.simpin::before{content:"";position:absolute;inset:3px;background:#7B3FA0;border:2.5px solid #fff;border-radius:4px;transform:rotate(45deg);box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.simpin::before{content:"";position:absolute;inset:3px;background:#0A7CFF;border:2.5px solid #fff;border-radius:4px;transform:rotate(45deg);box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .simpin span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11.5px;font-weight:700;font-family:var(--sans)}
 .simctl button{width:34px;height:34px;border:0;background:var(--panel);font-size:17px;cursor:pointer;display:block}
-.simctl button.on{background:#7B3FA0}
+.simctl button.on{background:#0A7CFF}
 .simarm,.simarm .leaflet-interactive{cursor:crosshair!important}
 .simarm .leaflet-marker-icon,.simarm .leaflet-tooltip{pointer-events:none!important}
 body.printing .simctl{display:none}
@@ -316,9 +316,11 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .plegend button.on{border-color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 1px var(--ink)}
 .plegend button small{color:var(--muted)}
 .credit{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;line-height:1.6;display:flex;flex-direction:column;gap:10px}
-.devs,.help{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel)}
+.devs,.help,.manual{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel)}
 .help{background:var(--chip)}
-.devs>b,.help>b{color:var(--ink);font-size:13px;margin-bottom:2px}
+.manual{background:var(--panel)}
+.manual a{font-weight:700;font-size:13.5px;color:var(--accent)}
+.devs>b,.help>b,.manual>b{color:var(--ink);font-size:13px;margin-bottom:2px}
 .devs div{color:var(--ink)}
 .devs small{display:block;color:var(--muted);font-size:11.5px;line-height:1.45}
 .credit a{color:var(--accent);font-weight:600;user-select:all}
@@ -339,6 +341,16 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 :root[data-theme="dark"] .logo{background:#fff;border-radius:12px;padding:4px}
 .shead{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
 .shead.nologo{display:block}
+body.ronly .nr{display:none!important}
+.reg-label{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;background:#F26B00;color:#fff;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);opacity:.92}
+.reglbl{font-size:14px}.reglbl small{color:var(--muted)}
+.regchips{display:inline-flex;flex-wrap:wrap;gap:6px}
+.regchips button{font:inherit;font-size:13.5px;padding:5px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.regchips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.quick{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px;padding:14px 16px;border:1.5px solid #0A7CFF;border-radius:14px;background:color-mix(in srgb,#0A7CFF 7%,transparent)}
+.quick b{display:block;font-size:16px;color:#0B57C2}.quick span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+.quick .qbtn{background:#0A7CFF;border-color:#0A7CFF;white-space:nowrap}
+@media (max-width:520px){.quick{flex-direction:column;align-items:stretch}}
 .sbrand{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px}
 .sbrand .brand{height:96px;width:auto;max-width:72%;display:block}
 .sbrand .seal{height:84px;width:auto;display:block}
@@ -388,13 +400,14 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     </div>
     <div class="provpick" id="provsel" hidden>
       <div class="provhead"><b>จังหวัดที่จะแสดง</b>
-        <label>เลือกตามเขต <select id="region"><option value="">–</option><option value="1">เขต 1</option><option value="2">เขต 2</option><option value="3">เขต 3</option><option value="4">เขต 4</option><option value="5">เขต 5</option><option value="6">เขต 6</option><option value="7">เขต 7</option><option value="8">เขต 8</option><option value="9">เขต 9</option></select></label>
+        <span class="reglbl">เลือกตามเขต <small>(กดได้หลายเขต)</small></span><span class="regchips" id="region"><button type="button" data-r="1" aria-pressed="false">เขต 1</button><button type="button" data-r="2" aria-pressed="false">เขต 2</button><button type="button" data-r="3" aria-pressed="false">เขต 3</button><button type="button" data-r="4" aria-pressed="false">เขต 4</button><button type="button" data-r="5" aria-pressed="false">เขต 5</button><button type="button" data-r="6" aria-pressed="false">เขต 6</button><button type="button" data-r="7" aria-pressed="false">เขต 7</button><button type="button" data-r="8" aria-pressed="false">เขต 8</button><button type="button" data-r="9" aria-pressed="false">เขต 9</button></span>
         <button class="btn sec" type="button" id="pall">ทุกจังหวัดที่มีข้อมูล</button>
         <button class="btn sec" type="button" id="clearfiles">ล้างไฟล์ทั้งหมด</button></div>
       <div class="provlist" id="provlist"></div>
       <div class="st" id="provnote" style="color:var(--muted);font-size:12.5px"></div>
     </div>
     <div class="go"><button class="btn" id="go" disabled>แสดงแผนที่</button><span id="gomsg" style="font-size:13px;color:var(--muted)"></span></div>
+    <div class="quick"><div><b>🎯 ระบุจุดเกิดโรคด้วยตนเอง</b><span>ดูรัศมีควบคุมโรค 1 / 3 / 5 km และรายชื่อตำบลในรัศมี ได้ทันทีโดยไม่ต้องวางไฟล์ ใช้ได้ทุกจังหวัด</span></div><button class="btn qbtn" id="quick" type="button">ระบุจุดเกิดโรค →</button></div>
     <ol class="steps">
       <li>ThaiRabies Net → ส่งออกข้อมูล "ส่งตัวอย่าง" ของจังหวัด เป็น Excel (ไม่ต้องแก้ไขไฟล์ ใช้ตามที่ดาวน์โหลดมา)</li>
       <li>ถ้ามี ส่งออกข้อมูล "สอบสวนโรค" ของจังหวัดเดียวกันด้วย</li>
@@ -405,7 +418,8 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.3 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="manual"><b>คู่มือการใช้งาน</b><a href="https://drive.google.com/drive/folders/1l3qvckbtAbve4cqfWoEhhlMzn5pSp3Lz?usp=sharing" target="_blank" rel="noopener">📘 เปิดคู่มือการใช้งาน (Google Drive) ↗</a></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2 · อัปเดต 26 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -415,20 +429,20 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <div class="htop"><img class="logo" src="data:image/webp;base64,UklGRlZLAABXRUJQVlA4WAoAAAAQAAAArAAAxwAAQUxQSDsPAAAB8Ift//lG/v/d7g+ko05ntqO1bdu2Mdu1+dLaeNm2bfs1u8OX1rY13pnZUZsH7rc/8kzaBs/Xm8cREROAFnfeo3DfvjP7+s7pm87EhpWL+/r6+qb2TUSt9w6dW8QBMJN6D/3DbwY4zE/9/ueTeg0AZ410IusdgOMuu+hvOZBkLMyD01hIMuS/XXTZcQDgvXQWYyyAdXaYzeIYlcOcY2LhjNlnjwVgjXQM5wEces0tJDWEzObNISjJZ957/SQA3nQCMQbYYKvpkaQmZbNrSkry1YeOHQUY0/YcgMvuWkUyBLZqDoHk3+/aC3C+nYk1GLXr7SRzVrZ0zplc9ftdAJi2ZQFcPIvMQdkGcyD51Y86eNOOxALmiBfImNkuNSdy7mWA2LZjBe7c6aQmttUQyG9tAXhpLxY47lkyKtuuZq7+/r6AayPShTOmk5rYliPJn68N2zY8cBoZlO1aU+IzfRDbHizW/EvWyLYeyS8Atg1YwcVPM7Pd535+60B0SatZ4HNkZAdMjMcC0loeh3yXA5kdMTLeNAG2hcTimMjETqmZj3TDtowAh0WN7KD9fLgXlRaxGDc7aGZHjXyoB7YlDNZ4hKrssIGPXAvXAhbjHmBk583kR+GbzqDncQZ24hz5fnhpLovx9zOyM2uVH4VvKoPuRxnYsSPvRkWax8r4+xjZubXKj8A1jcHohxnY0QPvREWaw2D8fQzs8IEfgm0KwagHGdnxA++Ek+Ezvvc+BpbAwPfDDp/DDAaWQR3geagMl8dBK4OWAqZ0fw/M8BgcElVZEhP/1W3McFh/yGrNLI2BD3b5YRAzJjGzRCYeBjN0DnczsUxqdeWh3g6VwcTXUi4VVFYrRoZG7JSnmFkyo94KNzQeP2dg2Uz5+UkVMxTW7LS4qqWDiY9iSBy+xcgSmngk7OAMJjOzjEadPqYigzF2radCOWHgAXCDcXIFI8up6uPrigwCWJq1pDDwa8Y3JHbcN0NiWdX4zibGNmKxIxPLa+LXYRoxuDSXGc0rN4VpZMQi5hLDoF8wvp7H9TGw1OaBzWCKxIx/SXPJ4Z6mjsF7mFl2HkQ9eSWXHcZVfeIKLB5g6anyelRqHE5eHVl2Vd9YSwwgtncWU+mhcm0YwKCXyvKb9OdwgMUtKZch3l/j8BhTCWIY6IOHM7NLEq+G9zgnBpbj5b3w8l6WJU4GJg2wLKcRQJeWpaQfEZymuSRF3gPMZixJSaeNwW9LEyPPwR/K1e/K1MnHr0palhLvOJeRJbpPy1Q+m2WKU8vVJeUq8v8lTOWqZN9HLVPHM5apc8vVWf+F1ael6jyWqqPeSVqi8BvGEiV/LE+R78ZvS5Seilklihfj6KwlKenDG2Aky3Lkz4GJ75Sn2cbjKoZylPU6OJw5EMsRYwVwmMNUjjilREW+3zk43FeOAi+Eh8Hu1BKU9KHxTmCwpuYylObAAfDu0wzlR7kLDACDLV/NWnYSf9ZlBQAMXmAuO4FXw6PAXJDLT7hG6mAjppKT88vOoFBcz+8YSw7PQh1YHN6ftMxkPtZjpA4M/qG5zITqFfCob80ejCUm59dh0KD40X9gKC+J/2wMFgelVFoSH5lgG4NgjuayUg1XwqFxZ/dhLCnKRRAM1o58f06lRMP8g60dlACLspaRyK/CY/DOXsRQQjJnj7MyBGKnzAqpfFQHDoLDUBqswfIZOdNXMLTe39Ufy0ZavBfMEMHifqZy0c/L4DHUxu69KGmZyPzbRC9DBo9r2F8iks7qgmDoxfVOYygNGngiKhhOwcjpTGVhgNfAYngN/F9TLgdVfgMVDLfDFgxaBhI/voMzwwbX9V6GEpD49kRYNKHgRgbtdJlLtoZHU1TwPsYOF7l4J1g0qcPNrGony1y2DRyaVSq4hrGDJS7eGQ5N7HELq9qpMpdvB4+m9riOMXWmxMU7w6PJPW4hUyfKXLkDHJre4aJ/MHSeKt/eGR4t2IWpLzJ1msTlO8OhJSsYPZv9HUUTP70TPFrUoPJ3qnaOnHkjYNCyBt2XrmbsFJn5VniLFhbgwJWMuRNo5j8mwaK1pQu7fJrM7S8yzxwLh5GjR5oWAgxw2xMc0DYXufJgC7GYteqvGCEtBGuxxkPMqY1pHuAnd4CIWDzJlWeixT16vxYYQ7uKJD8CWMCbn+aB5ftdvA1MU4kx1hpTDwbY/ouk5jakOTL/Yz8YCzh8iYEnXsJL4JtJUOylDsQDN3+SDNp2SP70SMAAsGanuSGzynB2UwkmbPmVh6dtsT4gdQBrgK2/TebcRjQl5b93AYwFALHrvJISOaDnNJPYTZ9m7cq7x8LUA3wFuPEVMmi7SEryFEAsii2uIIMGXtRMFdmT1ZxyVs4ZLbYBwBhM3uwXJJO2XkpK3rfLxjBGUF+w+cZT5+o7x1nXNBb4Rs4kqf3892hII4AH3Hvmkgy5tWIg+buTAFg0XsE1DPwLYJpELHb5JhOLI2dPdrYhiAF61/3JMpKM2ho5kuSj03cXOGPQuEXvnSmn/js2hWsKAU4iE+v38z2QxgB4ALtcMDNUyRBVm0s1BZLhYxeMAuAwWIPxjzOT5OKd0dUEBlMuYU5sNM/buBdmEBBxgB+/7q8jSWqMzZJiIsknf3f4eADOCAZrMP4BRpKMXLoNjAyXmM2fY1Y23v/cAxUjgwBgPADsfcqVK94hmWKMWjgUWptjjJHk0uVfOWUyAFsxGLyYCY8xsDBy0dcFMkwW7+cABz8wEhXvvXcNASLiAIwZed4PfsAGNQyeDc74wadGjALgxQKwg3P4NaskYwiBSv7OQ4ZHpDtQB6MpjUKxaazWOovaAw8/7PQFCxYsWLiAQ7lg4bwF0w8/8tDDDQCIEwhGTe5Bw2KMwOF3KZKJhVrlH8Y4GRZYd8iqpINI/KOXyy+//NLLj4U3gwEgYr0DABERJ31f+vyXGv/8l04WJ4JC72zFe2PMRk+Febt5X8d5APAV3MsqM3/ypS99YYDKft4EJ8MCgyNzyFkbqa7cH19h4YWANYMqtM5ZDLNzzgkMat3I+znAz6HQGANM3mADAWSX5azy4wDcO6rU+PpeFjI8ZiMOssq/Ce7XlSEE5d0bYdit96OAim/UFhRa7HrD+27YDO7MvEqvPf9AGFgAZ96wgPz1DZt1YaeF/Cj8KP8TBhb+qdsOCzBqu2lPbf9XhqLERdsY2W4pk1IT5z421VjAyNABgvUmwGJIjey5guT8bXEDA1/j3fAG22zzbpKq5GsA1tkORjy+nao1qlwPMjyFR5Nak/jWlrAW2z7L2kCuBIyHeDd07o6lL66DobV4kf1hNX96DDNJ3ogR6COpQckU9BPrVwABPH5AraHmdYbNGONx8uKoZOLizWEBhysWLCXJXK1+eSwwAYAZIidfZOKcnjWG6GesKvNSVSXD8rNgLmRMWVkYeS28ASBYe/oiVbKfn3YeTTgCv0+BVc7dAg7iu7o+cdMfmUmyyr32+vwTv/j8VfBD4/HTWM0LHtkLZgjEdv2R9TOfgdh+KhvsZ5+1KP5DWB0i39paTDM48yEquXArWAhqN3opK0nlX3dbztpb4QADmMbETZihieS9QwKB/e5CZtWCH4vY+dqQRm5lXI23HybJe7aEQVNafLG6+vbN4SCofOM73/veE8wkEz+JO9mfY4i8DtbBdMHUiIgAcDiRkUzp9UFIEUwFOy/NyoJeiJ3Phpj0J4Cg8KxzzjkOMGhOEfSMAwzETrmXtUpS02tb2L1Zq1XeUsGUR5edDA9YADA1h2skM79Z4Lx3gLGwBQZ4cF6VhZnnQ2x/biQlRv5kjDU1AgBO0LQCWAM4nMjVMYZMkoG/RJf/+txEUpW49UUynworGNszbhQsHE5lwQYw4iwAOAf0oNZgw1+vYt3Ml+DxfsYGaqs8EBAAcN47NLMIUHMCB1g35vd4D1zFTCrfXOsNRlWeBhy8sn/1G1vAws6n1uwAC2DqOeecCGxxx8Dp3sBg/ZdIbeAheLPxQlaLMqdN08zqwI+7raBlxU74PVNR5tsA1lnztRpyxauMZNRHsG+/klzwVW/t20XbAl2/mk6S90xbQP4JVkzvq6yyfuajYg22eYe5IHCvrRmUyq1hWgcC80emmlx9a2c54ieaE+sqycR7cBqrZOJzgF9UtJ0dN4eMISSSsX+rq7xgPTac+RgEDjt9k3UudtcMDPTz/glGWgjWrPV0CDnnKr+DPUllXc0seBRTOUAyL73vs3inaEfMZDWRZEqZ4Q32QLp2PZTayEPjRwEWmJ+V1LjqeIwiOe88eLSysTu8wcK/jR75Aw5wsDm9F1u/wsza+bvOLdpo7/6gbHT5WIjgfUyN/PHD+8Ggy13GfjLyzzDd7//AByfAoLUFa73n0YcfefTnHt1MHMIeYP2XVUmu5kWPF034IAMbzQNjIdbOyA1QVzw6TgRi1/g9E2P+KxxqBa1uUNe6bzMNJulvxtkunM5AMuuf3yZrJt+VG+PAaIjBuswNBN5w1AgBBP7e3L+a0+HgvRe0vikWMfiapkFU+S5UvLmgoG7kV+0VjA0l/SqckfVfz1pP07K/wwLwOIHk3E2NoN0KRlQjVTWkUJDzyzsa43FKnaQkA98P3MLUSOQfjIfHdRrqUfnWF7ohgMHJl1++EQzab8XdykyS72OuSfkpWFj5KGNBYeBHYLYdzA9R83GuaoBKTqqBAQBBGzay4dUrV65+6tT1zluuSiZebKyYyWw88MPAvnWCktT0+s7GGrPtm6yrMWtY1lsA571Bu+4e010BoAyhGp/pNh5HLVmhg9urTnHgqXAw2OJb7xQoa68XjzZvLAA413XbMpK8Ct7hNA4y6AeBPXMklYuPfTxnMuRj4YAKpq7sjzEkPnfcE4vPXVdMuwNERACg52vf/OaHvIHBDt/6xCvUhj4D7EeSma9heyoZeGqNlUtYeLaBeHRSg/oCfGNxjCkXp7hiI7E9330haM6vets3jzHf32MNanc/8IADDtwDsIA1HQTivXc1cF2Hv8OGvwwD4CscqHIprl4eyRQ/O6KrxqLQopML1t9ll11mPP/s888/9/wDu8AIrLnqRfKFI86mklRmQADAFqKzGwyhALfdBBywuL+aqVxx13tQHo211tS1UgMjgHgcxPo3wpWFIfYeYrtvueoeTeSq+EX4UlNrccAziUoG/UQJguD8K99OyqBfLUMQYNzvGSIvgitBcF3YZ3XmTTBoeQBWUDgg9DsAALCXAJ0BKq0AyAA+NRSIQyIhIRvdlWggA0S2AGpFAK3vPb8V5lla/u/9u/Wn9//b35d9O/TnlDc3/+T/DfkB89P8v/0/8T7lfz9/xvcC/WX/o/4D/L/Bv/o/sz7jv20/G74Bf1X/Hf9r/M+7j/wv249zH9h/2n7Z/7v5BP6L/jv+/7V//a9hb/Lf8v//+4R/R/9T/8PaA/6n7mfBl/Zf+J+2f/R+Q39nv/b7AH/49QD/tcQB/EPwR77/7d+KX7Zepf4l8k/dP7D/jf9j/dviS+Sf6zu0effs3++/vvqT/HPtP+P/sf+R/6f+N/d741/5n+K8TfyP9L/2v9+/dH/J/IL+O/zf/H/3b/B/8v/Ce+h8B/tO2Z1L/Cf73/K+wF7JfT/9r/i/3o/znow/2X+J9Uf0H+3/8X+7/AD/Kf6N/sf8P+8/+V///1f/o/CE/B/7b2Av5//df+5/nP8b+0X0pf0X/c/zv+q/b73Afm/+I/7X+d/0/7YfYR/L/6z/vf8F/mv/V/mP///8vvR9r37P+zJ+trpamdfRB3M/7sUaNnP/sVa6X0caKECmCgTM5d+cj32X0ycMYxgz72b08XrXI740hmgeWy6IHx/r+Yy/DFNi5hhUC7o3oK5V0HjKN93osddG7rRH74bB6ql1D3igxs/NhN25bMmn68x32b5CjjcxJvUBjXYoTtDfkg4kRFgYtnix8TPSbOewYBAB65PbhJGvylJRT8rR7CzQE2xR+/1NQg+aAI0NA1Wdrakgia0JHUI9o8TIkwubBmUO/ZMKU5y8aHf/jEVUDdlNFf5a+cUXqt8HxgJoLc8x4P7bKd2+v6ccwWn50Xt+MKhvCQB255wpjCvoLQYo61UB2gqex3f418FKcLWUJPEqnOdeRvJweaPStc1mm1cwyDu4afduwSFWkLj0zxHLTay1yqeE2BUdMb1hqF6pd8LkHp83rUeLFsWpF7iGWou/+hCnf6C1AI9n3S1A5pcbXvwylZdfwEsqrcDP8N0Hnc9lkPwqaA96UUPXmu6ALIGAqTXPilZLl9hOOXjCNSbiX31M/iu+YL97+gDScBk1frcjLEjRDV7+dpueF+q6m20NgnQompuQzXU8UXDYNDxnf3ShzYdjY+ADa0s4iAm985Dsst2T9PxLNqOIpnSgYoe4C4WbDVmOoPQJ7wPnAbTEV3joLPhAqk6LYco4v2wJ6Smttxj6b1KcgKe7yUxA+Z9FnlOl3kUnrin2PFDfxBz6eWSOFVmA5eu35SPA2hmXq0yIAOOVAl8KevH8C+TP4lrHC43ebezKb9gNXsdF5dIL7PoUG2D/CJHmiXT/P7MhpNazBC/Bxc1iOETzt7A93a0uFKiPV0a0dhr49b+g60CeOUCPm6Dzbj5qw2SCF3wThXcbfpq/Yhx/ECEyAKTmnuSGQvpHkeZfuhC/IlHPtQRPbj3AjXAqEPkJuh7DHsv50SqwcmdClhMzd239xD1xhnish01uHxFyPg9w2rb0MWhvJq4J6zjfeQaasWP9zwBWgZKkk/wnxqtdZOBWarUhxYa8gunV05NMpdrXk5vjphZLgpCM2aVqnwewiCl2iBwbrU9XQr4S9qWzCHGVC0O/MDSbKLHZsNVlu5C7GFMZQnAA/v9gG0AF2oZe6yIMLcxfwEUmt/yIAr8nXedC797m7ETY/49aaG0cw9LHyf5uD5qJ6WZ86uy9jHPF2W289DSUb1+YrqdxIVGYXDclxJg4rviGHclLg+F3M7nh9QA8faOOx7Buup/DMLyGzRP9oyShAMMMozsD8Tq1bhFMsE+Dxz5sm0A9Bje7Q2ATBQ9dc27c6vt7X3oZ9VMDgxeLwDZCCEJWpI1t5asKjhcrVk1QxfpjaQfRABdxgOLVNLQD35JqQnmsO0tN5qcHvhdfTRbfWi9Q8A32cL8mX8Zdypn8grYfmzffib16pmM01xCOnRd6VI4k1S5sESUCSpbP8y8nQTz0uOlNZ+0x7PHfHTQoQEXu4nZ37Fh9t3jj4wj+g879eXJla9Sb6ID7iiHeH4vEJVMDiB0PKFtzKFdIDD65xsl6Fp76fcKYcXb1ewhU6brNVEHuWYyOsGJv+/kLNlym/a+LJTU0DAGAicwhIiu4yhwg9RXfb1iU8zyFHCPj0ugVi2klBHrwWgr7uAVYs1+5mpKKXm6Z41uUwER4i+sfAP5P8Anvs3zkjFoUOnBMYko+iAqpSXpThPXexHNKVGewEpV110lEbYaO+speT9v3eEEqUgo0itNLx0JwWnjgiJDSEelXZ+66H2P56u3fsiGhg0niRgs5QZkINnlRvPpSKGlIa1O74VgWPgdWy/6LeSdPrvof9cuFznSH9HnKv1bbEIRZdf/b+T0VMrsdpQSuQwIlScSuY79FhpnzVO7EvYwiC4qyd8c70KPGDg25t2hfp7s7N/IjBY/00DhFWZTAD5PpvEtxpFCP5JOk4qcsi6EpsiEMb+ps1QtXFSqpG6uIpzSiVSU/gKW5SjUo1GhECkPmubnsxskAfu3JRdj1wQvnaNmTgPGI8/GVjACFzgMj9XHIk3hRzgvyu1D0tGvx6p2nSAGuaWmarrkt7/LsQK8NUn//9hnus4mVJU7J7yT/GwJgvOn+reOgBVjAUrvpzfSsHugVzoAjfFr2Rc9VIlPUeM1rLcZ7GQmeAj/qJQHv/U6bDXeTBrnJuYrAcSzMI6f3mJ7YtmauFx+35bOMeRHfQ/fP0isNHGQVbUKbWL1wHvGmj2WlrJ/iM8OBj3i6/Ajup7Z9qujt0ZYrGB/ZD3iRhVAFYCDQaUwt+7+ZJULfLF1R73+nMyly0SgYjXLE+gcusTm7dnuIIeLgUht21oeov4QgX6AV1CHaX/jEVO7/6BVUw0vOABopRxOs88UOpiIPg21R4WJMEivY6VmIWFaLTxqXxnSndD/+uYzwIsELC7jw/R6JgdgcAm0jZiIKcmRUn739GieQURVbV+yFa8n4uZoqtbfIofdTqVgeoYIr83BOBlYJ+H3JeCsSlzHtUKZY+KAsWaPgKC16y5q+qhMTjZb+ETkmJOq8D0vrTw8DaptFRjDK5oTeQ8YMUVsUWVKcSqfwJmsN00RMhe7AyRY0ex7kGZTtYb0bEQ29d5xjw/47UewJ/t9H7viVYjc+mMemMZygW3c9gYhKWRVdMFdeMQ4JWZlXYCqGLaJnxO/iiV/ns90xvh8l3qE4L29qZbmUg86LE1sIE4wfSFSQRyh8ZIEAcLns4YJdVSeN6ShFIXMiu+mO5alWKz2hGCB6mi8oWT105BvbZE+bxPuj/drOqy3M5rk1A329stjuBOD4jY8avw7XclJCEccWLwn5tyFO402lHmDrnLxEy3flb1bABUeoNzLlA+WdFlZyTbnNwPL01WWuTIVH12VxBjp9VLTqQu6t1hZ8TIsH/p2qlKvZDpfC/iRrO+mVoZ9cxWdd9r+N0B2M/8Z9wawZ/GuaTVER9XSoQssPzDwl5A6VnvVNfyLzBYdte6SReTnIAH45EweYT4hGVb+z9JfPCgtT0NqIZFGismUaVpsYfJLgIldQejkV7j9+aJ/kSzo7WPe9kZcDLgd8+MyNfjZysRJJvMiiAcE9nD2A6ZDsPDaboQPG9Pdgrd3KwxXnlD7StALs2iB5Yg4GZs89sK5O2fRj24vvK+4wlpbmHAEcBGpQtNz2J5mkhKy1476qlO4yMbx19atcLKEn5qFftL1rvJGGR56FFAAsaLbkvXkGd5RM5O0Aw5LZACjqOIwq7wDCa6OoSP9bYtdfh7SKwjFWBpctG+FNV6G6H2Y9X5CoXy8IIilpu5Rc9sitPSqSFVRpv7ZT8Cz8uLwDOeLtX14hr6WXsLdNjf60kk7mGlFcdQ+s6VCZ8mdcCx6n67wfLyGBgTU3TA5NF0dN1Jbuznjm9tIz9mZReNdYrUCgk6vZy0uThfKaNUsrpB/Nk9KuXEdzi6p4P/vhSAJzXuA6HvhJtBPq2WDHFSlr1y+JipJUnVFjFjNUsz11KjwXOI/SfxSKOrgF3q/E3iZbuZSQWttwp8BXOiGxLVWB009MXAYo9j2LOMelab9yP6jwFM6MvHGrmA4SlBN0E/ERlDI5rW2MJk6tvBi3Mc4Jy468LwoC+v+f8c3cVpFCPeN4dsfX/6LwaFiQ1sL9ikXDG2MEQkh9uktCh/KhdKLPQ/71qOGdRHqIy38q/7bE/hIPuwLZ2bhDo3wMZ6473aPFk5ytVoI3bQL7o01uPl3oCMshiwlec4gm8ZmTo1YI2JkfKZH2un5BUKKEcYBhYb95D+ypf6egIqcwfowjeH7u5cihrAe/foZnBQngLNwQXH3jqb5KwwQMlaqfzqen/1vY1ZDseu9mDeVj2tlV1LKR4dN1FwhQkDvu3WJH0upXBMvvMaV7lhDsJAx0rEhzCLWNp1yZrX72jAfJwNy69HYiUi39ZxoOFaxiT9WeJU3/dqKNlZvRuvaBlb/GxifWsG8LY130JAy14lYVIlPm3CfFiLXbdCE6HOeruI9VULQngKs6EvhoiNRjAsUbZXXWYnoM53SZcElIBgI9tf771iB4H39Y4BKRUngkvzmPb8VJRZKhqMDcQE4l1pOpNEc1d51tFH7r9TkZLrmyqGIFd99ugjgaJzib9db9I27Z7TRa35fam6ii45Y/h/FS2AjFYXDUszd5eiz8cv3mRz+ZTEPjiQwsJfrO9r7z3ME52w/jntE++nBorZqbEakE86dTtpmZ9XZRU2aUmCHxLrcuJJ/HW+hZpbxgtNQj0wFMwgh2uMl9L/TqZO6+hfZcT/FJdMPFcLj+FKaIoG2geiWw4mnnCObQbDJq0h4wVKq+gMFkXuouOjgsa0yx+eN7Q+J6Avr10JhSfpkblOshn5wIwjGih1tjAu4sn7nqj8LfuckSkltdfUNqp8wpGwIJW8uHFBadqh5MIWqDzNGkQ2559iElyJubVa4NCfSaXIH3+FA8XBI3vhHpxZrXSbaawIWOKIGlZXeD+/mHztDLzT8IoOJNpMzSgBuad9Uc4ApQxb5yNVif58LXF3HxXjgC2l5UEYmtRL49ioM5vxxDpwgZhFsqy8hSaITPp3syn4ylxA0aqNy0jlNipzsO0DrNDyUoUsbZ/0A+5PlLwoOged3roF1bbk5Pa3sxFqvR/c+yHagMmz9TDRbglgQquueTk8L0JleySmDILtCRDVny3Ww14H+SZrUk4WaLxYTt+sbardLjT548I6vzC2eIvFsuTFYK/eI4SaJu6Xp0QJTa9OX5Naap+Iw67lapZ7m72/AyYEEFG90GfwimFserlXjryTXsuIQPNMbDNQVrr0o5/Kt8FokPnLiFn/auqV/Aovqgse0bPkAdRHS8SLqsLKo+AnROszsdoUHzTBWZ1xd3qfDvcxVUm/95Orl3uKnmwjMiUDqFViYTxa9dHWFdu63AFu6FoVIZZLyaSZ+tRRE4s6EE7ciOIOuFQRF6SO+PyTja0ZvPrKqHMs/703hoVobcq4bKIzKTWSim+7KNmBwdGwacN/nGs45A5b7yadi5uxNKDK0/cejqAX+IfxXOMaOn4drv8SlC8C8JnfTYx78Uzfkyxk37T/snDDKiLzCs8mH5Vh1HF1Vi/xWvjGUTilQUQT43MGuZeJUifFR19yXqgif90kn9YTfrA+/ENTANLkGS/KXc2V3M9FVqt5Vw8SKszHt9mJ+nr7eI2UUZv4kWk8Ogmv6e3aRlT9hCeX/y1a38jTEp3yvNhbgErc4Q3T8nWBMxX8U+8EDJH27tDu/cTOMuEWvNu5bC/gyXHx+UJ2B98dq3xEiGGloWgmPOIH8l9z96GECha0Ikc7uqpw/RZKMStvwrhHJ6g1wEX1sIZHwPLt8eN7SjDGqijuqsynURB8erbEUB97FY84qOyQ3AY8iz1uS7YIEWkehMSF1LtKbIn3Rzna4KIvAZ4InFq5L2K6NUSSwFyuTRhpcR+mvjbt3sty42KL7DFvCHpk745zUnDaZecHzDFZLxAvvebKuJ45JVHQZJE6Mn8xGlmY88R3H/Jsahow37FG01/guJeWd/TNLNf17ma3yRxzHe2GLwYPe9KoGSEulEvSQHTrQdOSBnFfkM3xHEfGIUynHyVt5eiFm3WTWBxZmpRz2Pesbph7Vn2BMr7Bqmx8Q77vS/fcd5zGXLim/GCIQIZGVCWr5gYhHPjU3h9KJ5MJRAwV+330HL1RyzUvBWYV/QQR8Zt85VV1fQ5DGNqp1+ZULA5T19R+UuZpsaH5rDph62FLDMgOsIkV7HWqDsr9TOB4QMS0Rr6cIzkrPlXPfi+KT5WDvZbDpYXOWaJR56BFCGxrubdoKEawzDyEInEID556ucoDv7805cpkum6TQqF1gTmozB/TR2J2GaXHQXCd+DIArNHuCxzXv/a8CHw2liFg2wUi98bDGRT5x8B5c3Jt27lD6qyhSbzcWM5QHy/k2ods7/41mD8u+NS21IbrJApY+Zbgngdf1zF2lmKKM9SWgmxhPo604QDMZSU+Fv9KwMd6mSAR/Op4yWH73Bl1r5JCmJsNQuoD+fumYq0wDI5WiD8IpUUmVBx7x3ENxxlHAg8hecHCb6hGLjSpnu0pI9t56ML9y+mCoa2LuFWETml+LJ/ob/RZzX/TnhOPDNtZ4L/esGcUfuuA8CbNxSnxLzieY79UR//HHZCZn6LqoonWQZRtrzG+vbmrIL2qSUTyix08HZxkIvI00boqp9ABDOtkJDNMj0Zw0BKjN0c7AUzmABiRaYqYizgkftAe6Q5voEfRV/axiX0XfTQgfc+h5vvHL/iFcHsRxh3WFbwdh761LR++u44OJhc96aJjmqkOroknGeBN65lcW88j3Xuu02I35LOVjI+Xun9f11pWw90OX5Qapj38doNKXDeDabklj3Ajjpwkt928UndbHjwnapzENEY0m2JZ1f5RpE3ZaT0VuGSfcME0dkNCHgx6VNcvX+8MoFg92KRh0Bqjewmvn5WalGG1d4Echn9dyCuRAA+1hBNMiRW9f+/oAl2iP8vBsu+ahgHBB0aYDwfbBQSxq8iNQfi67sdFRnjkLiOKwAfc1llP9B+VGICGFmqMhgS2xbfRnOwCMa5ztTmlMDokjreCiq0MTm3is41OHuHeKAm/u8pWGn72irA57coDXtIJsQhIXuEs2CywRj9oOlMaGRM3/EworYFJ5c+a5OtTMRWwE0Da/sKoota9vC6BAW/Fr96gmf6bcZFMKLaR3F0tsvw4uS3D6W4Mwz4Qqeu1DZLcgDCnMK8CyY850HMRe6IR8zuVe2sQm96y3bDxwmUFPDANe3SisKhmBM1QfM/UtnVNC/FbCR41+u1ZoC2ozsHRNuFAtBfO7m3rjoYQ/R/5UQKR1QmaqGq2/Ydy7pb5NEP2jkVqUX77y4z2l1eQ9dODvkCDDYu55jBoqf6HLcp6JZSSSl7lSannhHqEkPynUi2BqG9VgYACTtT1c2VyySrb6+HPqa3Edrmp1oD+yXbQ4rPJHU/eeXTORXZBxx1huOJEOlnCxq25UE3h7waSHXWqcE7JrfNHtxGNG5bhej54XaeoI1NLIyGBA7WBxX2v2y59F8pMRsvt/eabuvU5DL5W0SYiG+Pdg6UPjtSl6cmaUYg1UZ+ZVT5ScNXzExD56fhDgZy8D/BKHFZp6lkJFZQ8t6i2yftJJZydpmgYznmqZNa/1TcEJmeRgpVYzWzRGAp2hXucXvVDhsK8n/D5OTXELVlHxCno+0zkgfqrVhO0NF2pKbFXQ+vI8Wteurve0L2JU6bUpf/4f6uTwBfAI56AdYO11SY+q0xa45W8kfhiSfXFY8RB1OfRjEPdGf9CuccSfN7xgzjnN3sQ+dWVNLzdNvBc6Yf4sPHcppyfN0XJPKCxru7JlQ9VRCaRmh7ahqF24PX4WF6gjKACTM8jt2x9JMe+pnmTMlHI/lyaAkd9+6xwAFC9LKbjSHF/Fk+Rb5mCCR+2q2+UUpYPxLH+9R0NPv5f+l41jul/w/DmWvTlYB57HPw0Pxtv5SYXyzqwuJl62sHq9l1WeqSsVPAJv+i6O8FrHDHUEag1RPxq+IugmyAP2yR7ZN8ce4TiPgxpcLpx3hxA0qx1k8V/QbPX8UYKQyk+AKloPZWfB3t+5fSqcqQutZQvm+BnJyMoGJq+sd7Sp61vYh/WLBm7jb8ZTimunt0UOSJ5CA/y7km72mDe7q3ZOM2Le6dgwlMw49JBaSeWAi4d6bE3Zp1h9+hPtC3xnZIPXtTTTNuCu3d7psCezLzfLD9JFezx6mA2KCfF8uOs+7j3Gx3XK+JKa4sE3HsrtldDJ66l6HAdU9c69SEXWH1Hx355kY9VDhFcFJI2sXboqhhzjVBagaNm4K13XnMM2jgOklFWS5YUYWuxK/MpGkojg8reqHQvtAq++SgCB1gkcMHjEAvNp3MmYPKhpRUkmuxSB9ZKhLUmogo5winlIA9aVn7EwgvYHZy86jVrZ6zsPPwbXZr3zW9/ect21SL5VmN3HeHKP1ElA6vSAOOI2mt0iEQzVtz2dhNuLg//9ENLE0vrvrJvULKlYewe17eRJ8OuKgLAIBELVt553cUQWtTvV6I+oZu7/+mLE5zRlt1R7UThX9DyEZME6zvdwhq587aYFvu4aBgsMH5N83tt4ZKbQXyW30lCtdVYELa2/whUrDn2kBn26LyhVKctQpcF6vnsvz/4pGpr8iZ2tfppKgk1ooi8HoQUeG9/JxlrWIdIqi56rIM7UqemSXiRenKUereHL8vl+OBScF6Dnl9jWM7zs6peDxQ8aRXL/Agj6OPxPRBn+7AY8wVoSA9eQw+UvjO6Ze3B/snnM9SNf60gzvE0QpX2RbE7Wl/YCUmRYzEcl73tznCBUmRzdBK8MVYQpG+n1mM4DAteHgUM+CARuEdnwq6oKmQQdM9zUng1UmPWEpQ3DygYgZeLRs7dN9DXHf+SELIOqsSSJ3p88IxaTek//bueKe+1XCf3YMjFf9bn62oWqgCGl9euMDsB+IUP5xamSZyrA1aa0fgxHg+hhslmldPp4ggBc9VrqisRqwLd43BVd4UPKnofHghfat+t6j8MJjm5gXppckblr6hhOL+itxpXR9db9VB+LfU1sUm7jQqyZuPjtnJlnLTvwXIFkl9PW4l+9oO9V1t0MPq1oJ//Ts04tgzVlkKyyWE8srXr8klgSApIEMM7M5+Zdt6H4s+om27D/GM2rZTrNcApstMJNJ88RvmBnpVKOCj5VJNeZhcL2E+W5m5mt253iw/z+lQUZUAdTxydBFQQBlO8XF/NWki0v2IcXzfryPssh27sgGV5HltCEfCYoYe0VoGXhLZ5OUrRQnQUIRekA1hsa/ejZGmQBaDH6MVY3P7C7S85WgbvbrbzP6ooWcmBrOA7dAGRmihhS/U4x9PFrDTh5yaLLPFw6K5UWdKsbrp7rQpy1p8nPHPr3gmPXYvqB02aQ3vSO/jfGpVLvZMVwMZ8tyuSUsEs/JNiP3FD/MNn9LxHYFqtKjkW6vDZQ6v9Okoj/gXTR5S7ARluP6rUJMCQiErFIQVqzgCLZ7sjq3CmtvOyZDw2S81EF8Crc2GYikI3mnTden16/ctrHcdlufwg5s55ABVibJTtI/jb2CBwq6/0sNSZE9u0Zau9iU2dQm8hfyASsBU7YqeWbclh3Wdt8wwQ69TFWjYGIyWoo9cexvkMCNXt4fflPJOGM7KWvaN3WiaBfYDF1nk6LTtl+3Uqx7soNIR3MXqjddfQ5z+c131Mr3Mlx7/sN3WS5mNl7Fj2GBcS7m/JoR/9r4OYyzALImo7Xng9y0w0Iv57EZ18YFeAhnrnrdj8dZRxoDk4MVo/m5DB1I5kXcULY7UxypvpO4ZT5/pzV30BzPNcJLJxTbg0oPI6GR6ZGhSp6pscCrOKTIgqB4F0ULyLnCTCUtAyylxN4NPsusktCINJra62vmY04kRXAYqrj3K3jvLJnhrPfAJhNWD+HF96xbnBX/P2FaHDO7om1l7NEeH9gM3RNWunPVyLpcNIIbxeTTOHNv9trWsT5zOGZlw7YJC/zabCWG80xn5jT95tX/OMOenbEF72Xi2wF4m/pxg+EZO6DPNemodYUR5N1C5/rM9AWSiZstBZT7EdrH2s9m4FFpHy0YQ/2FYPq3tAP+VwBlW5LDOG7LeT3DkPOwWRvrzCxirV5c4MrKHuUpe5bgBP8plYlpz6TqCIe2zHuHKs7B5pGNjFIQf8L6/hCq0/eclcYhSF125KAOKmqzGNfrpOUYSmS0K+dm2+6J4D4CT4I2RUO8FrMqz7V4TcOg0EZtouQH+TWJoch+4ZNwa+FEiref2OIzC0aqAjBOfzsKZy3bsRUmI8FKRW4VeL7GHe/BSyd+oAMOBAFcI498w0F0vdHz4X2ie5yESzfGV75pn2XuqFuLCAS9wDlIGi9d5Ic9R3Rg2VpEo5W50wg6lQmPlL1QbAaZLFj7W8rAUiR9Ur+4AQKoQ8w0J/DOvwvkxW9b77oRNN/+s3D8mToac9vgjiTlVcihXwcQ5lNLwZqUaJreBGkmWoAiiKNJB+9GqxADqWlvyL3ULmlxG/AW/3LWyakqyu74ehASgYas4P4O/fkgutgYvoT6OjzCC1yu5J9KlWH6ySm5d3r5kA6yfxxEu+Q7m/jtmiBQR4S17brJKj/rT6njPrIQoVpkRdD0W4YY7R31fh5zdO0KIUaWPFCg0QYaB+8bXnLN5Gq2qvylDBhg5KO+wElQdNyS1/cVwgGyNxLSYSOgtZrQNzyOKUgzdbLu07ZGkwjuSIV74NtM73Rahik25coehT1X58NuB4S9DIm2VLyk4f2dFGwVII8kDHSoacsObdpox9UqQMSc0DwT/SSeD9zGDoREUiygioGRxMx+4wb0t0+oJR2mAVb0r7RaPkJQGSuNy0VjvlTVJ8Ti5wi5G7IDo/JbQEBhJCy6mO50C+mooCVv86vtG3XY6iIz4oCndyIxmlhHtRCoWNuoZeKzbTfLEr3hlPbw/1wdlhbOuGuxaALMVkjVmfYjSsZvQREncr8jU7+TWbbgKtK3EJw7DDJ/pueFfQ5j5aGHQqQV7xEei+06s692dayhBPoD4Eqp5G8MmnK1HbwR/T7iWPJvyQQG5ZPVMkmM45I1XNILQS71tK4RIjiIpeiygEoiIPwTkc0FFDoy9Cl939NPL5yELpZ/rY8+mL64cyGeAKWUlPuNqewD/TvRJg7T4BMnVmO6ocQ+i8+9rvPW7FBmJNUtPj3XBqLipsXrF1yGlecQ/I8S0hxY3I6Yd424eNTvC1UENVIMIvCSdoYT+fhrmjVT1BlW6v14RvjU43VYfV7t1O5hN5QO2h1532xSqGvfxX4ofcya8ZBVSyEAPGKMzS5Nrt6rYNYbIg5DCYbQnf59UaxCpzGlRXFFTlpD2stqO3GEyPhGi387OtgeMeFPiwXRfQkUwN5c/vC5X0ZUVDngcmCegxxFuzvJJruXrYUkkv/GcnWWyCuwO1DGUlz2rHu072WV+ieDFHZQFJA5UR+AK7cTcpDS5+PSklJpAEZheH+HJh4GxgbK5rfe3NEduEZBDjwvaYj2fhOutHKoHiOWDe1OAGOcJDMfwr2gvtUzL29vIjIXKYQrjcBjOWiywzP0YdemtAZR4ep4VDD9xUnKnUnu9jwcrDJeUJRw9eDaZPmnnpINcEVEoaB+bltV2DJl5Z71KvpQzZKx/4DPy2vyp+HRCSkRLvlgkm5qK93ZYLJ9BOeLOiKYSG/eP5Ec68QNR6iXTEQhdlwIM2wnMkD7gw7EZjM/ihYlkSXfpdIzwqrG50PDZ1Eu6nzzxHsDxU4UYaHQRQqMVYvtPzB5W8HnKdj/ai0R25ofAOpQgBPoaatb7rzvextubESfZ3SRgw5sgiyU755qpYdh3GuxXO2pCcXNe7I52HPa8AsegBwjkP1f8pyeporZBW4Ad0xMgSXnXug1PKarcFBbDo1eO4JlzajprhW3Ymd+MTYPjC5bqSQe+whE5EfuMUtJ9DBDcVXYeSi1tJZFObR1KDmyy5QBew/yxZM00ceqBGEX/PDqMS5LRDDQecBpfjOx06qBraLEX5RKaB99ufQv16mOPECLz6xWKU5BeITyfU7+Zxc/gWQYtp7j7W9o/H4oF7ZM37WDSwhun3LtIdvMhIRz+dcOoH+X+d1SWZKBNOtxOWwgkcjdpGP8Lz7ER9G9yWf8ZSRVCiMJdZUAPFlNKx9tMBxDS87rGyEJJlebevV/MUiGvgjqdXVmB5VOmN62bXhNNOexi1WurlIeLdICimHESIr+Ti417Ci7zsWjBx7biSQb5wsO0wsjhTZEso1GoejPH9tgYqDoAdUXkLtKBpOlsKNhMKTFRsIIGdbBbQXyUuO5Ftiw081jLGzQfUTv5P1VK54lNlTGG5qeEtW/2MLgg2yEL7JHj500Dud1fiPBLjgtRy6UlxwBGD3s+cBeYyUxbBuXoxmD59x27GlGb/MjndJlb73Un/AkWLyiEFdPD5gyw+RmrCzWTMCQOVrzL8x83JvNbszRYrGhsolye/EDtv1bpsm5DjGTwru5HUyQh/VQGP1ltEJZI69U/jWFpFX5VvzN5F675IKK4+RrCJcJnGrzSUT8oXUWiVpcD6F1XWs8tojEXbbHqucTNJm0ThD9Oph7t4dflYF6lVfKG33/tDaWZ3POnFfjdIa6ySzUWAqZ9ihI11oCjllr1uu4NNCHT4lUnII0mwbSgQw5VAd44y1dbqfR0szY7yg7yaVB6KJJby/wd9TgJ3PEGpz9dKl1NYeiTd3GTwaTJCC7dVfoBrNHdkui8wHbdEP838qJFB/vzIO2YAJsyC2RrA8dXyN6Q+I2noSowZD6dKYSVYZTd+F84hc6MPk8fVgYbITs8FFkhXNdXkpjBFvxABTVtfmrSdEigvlSCanyP48uCstIpfAXsnetJlOPQtR8tbQJbExr6oJWORwWpyoIjBx5zNVXFv/lb9GMkzwT7YTY/0jwxeY3+BmIZmBwzQ90EKtRkCtbR7efwXI4WvWmd6b37fvfd8hjxYn+0hysNYdaPEFG94LKBWnkFuKyTOs0QNQF3OI4KWnHwo3bXh6EjylVPdb47ExQL5bsBzmXr0prTRhFjzuQta5UlkbHJvBC9u1IQ1TBGGxrTCgc4q75wO7JW+28ohloHfOAlkTq7ipx/AhXTg/6zGRpUKknZK41Ocd+bJOXQQKEWI3NX09/mFpQEtiygfWcRWNG0XIj0J0RROLGW3rabWJm3zJgrBUJ8uMYr7LhASODZYMI24CYqnenb0eIvEwFF2lYizYvQ/crrmaxYCI9iB1AuRJWQ0oGszil2Q/aQr1EXLBpLj5jjcYznQ4wUhIWe+Su4JS3ZoHnoC5FidQdVV9/4MkjNyOtfP6Rbn1RCnSxu9KuR/ZMzV7iKGUZ4h0WfqHpekFB1z4f/Nk/oihI0J0s25811RgNHhfUHUxTOioU0CGfRJ8d99w8rf7Rj49p9/har0KtWr0ZCKAyO3VEC6md3w41Zzjz0w0Ys3wxpUmwtW/TdffR6OP9byK2LWldjOk9uz0U0QoyVUZnYRRDqwJtSr+Tqhgoy30BWshMtyF/d6/hc6qZOci46PtK8RzV4LQxEA3DMggJYLNrKwdCTZJ0g4lzYaxZ+D/4aMk9cTYXHX9JTo92YKBDOyXF7ws8XtgKAgTOp7IDam1DRSstzODstpVKeqZ9jLvb86goLKzE7QMQ+Bp76BIDyq54n48SuXPfjdb1tki7n48YhmNtVX5xC/iDrragxmew9h0Eo0tt8gbHM7A3B1rj8MjcOS1RZ+lTacJuoBF6s4PDEY3MDEJeP5SuJcWb7/8fE8vGEB4jUAz/I6Cjl+2DF0VS0NaxU2JjISbzxJdi2eg1dvwrDuTqlimFOzPg+lSXtbOjhIP/dLHRzGfWWP+7A/n0a2mLsyswjUaUJV0smjX5jxo7BtIg0ulPV2RDL2hv6oHrQo3dZXlqlAi0v5bm3TtbToqaA/igfRlCA0Ke6FifJCKlHBKS774ua5Kwv3me0/AwzVULmyzAeO0c3PedUIE9V6/wfRvRW+Ld/2xDh0hErkmyH0phMGAL8SZShLWCJdw7OUDxgNGGEGXO9TOpROj3h1Fyfeq845EYQiwuIbzoUnYJlPsiXqp695A/vEKvlI8hnPwCq42md6ywWsVaYlgf6ifwLTsiD9mvGB4uydQ82KqeiYjfatpASQZP9SR0F+PWNzj0wSBRvzGD+jP1p1uKeXLeyTrC1Lgc3QB5z7dXXvCGYB6Bk6tp/yAu2kaq4P/5/80MdsgGvkea4y0kLYkhlGuAK5/HyKN396cYIJ6FPSyWPnuQhjGjg2PEaOqEI4oVyd5QYQL8QiTLuslI7bWe4nfm3xtmPlEcpl2xgAk2UEiqOFxqfofPPbaK9CRLwwKQwZpf1I+NRMfraJdH5pBn+tjW+I1hEzPkMxM705bDCV5rLe0HVOTIGBBtvtMWqOciTLir2erlwlkL/jc+6Y/GkHQ6ayLBUV9Fqea1JdLWXdGs8A2No/dnLGb5NT3088TbJ0hh3ECs7NPsz6we88I9jD/btcwDYr6wSMEOOJh3j7KHJXWdc1ksRVeNZ3ROdZMcelm3dBOv5gUmchF07n94fLCVDpPeY63ss2YjRVKqOo4mxYngWxonbZBmn70AYjq8sUnQj5qafJnzJ7p2Vfy96vL+IIgol4kvvGDWiyhUGd1dsNDFEBzAvdkHLudDngsscXCHhgrczp2b69RvKhnoCXQ9rA5rkVIy6WXzzlOCEGQ2vH1Gyr1CYm0K8RJ8cDrwOGdjsgM91HhX9O4i3Jjo7U4j3PmCK1RoYcqaGh13z9U0lQmscrdecR+3cDlwRgRcbF1GVHXpH4ZIkbC/TZRBr7B5J3wjop6/9z9S1ay1YhmRfaud/mLxeXDVca6RDWZ/wEUNyDSiLievahWsgXLLUThTWjPn2gtwMd+jMTF+hk6f6xXCFoCp4ab5DtP07R7Fvk/OfnHxzTFnwit36CYzck3ihiKwVmopKMK4PwW364pjUyxLpVPRZ5VtseZJFC9rC9IHi1TJURYyNOvG9PEKQJ3MlWkeIboOTmfOVQCRNPfbhhvwzkRy0AOxUGY7JXtbmnieIZW5IOTTD2dw3+tLyA5T2Sk1+LJv2Ms2gNCB9KX2MVpzbbD7vGV1olq9i+d2DD70BK0pWzasbhkCoSAMTJgYpk6QEUkNhIiODGH5VUJINygUxyxBXeXRDsEY1fyAqsYiE75JCwZP+Av8bPZEzw4T08SUxyX5hPQVAP5/edlEQA6pJt0HKVF0LNwOO5tTzeJHge12GF9mgs7EVt0yq7cKiEweiTf5IEQ2XFEcGiab2sbn81ePTZmldqkQ7EQNWdx1/mPrD6eurGL0k0kPUgq4ko//Szq6CQkbUpeaCj5HYtz9jF7FHCJUB61DAWpxaQ8M1B5UVeF1auk4UNkF0ADDC+Jjo+fC+MmTDrcaY/yvaQhcNXsq/wt8+f6yV3xFGWVfzUOK0hPhWYTQhbburl+s0AkCxoLGff0gu3XuDB5Z1AAMJGWLe3KnLknsnCvT/XnR/t0LpsnqXnYMXfSYfTVzySTP3f9Q9oulBpT/7fe63TYFPiw5Q8nxARlj5DtJ1lfNUs3TBcFKSk/eJOQlznFk7FDgjPVqbnsmsK7xVM+gQnLu0rIh9kfqCFaVlvckxOY58RAt/qSVV/M3gRTXNRSy9cIg3hBZh2rqY+IqMiRwTMgX5TdAGOtwWzhscuLPZhyltBgl+A2ivBnh+BO0UuoL9NziXJYkC5OfCj7mdpgVAMj/LzEZRfKgGWuPU/GWhRsM13V/Vx684DR/e8Zs9eWQPFy3P+VNPa3yp636StLxZJQwaA9CmTDEsdKoYYpjL69oSMGfxfgB/44+W49pTDQvS2fiAb0BPZ/V+jKNu5JplsixSlV7USeJWtIAE4c3ha37oC5/zcAAX/grSUEeB89k4BQX3pejY6PBS6sG0BtBYkhwZcJMxzkaOv5+BdrbIpVswNDBzyyuuEwH2x1TsKp8JCt6ewjANCLhwk3kc8gra6ED4HTH2+E+WBc3MpZ/eEIV9XJnXouZS2M8sT4KIlrVnPc3mdmqTA48gGX5Ywoy/ZrXFzSOo3JH096es7UBrINdfs2VoBDcyflsM5ivVefSgeXqjrpjCbEtnYaFPZ1X1O7FLHngUYpgcfRKz9aNVi7xqe0uwZKD9Rkx/BhUah/fLoSoEczkpsGZjcaJdk9v+ZJOGgGSgJ+eC9/v2r1bSJp62/IXIGiX9ckm/bjXrEwup00r4Dg8UXaLEALvVuxHicBKKA9vxdmOUYp5Ad5ybuT9NCkXZruhl/1gO7jXQFb+vJ0gxew+RlF4PH2MtR7E+fnuRXy1VSh5zLbHk3AjoMRr3LZ65m7qopObQvhpaFp3Rk9Ut4MqZ7lJatIhHrgQjEWpk25KCtxx5spXdjCjCDUWI7nvlBWXzOpEZxmuERmpzlvnSBxKx8DnU2Wseg3x/avvtX3q7hxqgdMcbslRlQv+tbKFeNdwSySFd4UfZzBnV9qr6cmhUaeZ/ikbErCbZOY18X5Jn5h5re6MzrPO/cg6vty5z2/KOepoGqqxjF7jvgWf0zdMcEZJeruwLOaG2AmpPYQEowCqWb0wceGiZIBUYGA7W2E/ZjwyRPXG79N/NhmOnGUA6bFz3HDvwTY1CrphIaA5QdAETOD6wFjJ9rgjdZVn7jbdYseNnsO1uPe3AHh3hUPnXOS0C4d364GRNtE5Q31qnldu5fAiGadLO66IepUz7y95xHAW7IUOCUG+z1zDu3P88KIdAzINWxPV4qR8WZGz2FEMNaeMzxb7x9fVwW0GbQaCc/Jb/lRlph6grUiHzcxfnQgVZ8ps2/rGW0pvJDMuhDG91XEbOEl5yrrefR7dx85L1aiDGhTFXgkpo4ZvQvzYtwsC9fuYqAU/LnChxBy9jgs4whY8C4KOyYMqBj2C3qtuggR4BiRUQ2hCicolz0aPXaKCQtlrT0bdRJ7Bk9oWPW7/0LrN+Bnu+WJ+VyImttFDSqlM/TgwpvIwv4xbRtpYvj+p/gnhJ2f4i4dFzL2bemmEDeoq3w/eheTr19azp8RQb/KpqR8SUf7YkFSYopGGUkkHhwfvZlx6r1J4bq1tex6r2mtd3hk29yPqzpnt4ECRFYhmmqvMu6ASb0+cKl7b+W4I4viUOoaI3rnK6w2CiD/V5cBCsgyv4m8fJ//f10wtJLi4rDD/H40iBJeVZz36zxJ/rqjUfY/AUTZENgqlwXbe/CyD/y194Aa678FIH/HONvbCAd+m93uyx88BXtccb/7SkRoMiLnqxHrXuTfRrOoy3WT4wOEOJi347/ZE2CUEmdpgaq12+Fbf0Yq6HiU6doAAoPC/7p7saS34vEgCkZq2alWFSRXDhEmlkG1vm0HKBcPaz3pzYzSVbukHml2cmWV42umxVUk2vdUzySpLKJEzFYtg4fssvMUY/MRZo+6XOSxSi7KcLl/l/c8fnOCAmlAht5DFFC0Vp78hWpvWWsPfY1evaQGHMpgFqS/TI/SlrrcYmOS7+EgctlHOL0d0FPlfHncMw4K9FDZ2iJDxjJWrgAFTgaO5W7a1J1EZXHj+aIlHZ+E0fJdSri4N9UIp/qtx/g+vSljDGR6qGvodyhsf11DQ2z7b3324EMvyAfvquKrIl4yUIcWkQ0GIbZZquvlo8g8cI3Ju0HbZuCVvECi4VHu2ryPJ7LYh12qe2s9cSUS0Vhi3gU9vO+BRZfNnsqPoEHuFF3JXIzKeBMhY6BCiiSuz+BrXJpxF9tbpKMdSCR6jfLc+2Qc3CaL3Z6JPuewOggerPZ9ddkVjLszROup3XDWXypy2anaFp/nLjfKpHqAl/9cAy06Kq20eXW3+qvthexwnyivhESOYe+tm5Jw/C/53Hk3MXxulUOvHT0btz1zk26eMS64aUekdzmJWCmdShtq9OduagusacpVzLSMPPUises2pP7oWJlQH7r3d7ff5tRexFKi3epShMID/ZhyRbuKOmsATIiOTa8pgsrS9x+ZcPOoLRf46TX0mZ0ifSnTTXcJh7xZMAg1+pz8k4AcHDo0FwlQ4NHyBMVZEb6yeIVUyXMS4e3UceCoDwkC5LsBYR5TSJ8ZG6qrkHTmD/OKD3+st9N3ylLv/fs9DxWC8EBjz1qUe/uKFJ2wx6z/OYow4tXcLK1FXkH6cVEuGht1ZxHKYB+dsFyIKAeNIdMJFbIKgQCYz2ddnVUNCisaRxeA/NQaQO2iNxmqKMsI/rzpd2oOGmagWWOlmCJmLA+6HEH79KfIXheq8NWDWZASiqdVxAqOQVmjcm6K/z1PnQyp+Ot9B5gskye/7B9zgipC3wM3xa5KNpGe9ms/fnXf9aLRq0sB6TEjYboZEs9ypoNHqaRtlD6AsL8Rf4UEtj/8Nwm4DGcKKSHzUt6HptupZDVEKbeCak/vmeJGkDvglzPjdPpXk5O9vmSGXgrHgcfteyaw49I62eXLkpYriAMIXNUx38YuIfyYFTa6kuMsPG9alaJD82fhJno9Ji4h2XOQ4gnRzg1/oduDeRVvmK5JgiHk6DZZUY3QFB+690r4wcouRGnmkvOf1Gfh7CoGkpEwrOZY6MR9iTzjP2ytOHSZPlzb/2AcNhFdSon17FO62z4aOwLYVKWEAQnXNsCOYSY/iTzrZm4tJnyY7Lnr8FL7eqZ6L3cG3NeLcz7KeI3ML6Y75mQTJJO4HHIts7ksdOo+s6TufGjEEB7B1YarPmvqN+FMl/9mitiTJJP+RHo6PFGb4u2zqLQqQB8CJFoy9+oqIb9CAMXqykgC86YrGOFTwt+Gx5Wac5pCscF1EsKj3KSfalPGr20FmjHNu+Uv47KKQL5T/YUgy1EsQDM6ggDsMU+4x8jfHSvnfMz04s40TdWYgtyVx7IMBncXy+Gx+jgiskdIH4H6agkCpSLuqiDLHOAAB8aFWdjYN2nyiKE5LI76AjoY48ADmGq1rRs6W6R9dKuahqIBvFR4j/10MDdntScS4h+dWvXB5CzAzhXt4iMUhHC6Pn9gbnyxeSVPbrs+PL65v/2OEdw17AAuSGKO4w+qn0/iCvvvUuW1u03QHS7f6FBXwHoLDntrQngX0Jr+KLlE6ht0wLzmDwbrboKQ9ivFvkkPPDUggDibPRZ6AO9a+hCwv3XCkI+f4UxcqlQffPRz9WTMGPzFFKB69aacJ85xsRgmVjekdQ2EOiVLJkadG+DnX0Ost6tXvE834NwGOb7dgreSwgEwBMc4AXvzm3e4Z7kOm+9/u31kpsTsXReZfiJ/czIg0yToAEdYIW6fk50DlwyLyq6xmOcMV4Ugnc2jElXxP+MxB5WFHaXxnzZZKy5Or4PhW1e5m+l8xOgr6gcd4e6K35eaDR72qfUyuu+u1FvWB3rnqvJahL7AQ8cg0+FYQaW9gPMlpXSp9O4utlRos7p2shUQjTg67QjmfGCBoibd/CNkkqxraFZ+ZU8RHoLK4SiUHun6BNDD+he3DUKbMyz+S/uo4PVrcnvClb/jiLEiRflwDEV1h29COL63YtADS7obqyA4XY4cCb75/qGJ+JZRwrAQj1YpipbqvCAL9peP6WkKwPqYp1TyL3YCY+psYx+NqIeFhCts5bnDUFjcd3e87F0a6XXXnF8GtcNfFK5cC+b3IAQNHGKfEP3d4WVdvu7zCkSIHBZkMMfXDJzFbmgyzh7/5sAeHOFu6fp9X2r5Aclk9vIQc24UxzgSK7s58uDjCoxfggSLnG5qok9y96Bfj/F3STmIdKF3vJgs4E4jqREXB8P+AGq03Nd6i6j4Ul//SGTESqx1zJJeQbHXWYMSRncy0SErvRNk7OxnEdJbxO4EJ8dxt+/v/UzWE8OvNFNrm5l1u89EcballZfs5M3TCZaFslpLoIQ9Ho0L/w6QdF8XrlDhLYlYl8x+O3onuDZqyF/Pa28k7x76mO5eeLklENEwyQEwuEDY3XNU/2BDuNgQYdTYOAimmJIQVSzwu+3UGjq6tB+BcHdy1lKk5gf0ERDxD4hREzLStx5HmArpmb9/x+yPffrl/vVz3fIbvo2AGqcAxO+k18FKWw776YvpBwAw7kbncTZs+3Oi7TGu2G9bguzuN+fKzm6QOwoPiWOK6RmWgqMBf05UWn2ZrajkygMAvmuwkzf5mC/9MbkV5Eo+UZxcwq39ZxVkLP1RD+jzgAAAAZF9+QDIiM2vmfZque0woAODGo0DtsCiK7NwM6USpjFrsVAXf5Dr+pwFzrqVFBX8v40yVML1+3/DxtGypz4w/bJpJjjr7NMYSKCAACFjG8AnEfHBq8jbBaMXqWH04R7aMhZBaxKJw7SubPVrJGPnmoowoxaycSuloFjs5sy3wahwdpmviyQAOA/5KSb3aE5SQ5DbyQJaPEnSSAvS4PaglBjiwscV/7gP///sOAAAAAAAAAA==" alt="ตรากรมปศุสัตว์"><div>
       <div class="brand">Rabies GeoWatch</div><div class="hk" id="tk">สถานการณ์โรคพิษสุนัขบ้าในสัตว์ <span style="display:inline-block">ในพื้นที่</span></div>
       <h1 id="title">–</h1></div></div>
-      <details class="plist" id="plistd" hidden><summary id="plists"></summary><div id="plistn"></div></details>
-      <div class="hbtn"><button class="btn sec sm" id="reload" type="button" title="กลับไปหน้าวางไฟล์">เปลี่ยนไฟล์</button><button class="btn sec sm" id="resetall" type="button" title="ล้างตัวกรอง การซ่อนเคส และชั้นข้อมูล กลับเป็นค่าเริ่มต้น">ล้างค่าทั้งหมด</button></div>
-      <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act" id="exportdoc" type="button" title="ส่งออกข้อมูลสรุปฝั่งซ้ายเป็นไฟล์ Word (.docx)">📄 ส่งออก Word</button></div>
-      <div class="hbtn"><button class="btn sm act2" id="openepi" type="button">📈 Epi curve และข้อมูลรายเคส (Excel) →</button></div>
+      <details class="plist nr" id="plistd" hidden><summary id="plists"></summary><div id="plistn"></div></details>
+      <div class="hbtn"><button class="btn sec sm" id="reload" type="button" title="กลับไปหน้าวางไฟล์">เปลี่ยนไฟล์</button><button class="btn sec sm nr" id="resetall" type="button" title="ล้างตัวกรอง การซ่อนเคส และชั้นข้อมูล กลับเป็นค่าเริ่มต้น">ล้างค่าทั้งหมด</button></div>
+      <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act nr" id="exportdoc" type="button" title="ส่งออกข้อมูลสรุปฝั่งซ้ายเป็นไฟล์ Word (.docx)">📄 ส่งออก Word</button></div>
+      <div class="hbtn nr"><button class="btn sm act2" id="openepi" type="button">📈 Epi curve และข้อมูลรายเคส (Excel) →</button></div>
     </header>
-    <div class="statbox"><div class="sth"><label>ปีงบประมาณ <select id="mfy" aria-label="เลือกปีงบประมาณหลัก"></select></label> <small id="sth"></small></div><div class="stats" id="stats"></div>
+    <div class="statbox nr"><div class="sth"><label>ปีงบประมาณ <select id="mfy" aria-label="เลือกปีงบประมาณหลัก"></select></label> <small id="sth"></small></div><div class="stats" id="stats"></div>
       <div class="bd" id="bd" hidden></div>
       <details class="stall"><summary id="stalls">ดูปีงบก่อนหน้า และทั้งไฟล์</summary><div class="sth2" id="sthp"></div><div class="stats" id="statsprev"></div><div class="sth2" id="stha"></div><div class="stats" id="statsall"></div></details></div>
-    <button class="latest" id="latest" type="button" hidden></button>
-    <div class="plat" id="plat" hidden></div>
-    <details class="finfo" id="finfo"><summary>ข้อมูลไฟล์ที่ใช้</summary><dl id="subtitle"></dl></details>
+    <button class="latest nr" id="latest" type="button" hidden></button>
+    <div class="plat nr" id="plat" hidden></div>
+    <details class="finfo nr" id="finfo"><summary>ข้อมูลไฟล์ที่ใช้</summary><dl id="subtitle"></dl></details>
     <div class="grp" style="--sc:#3b78c4">
       <h2>🗺️ ชั้นข้อมูล</h2>
-      <div class="lgrp"><span class="lh">วงรัศมี</span><div class="lrow">
+      <div class="lgrp nr"><span class="lh">วงรัศมี</span><div class="lrow">
         <label class="tg"><input type="checkbox" id="r1" checked><span class="sw" style="border-color:var(--r1)"></span>1 km</label>
         <label class="tg"><input type="checkbox" id="r3" checked><span class="sw" style="border-color:var(--r3)"></span>3 km</label>
         <label class="tg"><input type="checkbox" id="r5" checked><span class="sw" style="border-color:var(--r5)"></span>5 km</label>
@@ -437,20 +451,21 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
         <label class="tg"><input type="checkbox" id="pline" checked>จังหวัด (เส้นหนา)</label>
         <label class="tg"><input type="checkbox" id="ampb" checked>อำเภอ</label>
         <label class="tg"><input type="checkbox" id="tam" checked>ตำบล</label>
-        <label class="tg" id="pfillw"><input type="checkbox" id="pfill">สีแยกรายจังหวัด</label>
+        <label class="tg nr" id="reglw" hidden><input type="checkbox" id="regl" checked>แยกขอบเขตรายเขต</label>
+        <label class="tg nr" id="pfillw"><input type="checkbox" id="pfill">สีแยกรายจังหวัด</label>
       </div></div>
       <div class="lgrp"><span class="lh">ป้ายชื่อ</span><div class="lrow">
         <label class="tg"><input type="checkbox" id="provl" checked>จังหวัด</label>
         <label class="tg"><input type="checkbox" id="ampl">อำเภอ</label>
         <label class="tg"><input type="checkbox" id="taml">ตำบล</label>
-        <label class="tg"><input type="checkbox" id="lab" checked>สัตว์+วันที่</label>
+        <label class="tg nr"><input type="checkbox" id="lab" checked>สัตว์+วันที่</label>
       </div></div>
       <div class="lgrp"><span class="lh">อื่น ๆ</span><div class="lrow">
         <label class="tg"><input type="checkbox" id="satc" checked>ภาพดาวเทียม</label>
-        <label class="tg"><input type="checkbox" id="negc">ผลลบ/อื่น ๆ (จุดเทา)</label>
+        <label class="tg nr"><input type="checkbox" id="negc">ผลลบ/อื่น ๆ (จุดเทา)</label>
       </div></div>
     </div>
-    <div class="grp" style="--sc:#2e8b57">
+    <div class="grp nr" style="--sc:#2e8b57">
       <h2>🔎 กรองข้อมูล</h2>
       <div class="filters" style="grid-template-columns:1fr;margin-bottom:8px"><label for="ym">นับปีแบบ<select id="ym"><option value="cal">ปีปฏิทิน (1 ม.ค. – 31 ธ.ค.)</option><option value="fy" selected>ปีงบประมาณ (1 ต.ค. – 30 ก.ย.)</option></select></label></div>
       <div class="row" id="years" style="margin-bottom:10px"></div>
@@ -462,27 +477,27 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
         <label for="rs" style="grid-column:1/-1">วงรัศมีแสดงของ<select id="rs"></select></label>
       </div>
     </div>
-    <div class="grp" style="--sc:#c9821a">
+    <div class="grp nr" style="--sc:#c9821a">
       <h2>📋 รายการเคสผลบวก <small>ติ๊กเพื่อเปิด/ปิดบนแผนที่ · กดที่แถวเพื่อซูมไปดู</small></h2>
       <div class="listbar"><span id="viscount"></span><button type="button" id="showall">แสดงทุกเคส</button><button type="button" id="hideall">ซ่อนทุกเคส</button></div>
       <div class="list" id="list"></div>
     </div>
-    <div class="grp" style="--sc:#7B3FA0" id="simcard">
-      <h2>🎯 จำลองจุดเกิดโรค</h2>
-      <div class="lhint">ปักจุดสมมติเพื่อดูขอบเขต · ไม่ใช่เคสจริง ไม่บันทึกลงระบบ</div>
+    <div class="grp" style="--sc:#0A7CFF" id="simcard">
+      <h2>🎯 ระบุจุดเกิดโรคด้วยตนเอง</h2>
+      <div class="lhint" id="simhint">ปักจุดสมมติเพื่อดูขอบเขต</div>
       <div class="simrow"><button type="button" class="btn sm simbtn" id="simclick" aria-pressed="false">คลิกบนแผนที่เพื่อปักจุด</button></div>
       <div class="simrow"><input type="text" id="simll" placeholder="หรือวางพิกัด เช่น 16.4362, 103.4968" aria-label="พิกัดจาก Google Maps"><button type="button" class="btn sm sec" id="simadd">ปักจุด</button></div>
       <div class="simrow"><label for="simr">รัศมี (km)</label><input type="text" id="simr" value="1, 3, 5" aria-label="รัศมี กิโลเมตร คั่นด้วยจุลภาค"></div>
       <div class="simmsg" id="simmsg"></div>
       <div id="simlist"></div>
-      <div class="simrow" id="simtools" hidden><button type="button" class="btn sm sec" id="simx">ส่งออก Excel</button><button type="button" class="btn sm sec" id="simclear">ล้างจุดจำลองทั้งหมด</button></div>
+      <div class="simrow" id="simtools" hidden><button type="button" class="btn sm sec" id="simx">ส่งออก Excel</button><button type="button" class="btn sm sec" id="simclear">ล้างจุดเกิดโรคทั้งหมด</button></div>
     </div>
-    <div class="note" id="notes"></div>
-    <details class="dq" id="dq"><summary id="dqs">🔎 ตรวจคุณภาพข้อมูล</summary><div id="dqb"></div></details>
+    <div class="note nr" id="notes"></div>
+    <details class="dq nr" id="dq"><summary id="dqs">🔎 ตรวจคุณภาพข้อมูล</summary><div id="dqb"></div></details>
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.1.3 · อัปเดต 25 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2 · อัปเดต 26 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -610,7 +625,7 @@ async function handle(list,slot){
 document.getElementById("start").addEventListener("dragover",e=>e.preventDefault());
 document.getElementById("start").addEventListener("drop",e=>{ if(!e.target.closest(".drop")){ e.preventDefault(); handle([...e.dataTransfer.files],"s"); } });
 const PN=Object.fromEntries(GEO.P.map(p=>[p.c,p.n]));
-let PCOUNT={}, PSEL=new Set();
+let PCOUNT={}, PSEL=new Set(), REGS=new Set();
 function detectProvince(){
   PCOUNT={}; files.sample.forEach(f=>f.rows.forEach(r=>{ const c=cellStr(r[col("AX")]).slice(0,2); if(PN[c]) PCOUNT[c]=(PCOUNT[c]||0)+1; }));
   const withData=Object.keys(PCOUNT);
@@ -620,16 +635,18 @@ function detectProvince(){
 }
 const drawnBefore=new Set();
 function drawProvList(){
-  const reg=document.getElementById("region").value;
-  const codes=new Set([...Object.keys(PCOUNT),...PSEL,...(reg?Object.keys(REGION).filter(c=>REGION[c]===reg):[])]);
+  const codes=new Set([...Object.keys(PCOUNT),...PSEL,...Object.keys(REGION).filter(c=>REGS.has(REGION[c]))]);
+  document.querySelectorAll("#region button").forEach(b=>b.setAttribute("aria-pressed",String(REGS.has(b.dataset.r))));
   const arr=[...codes].filter(c=>PN[c]).sort((a,b)=>(PCOUNT[b]||0)-(PCOUNT[a]||0)||PN[a].localeCompare(PN[b],"th"));
   document.getElementById("provlist").innerHTML=arr.map(c=>`<label><input type="checkbox" value="${c}" ${PSEL.has(c)?"checked":""}>${esc(PN[c])} <small>${PCOUNT[c]?PCOUNT[c].toLocaleString()+" แถว":"ไม่มีข้อมูล"} · เขต ${REGION[c]||"–"}</small></label>`).join("");
   document.getElementById("go").disabled=!files.sample.length||!PSEL.size;
 }
 document.getElementById("provlist").addEventListener("change",e=>{ if(e.target.type!=="checkbox") return; e.target.checked?PSEL.add(e.target.value):PSEL.delete(e.target.value); drawProvList(); });
-document.getElementById("region").addEventListener("change",e=>{ const r=e.target.value; if(r){ PSEL=new Set(Object.keys(REGION).filter(c=>REGION[c]===r&&PN[c])); } drawProvList(); });
-document.getElementById("pall").addEventListener("click",()=>{ document.getElementById("region").value=""; PSEL=new Set(Object.keys(PCOUNT)); drawProvList(); });
-document.getElementById("clearfiles").addEventListener("click",()=>{ files.sample=[]; files.inv=[]; PSEL.clear(); drawnBefore.clear(); document.getElementById("region").value=""; document.getElementById("gomsg").textContent=""; setStatus(); });
+document.getElementById("region").addEventListener("click",e=>{ const b=e.target.closest("button[data-r]"); if(!b) return; const r=b.dataset.r;
+  REGS.has(r)?REGS.delete(r):REGS.add(r);
+  PSEL=new Set(Object.keys(REGION).filter(c=>REGS.has(REGION[c])&&PN[c])); drawProvList(); });
+document.getElementById("pall").addEventListener("click",()=>{ REGS.clear(); PSEL=new Set(Object.keys(PCOUNT)); drawProvList(); });
+document.getElementById("clearfiles").addEventListener("click",()=>{ files.sample=[]; files.inv=[]; PSEL.clear(); drawnBefore.clear(); REGS.clear(); document.getElementById("gomsg").textContent=""; setStatus(); });
 
 /* ---------- build records ---------- */
 const SYM=[["วิ่งพล่าน","BQ"],["กัดกรง/สิ่งของ","BR"],["เสียงร้องเปลี่ยน","BS"],["ปากอ้า ลิ้นห้อย น้ำลายไหล","BT"],["เดินโซเซ","BU"],["ตะกุยปาก","BV"],["อาเจียน","BW"],["ตัวแข็ง","BX"],["กลืนไม่ได้","BY"],["ตาวาว/ขวาง","BZ"],["ซึม ซุกตัว","CA"],["ดุร้าย","CB"],["ปกติ","CC"]];
@@ -670,12 +687,15 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.1.3", APP_DATE="25 ต.ค. 2569";
+const APP_VER="1.2", APP_DATE="26 ต.ค. 2569";
+let RONLY=false,lazyL=null,REGL=null;
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
 const fp=document.getElementById("fp"),fa=document.getElementById("fa"),ft=document.getElementById("ft"),fc=document.getElementById("fc"),rs=document.getElementById("rs");
 
 function start(){
+  document.getElementById("simhint").textContent="ปักจุดสมมติเพื่อดูขอบเขต";
+  RONLY=false; document.body.classList.remove("ronly"); document.getElementById("reload").textContent="เปลี่ยนไฟล์";
   PROVS=new Set(PSEL); MULTI=PROVS.size>1;
   CASES=buildCases(PROVS);
   document.getElementById("start").hidden=true; document.getElementById("app").hidden=false;
@@ -683,6 +703,17 @@ function start(){
   initMap(); initData(); resetAll();
 }
 document.getElementById("go").addEventListener("click",start);
+function startQuick(){
+  RONLY=true; document.body.classList.add("ronly"); document.getElementById("reload").textContent="← กลับหน้าแรก";
+  PROVS=new Set(GEO.P.map(p=>p.c)); MULTI=true; CASES=[];
+  document.getElementById("start").hidden=true; document.getElementById("app").hidden=false;
+  if(map){ map.remove(); map=null; }
+  initMap(); initData(); resetAll();
+  map.setView([13.2,101.0],6);
+  document.getElementById("simhint").textContent="ปักจุดเพื่อดูรัศมีควบคุมโรคและตำบลที่อยู่ในรัศมี";
+  setTimeout(()=>{ const el=document.getElementById("simcard"); if(el) el.scrollIntoView({block:"start"}); },200);
+}
+document.getElementById("quick").addEventListener("click",startQuick);
 document.getElementById("reload").addEventListener("click",()=>{ document.getElementById("start").hidden=false; setStatus(); });
 
 function initMap(){
@@ -704,34 +735,67 @@ function initMap(){
   pfillL=L.geoJSON(SEL,{pane:"pline",interactive:false});
   plineC=L.geoJSON(SEL,{pane:"pline",interactive:false,style:{color:"#000",weight:7,opacity:.55,fill:false}});
   plineL=L.geoJSON(SEL,{pane:"pline",interactive:false});
+  // outline of each DLD region (dissolve selected provinces of the region by edge counting)
+  if(!map.getPane("regp")){ map.createPane("regp").style.zIndex=430; map.getPane("regp").style.pointerEvents="none"; }
+  REGL=L.layerGroup(); const regsP=[...new Set([...PROVS].map(c=>REGION[c]).filter(Boolean))].sort((a,b)=>a-b);
+  const multiReg=!RONLY&&regsP.length>1; document.getElementById("reglw").hidden=!multiReg;
+  const REGSEGS=[];
+  if(multiReg) regsP.forEach(r=>{ const cnt=new Map(), lab=[];
+    const RP=GEO.P.filter(p=>PROVS.has(p.c)&&REGION[p.c]===r).map(p=>{ const poly=decode(p.g); let a=90,b=-90,c=180,d=-180; poly.forEach(pl=>pl[0].forEach(([la,lo])=>{a=Math.min(a,la);b=Math.max(b,la);c=Math.min(c,lo);d=Math.max(d,lo);})); return {p,poly,bb:[a,b,c,d]}; });
+    const inReg=(la,lo)=>RP.some(q=>la>=q.bb[0]&&la<=q.bb[1]&&lo>=q.bb[2]&&lo<=q.bb[3]&&inPoly(la,lo,q.poly));
+    RP.forEach(({p,poly})=>{ if(p.l) lab.push(p.l); poly.forEach(pl=>pl.forEach(ring=>{ const n=ring.length;
+      for(let i=0;i<n;i++){ const a=ring[i], b=ring[(i+1)%n]; if(a[0]===b[0]&&a[1]===b[1]) continue;
+        const ka=a[0].toFixed(5)+","+a[1].toFixed(5), kb=b[0].toFixed(5)+","+b[1].toFixed(5), k=ka<kb?ka+"|"+kb:kb+"|"+ka;
+        const e=cnt.get(k); e?e.n++:cnt.set(k,{n:1,a,b}); } })); });
+    const D=0.004; // ~400 m: wider than the mismatch between neighbouring simplified borders
+    let segs=[...cnt.values()].filter(e=>{ if(e.n!==1) return false; const [la1,lo1]=e.a,[la2,lo2]=e.b, ml=(la1+la2)/2, mo=(lo1+lo2)/2;
+      let dl=lo2-lo1, dn=-(la2-la1); const L2=Math.hypot(dl,dn)||1; dl/=L2; dn/=L2;   // unit normal (lat,lon)
+      return !(inReg(ml+dl*D,mo+dn*D)&&inReg(ml-dl*D,mo-dn*D)); }).map(e=>[e.a,e.b]);
+    { // drop tiny disconnected specks (fewer than 6 connected segments)
+      const kk=v=>v[0].toFixed(5)+","+v[1].toFixed(5), adj=new Map(); segs.forEach((g,i)=>[kk(g[0]),kk(g[1])].forEach(k=>{ if(!adj.has(k)) adj.set(k,[]); adj.get(k).push(i); }));
+      const comp=new Array(segs.length).fill(-1); let cid=0; const size=[];
+      segs.forEach((g,i)=>{ if(comp[i]>=0) return; const st=[i]; comp[i]=cid; let n=0; while(st.length){ const j=st.pop(); n++; [kk(segs[j][0]),kk(segs[j][1])].forEach(k=>adj.get(k).forEach(m=>{ if(comp[m]<0){ comp[m]=cid; st.push(m); } })); } size.push(n); cid++; });
+      const keep=segs.filter((g,i)=>size[comp[i]]>=6); segs.length=0; keep.forEach(g=>segs.push(g)); }
+    REGSEGS.push(segs);
+    if(lab.length){ const la=lab.reduce((t,x)=>t+x[1],0)/lab.length, lo=lab.reduce((t,x)=>t+x[0],0)/lab.length;
+      L.marker([la,lo],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="reg-label">ปศุสัตว์เขต ${r}</div>`,iconSize:[0,0]})}).addTo(REGL); } });
+  REGSEGS.forEach(sg=>L.polyline(sg,{pane:"regp",color:"#ffffff",weight:5.5,opacity:.95,interactive:false,smoothFactor:0}).addTo(REGL));
+  REGSEGS.forEach(sg=>L.polyline(sg,{pane:"regp",color:"#F26B00",weight:2.75,opacity:1,interactive:false,smoothFactor:0}).addTo(REGL));
+  if(multiReg&&document.getElementById("regl").checked) REGL.addTo(map);
   document.getElementById("pfill").checked=MULTI; document.getElementById("pfillw").hidden=!MULTI;
   const AF=GEO.A.filter(a=>PROVS.has(a.c.slice(0,2)));
-  amp=L.geoJSON(AF.map(a=>({type:"Feature",properties:{n:a.n},geometry:{type:"MultiPolygon",coordinates:decode(a.g).map(pl=>pl.map(r=>r.map(([la,lo])=>[lo,la])))}})),{interactive:false}); if(document.getElementById("ampb").checked) amp.addTo(map);
+  if(RONLY){ map.createPane("bnd").style.zIndex=410; map.getPane("bnd").style.pointerEvents="none"; }
+  const RND=RONLY?L.canvas({padding:.3,pane:"bnd"}):undefined;
+  amp=L.geoJSON(AF.map(a=>({type:"Feature",properties:{n:a.n},geometry:{type:"MultiPolygon",coordinates:decode(a.g).map(pl=>pl.map(r=>r.map(([la,lo])=>[lo,la])))}})),{interactive:false,renderer:RND}); if(!RONLY&&document.getElementById("ampb").checked) amp.addTo(map);
   TAMS=GEO.T.filter(t=>PROVS.has(t.c.slice(0,2))).map(t=>({...t,poly:decode(t.g)}));
   tam=L.geoJSON(TAMS.map(t=>({type:"Feature",properties:{n:t.n,a:t.a,c:t.c},geometry:{type:"MultiPolygon",coordinates:t.poly.map(pl=>pl.map(r=>r.map(([la,lo])=>[lo,la])))}})),
-    {onEachFeature:(f,l)=>l.bindTooltip(`ต.${f.properties.n} อ.${f.properties.a}${MULTI?` จ.${PN[f.properties.c.slice(0,2)]}`:""}`,{sticky:true})}).addTo(map);
+    {renderer:RND,onEachFeature:(f,l)=>l.bindTooltip(`ต.${f.properties.n} อ.${f.properties.a}${MULTI?` จ.${PN[f.properties.c.slice(0,2)]}`:""}`,{sticky:true})}); if(!RONLY) tam.addTo(map);
   ampLabels=L.layerGroup().addTo(map); tamLabels=L.layerGroup().addTo(map);
-  AF.forEach(a=>{ if(!a.l) return; L.marker([a.l[1],a.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="amp-label">${esc(a.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels); });
+  lazyL=L.layerGroup().addTo(map);
+  if(!RONLY) AF.forEach(a=>{ if(!a.l) return; L.marker([a.l[1],a.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="amp-label">${esc(a.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels); });
   rings={5:L.layerGroup().addTo(map),3:L.layerGroup().addTo(map),1:L.layerGroup().addTo(map)};
   negLayer=L.layerGroup().addTo(map); markers=L.layerGroup().addTo(map); tamSel=L.layerGroup().addTo(map);
   simRings=L.layerGroup().addTo(map); simLayer=L.layerGroup().addTo(map); SIMS=[]; SIM_N=0; SIM_ARM=false;
-  map.on("click",e=>{ if(!SIM_ARM) return; const s=addSim(e.latlng.lat,e.latlng.lng); armSim(false); simMsg(`ปักจุดจำลอง ${s.n} แล้ว · ${simLoc(s)} · ลากหมุดเพื่อย้ายได้`); setTimeout(()=>s.marker.openPopup(),150); });
-  const SimCtl=L.Control.extend({options:{position:"topleft"},onAdd(){ const d=L.DomUtil.create("div","leaflet-bar simctl"); d.innerHTML='<button type="button" id="simmapbtn" title="จำลองจุดเกิดโรค: คลิกแล้วคลิกบนแผนที่" aria-label="จำลองจุดเกิดโรค">🎯</button>'; L.DomEvent.disableClickPropagation(d); d.querySelector("button").addEventListener("click",()=>{ armSim(!SIM_ARM); const c=document.getElementById("simcard"); c.classList.remove("closed"); }); return d; }});
+  map.on("click",e=>{ if(!SIM_ARM) return; const s=addSim(e.latlng.lat,e.latlng.lng); armSim(false); simMsg(`ปักจุดเกิดโรค ${s.n} แล้ว · ${simLoc(s)} · ลากหมุดเพื่อย้ายได้`); setTimeout(()=>s.marker.openPopup(),150); });
+  const SimCtl=L.Control.extend({options:{position:"topleft"},onAdd(){ const d=L.DomUtil.create("div","leaflet-bar simctl"); d.innerHTML='<button type="button" id="simmapbtn" title="ระบุจุดเกิดโรคด้วยตนเอง: คลิกแล้วคลิกบนแผนที่" aria-label="ระบุจุดเกิดโรค">🎯</button>'; L.DomEvent.disableClickPropagation(d); d.querySelector("button").addEventListener("click",()=>{ armSim(!SIM_ARM); const c=document.getElementById("simcard"); c.classList.remove("closed"); }); return d; }});
   new SimCtl().addTo(map);
   GEO.P.filter(p=>PROVS.has(p.c)&&p.l).forEach(p=>L.marker([p.l[1],p.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="prov-label" data-pc="${p.c}" style="--pc:${PCOL[p.c]}">จ.${esc(p.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels));
   const b=L.geoJSON(PG.filter(f=>PROVS.has(f.properties.c))).getBounds();
   map.fitBounds(b,{padding:[16,16]});
   map.on("zoomend",()=>{ layout(current); zcls(); });
+  map.on("zoomend moveend",()=>{ if(RONLY){ syncBnd(); lazyLabels(); } });
   applyBase();
 }
 function applyBase(){
   const on=document.getElementById("satc").checked; document.documentElement.classList.toggle("sat",on);
   if(on){ satLayer.addTo(map);
     prov.setStyle(f=>PROVS.has(f.properties.c)?{color:"#ffffff",weight:2.5,fillOpacity:0}:{color:"#ffffff",weight:1,fillColor:"#000",fillOpacity:.35});
-    tam.setStyle({color:"#4fc3f7",weight:1,opacity:.8,fillOpacity:0}); amp.setStyle({color:"#ffe27a",weight:1.3,opacity:.75,fill:false});
+    if(RONLY){ tam.setStyle({color:"#8fe3ff",weight:1.8,opacity:1,fillOpacity:0}); amp.setStyle({color:"#ffd84d",weight:3,opacity:1,fill:false}); }
+    else { tam.setStyle({color:"#4fc3f7",weight:1,opacity:.8,fillOpacity:0}); amp.setStyle({color:"#ffe27a",weight:1.3,opacity:.75,fill:false}); }
   } else { map.removeLayer(satLayer);
     prov.setStyle(f=>PROVS.has(f.properties.c)?{color:css("--ink"),weight:2,fillColor:css("--land"),fillOpacity:1}:{color:css("--tam"),weight:1,fillColor:css("--land-out"),fillOpacity:1});
-    tam.setStyle({color:css("--tam"),weight:.7,fillOpacity:0}); amp.setStyle({color:css("--amp"),weight:1.4,fill:false}); }
+    if(RONLY){ tam.setStyle({color:css("--amp"),weight:1.1,opacity:.9,fillOpacity:0}); amp.setStyle({color:css("--ink"),weight:2.2,fill:false}); }
+    else { tam.setStyle({color:css("--tam"),weight:.7,fillOpacity:0}); amp.setStyle({color:css("--amp"),weight:1.4,fill:false}); } }
   applyProv();
   CASES.forEach(c=>c.rings&&[5,3,1].forEach((r,k)=>c.rings[k].setStyle({color:css(RS[r].c),fillColor:css(RS[r].c)})));
 }
@@ -766,20 +830,21 @@ function initData(){
   document.getElementById("fpw").hidden=!MULTI; fa.innerHTML=""; fillAmp();
   document.getElementById("plegend").innerHTML=pl.map(c=>`<button type="button" data-pc="${c}" style="--pc:${PCOL[c]}" title="กดเพื่อกรองเฉพาะจังหวัดนี้ (กดซ้ำเพื่อดูทั้งหมด)"><i></i>${esc(PN[c])} <small>${POS.filter(x=>x.pc===c).length}</small></button>`).join("");
   const posTam=new Set(POS.map(c=>c.pc+"|"+c.amphoe+"|"+c.tambon)); tamLabels.clearLayers();
-  TAMS.forEach(t=>{ if(!t.l) return; const hc=posTam.has(t.c.slice(0,2)+"|"+t.a+"|"+t.n); L.marker([t.l[1],t.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="tam-label${hc?" hc":""}">ต.${esc(t.n)}</div>`,iconSize:[0,0]})}).addTo(tamLabels); });
+  if(!RONLY) TAMS.forEach(t=>{ if(!t.l) return; const hc=posTam.has(t.c.slice(0,2)+"|"+t.a+"|"+t.n); L.marker([t.l[1],t.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="tam-label${hc?" hc":""}">ต.${esc(t.n)}</div>`,iconSize:[0,0]})}).addTo(tamLabels); });
   // negatives
   negLayer.clearLayers();
   NEG.forEach(c=>L.circleMarker([c.lat,c.lon],{radius:3.5,color:"#fff",weight:1,fillColor:"#7b8780",fillOpacity:.9}).bindTooltip(`${esc(c.species)} ${esc(c.result)} · รับตัวอย่าง ${thd(c.date)} · ต.${esc(c.tambon)}`).addTo(negLayer));
   if(!document.getElementById("negc").checked) map.removeLayer(negLayer);
   HIDDEN.clear(); ft.innerHTML=""; fc.innerHTML=""; fillMFY(); fillAmp(); fillTam(); fillCase();
   const tot=CASES.length, posN=CASES.filter(c=>c.pos).length;
-  const regs=[...new Set([...PROVS].map(c=>REGION[c]))], fullReg=MULTI&&regs.length===1&&Object.keys(REGION).filter(c=>REGION[c]===regs[0]&&!REG_OPT.has(c)).every(c=>PROVS.has(c));
+  const regs=[...new Set([...PROVS].map(c=>REGION[c]))].sort((a,b)=>a-b), allFull=MULTI&&regs.length>1&&regs.every(r=>r&&Object.keys(REGION).filter(c=>REGION[c]===r&&!REG_OPT.has(c)).every(c=>PROVS.has(c))), fullReg=MULTI&&regs.length===1&&Object.keys(REGION).filter(c=>REGION[c]===regs[0]&&!REG_OPT.has(c)).every(c=>PROVS.has(c));
   const names=[...PROVS].map(c=>PN[c]).sort((a,b)=>a.localeCompare(b,"th"));
   const joinTh=a=>a.length<2?a.join(""):a.slice(0,-1).join(" ")+" และ"+a[a.length-1];
   const T0="สถานการณ์โรคพิษสุนัขบ้าในสัตว์ในพื้นที่";
-  const ttl=!MULTI?`${T0} จังหวัด${names[0]} กรมปศุสัตว์`:fullReg?`${T0}ปศุสัตว์เขต ${regs[0]} กรมปศุสัตว์`:regs.length===1?`${T0} ${PROVS.size} จังหวัด กรมปศุสัตว์`:`${T0} จังหวัด${joinTh(names)} กรมปศุสัตว์`;
-  const big=!MULTI?`จังหวัด${names[0]}`:fullReg?`ปศุสัตว์เขต ${regs[0]}`:regs.length===1?`${PROVS.size} จังหวัด`:(names.length<=3?`จังหวัด${joinTh(names)}`:`${PROVS.size} จังหวัด (ข้ามเขต)`);
+  const ttl=!MULTI?`${T0} จังหวัด${names[0]} กรมปศุสัตว์`:allFull?`${T0}ปศุสัตว์เขต ${regs.length<2?regs[0]:regs.slice(0,-1).join(", ")+" และ "+regs[regs.length-1]} กรมปศุสัตว์`:fullReg?`${T0}ปศุสัตว์เขต ${regs[0]} กรมปศุสัตว์`:regs.length===1?`${T0} ${PROVS.size} จังหวัด กรมปศุสัตว์`:`${T0} จังหวัด${joinTh(names)} กรมปศุสัตว์`;
+  const big=!MULTI?`จังหวัด${names[0]}`:allFull?`ปศุสัตว์เขต ${regs.length<2?regs[0]:regs.slice(0,-1).join(", ")+" และ "+regs[regs.length-1]}`:fullReg?`ปศุสัตว์เขต ${regs[0]}`:regs.length===1?`${PROVS.size} จังหวัด`:(names.length<=3?`จังหวัด${joinTh(names)}`:`${PROVS.size} จังหวัด (ข้ามเขต)`);
   document.getElementById("title").textContent=big; document.title="Rabies GeoWatch · "+ttl; TTL=ttl;
+  if(RONLY){ document.getElementById("title").textContent="ระบุจุดเกิดโรคด้วยตนเอง"; TTL="ระบุจุดเกิดโรคด้วยตนเอง · รัศมีควบคุมโรค"; document.title="Rabies GeoWatch · ระบุจุดเกิดโรคด้วยตนเอง"; }
   const dmax=CASES.map(c=>c.date).filter(Boolean).sort().pop();
   const nS=files.sample.length, nI=files.inv.length;
   document.getElementById("subtitle").innerHTML=[["จำนวนไฟล์ส่งตัวอย่าง",`${nS} ไฟล์`],["จำนวนไฟล์สอบสวนโรค",nI?`${nI} ไฟล์`:"ไม่มี"],["จำนวนตัวอย่างส่งตรวจ",tot.toLocaleString()],["ผลบวก (ทุกปีในไฟล์)",posN.toLocaleString()],["รับตัวอย่างล่าสุด",thd(dmax)]]
@@ -816,7 +881,7 @@ function buildYears(){
   POS.forEach(c=>{ c.yc=YC[c.y]; c._lt=undefined; });
   const recent5=YEARS.slice(0,5);
   document.getElementById("years").innerHTML=YEARS.map(y=>{const n=POS.filter(c=>c.y===y).length;
-    return `<label class="tg chip-y"><input type="checkbox" id="y${y}" ${n&&recent5.includes(y)?"checked":""} ${n?"":"disabled"}><span class="sw" style="border-color:${YC[y]};background:${n?YC[y]:"transparent"}"></span>${YL()} ${y+543} <small style="color:var(--muted)">(${n})</small></label>`;}).join("");
+    return `<label class="tg chip-y"><input type="checkbox" id="y${y}" ${n&&y===YEARS[0]?"checked":""} ${n?"":"disabled"}><span class="sw" style="border-color:${YC[y]};background:${n?YC[y]:"transparent"}"></span>${YL()} ${y+543} <small style="color:var(--muted)">(${n})</small></label>`;}).join("");
   rs.innerHTML=`<option value="latest">เฉพาะ${YL()}ล่าสุดของเคสที่แสดงอยู่</option><option value="all">ทุกเคสที่แสดงอยู่</option>`;
   rs.value="latest";
 }
@@ -985,7 +1050,7 @@ function resetAll(){
   ym.value="fy"; fillMFY(); map.closePopup(); HIDDEN.clear(); fp.value=""; fa.innerHTML=""; ft.innerHTML=""; fc.innerHTML="";
   buildYears();
   const many=PROVS.size>2;
-  [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI],["ampb",true],["tam",true],["provl",true],["ampl",false],["lab",!many],["taml",false],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
+  [["r1",!MULTI],["r3",!MULTI],["r5",!MULTI],["pline",true],["pfill",MULTI&&!RONLY],["ampb",true],["tam",RONLY],["provl",!RONLY],["ampl",false],["lab",!many],["taml",false],["negc",false]].forEach(([id,on])=>{ const el=document.getElementById(id); el.checked=on; el.dispatchEvent(new Event("change")); });
   fillAmp(); fillTam(); fillCase(); render(true);
 }
 document.getElementById("resetall").addEventListener("click",resetAll);
@@ -1001,11 +1066,18 @@ document.getElementById("provl").addEventListener("change",e=>map.getContainer()
 document.getElementById("ampl").addEventListener("change",e=>map.getContainer().classList.toggle("hideamp",!e.target.checked));
 document.getElementById("taml").addEventListener("change",e=>map.getContainer().classList.toggle("hidetam",!e.target.checked));
 document.getElementById("pline").addEventListener("change",applyProv);
+document.getElementById("regl").addEventListener("change",e=>{ if(REGL&&map) e.target.checked?REGL.addTo(map):map.removeLayer(REGL); });
 document.getElementById("pfill").addEventListener("change",applyProv);
-document.getElementById("ampb").addEventListener("change",e=>e.target.checked?amp.addTo(map):map.removeLayer(amp));
+document.getElementById("ampb").addEventListener("change",()=>syncBnd());
 document.getElementById("plegend").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; e.preventDefault();
   fp.value=fp.value===b.dataset.pc?"":b.dataset.pc; fp.dispatchEvent(new Event("change")); });
-document.getElementById("tam").addEventListener("change",e=>e.target.checked?tam.addTo(map):map.removeLayer(tam));
+document.getElementById("tam").addEventListener("change",()=>syncBnd());
+function syncBnd(){ if(!map) return; const z=map.getZoom();
+  const a=document.getElementById("ampb").checked&&(!RONLY||z>=7.5), t=document.getElementById("tam").checked&&(!RONLY||z>=10);
+  a?amp.addTo(map):map.removeLayer(amp); t?tam.addTo(map):map.removeLayer(tam); }
+function lazyLabels(){ if(!lazyL) return; lazyL.clearLayers(); const z=map.getZoom(), b=map.getBounds().pad(.1);
+  if(z>=9.5) GEO.A.forEach(a=>{ if(a.l&&b.contains([a.l[1],a.l[0]])) L.marker([a.l[1],a.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="amp-label">${esc(a.n)}</div>`,iconSize:[0,0]})}).addTo(lazyL); });
+  if(z>=11) TAMS.forEach(t=>{ if(t.l&&b.contains([t.l[1],t.l[0]])) L.marker([t.l[1],t.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="tam-label">ต.${esc(t.n)}</div>`,iconSize:[0,0]})}).addTo(lazyL); }); }
 document.getElementById("satc").addEventListener("change",applyBase);
 document.getElementById("negc").addEventListener("change",e=>e.target.checked?negLayer.addTo(map):map.removeLayer(negLayer));
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>map&&applyBase());
@@ -1061,7 +1133,7 @@ document.getElementById("printmap").addEventListener("click",()=>{
   const ys=[...checkedYears()].sort((a,b)=>b-a);
   ph.innerHTML=`<div class="pt"><div><div class="pb">Rabies GeoWatch</div><div class="pti">${esc(TTL)}</div>
     <div class="ps">พื้นที่: ${esc(scopeText())} · ${esc(yearsText())}${fc.value?" · เฉพาะเคสที่เลือก":""} · แสดง ${current.length} เคส · พิมพ์เมื่อ ${nowTh()} · Rabies GeoWatch v${APP_VER}</div></div></div>
-    <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${SIMS.length?`<span><i style="background:#7B3FA0;border-radius:2px;transform:rotate(45deg)"></i>จุดจำลอง (รัศมี ${simRadii().join("/")} km)</span>`:""}${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
+    <div class="pl">${ys.map(y=>`<span><i style="background:${YC[y]}"></i>${YL()} ${y+543}</span>`).join("")}<span><i class="lt"></i>เคสล่าสุด</span>${SIMS.length?`<span><i style="background:#0A7CFF;border-radius:2px;transform:rotate(45deg)"></i>จุดเกิดโรค (รัศมี ${simRadii().join("/")} km)</span>`:""}${["r1","r3","r5"].filter(id=>document.getElementById(id).checked).map(id=>`<span><i class="ring" style="border-color:var(--${id})"></i>${id.slice(1)} km</span>`).join("")}</div>`;
   const center=map.getCenter(), zoom=map.getZoom(), bounds=map.getBounds();
   map.eachLayer(l=>{ if(l.closeTooltip) l.closeTooltip(); });
   document.body.classList.add("printing");
@@ -1159,9 +1231,9 @@ document.getElementById("exportdoc").addEventListener("click",async()=>{
   body.push(W.table(head,L2.map((c,i)=>[i+1,thd(c.dd),c.species,`${v(c.place)}${c.moo?" ม."+c.moo:""}${c.mismatch?" ⚠":""}`,c.tambon,c.amphoe,...(multiCol?[c.pn]:[]),c.inv?v(c.bitten):"–",c.inv?v(c.saliva):"–"]),wid,{sz:24,align:["center","center","center",null,null,null,...(multiCol?[null]:[]),"center","center"]}));
   body.push(W.h("หมายเหตุ",2));
   [...document.querySelectorAll("#notes li")].forEach(li=>body.push(W.p([W.run("• "+li.textContent,{sz:28})],{after:40,bullet:true})));
-  if(SIMS.length){ body.push(W.h(`จุดจำลอง (ไม่ใช่เคสจริง) ${SIMS.length} จุด`,2));
+  if(SIMS.length){ body.push(W.h(`จุดเกิดโรคที่ระบุเอง (ยังไม่บันทึกในระบบ) ${SIMS.length} จุด`,2));
     body.push(W.p([W.run("จุดสมมติที่ผู้ใช้ปักเพื่อดูขอบเขตรัศมี ไม่ได้มาจาก ThaiRabies Net",{sz:26,color:"5E6A64"})],{after:60}));
-    SIMS.forEach(s=>{ body.push(W.p([W.run(`จุดจำลอง ${s.n}: ${simLoc(s)} (${s.lat}, ${s.lon})`,{b:true,sz:28})],{after:40}));
+    SIMS.forEach(s=>{ body.push(W.p([W.run(`จุดเกิดโรค ${s.n}: ${simLoc(s)} (${s.lat}, ${s.lon})`,{b:true,sz:28})],{after:40}));
       body.push(W.table(["รัศมี","จำนวนตำบล","รายชื่อตำบล"],s.R.map((r,i)=>[`≤ ${r} km`,s.bands[i].length,s.bands[i].map(t=>`ต.${t.n}${!s.home||t.a!==s.home.a||t.p!==s.home.p?` (อ.${t.a}${!s.home||t.p!==s.home.p?" จ."+t.p:""})`:""}`).join(", ")||"–"]),[1300,1500,6838],{sz:24,align:["center","center",null]}));
       body.push(W.p([W.run(`เคสผลบวกจริงในรัศมี ${s.R[s.R.length-1]} km: ${s.cases.length} เคส (ทุกปีในไฟล์)${s.nearest?` · เคสใกล้สุด ${s.nearest.d.toFixed(1)} km ผลแล็บ ${thd(s.nearest.c.dd)} ต.${s.nearest.c.tambon} อ.${s.nearest.c.amphoe}`:""}`,{sz:26})],{after:120})); }); }
   { const items=dqItems(); body.push(W.h("ตรวจคุณภาพข้อมูล",2));
@@ -1303,7 +1375,7 @@ function renderDQ(){ const items=dqItems(), n=items.reduce((t,x)=>t+x.A.length,0
 function simPeriod(){ const Y=latestFY(); return {label:`ปีงบประมาณ ${Y+543}`,test:c=>fyOf(c.dd)===Y}; }
 /* ================= simulated outbreak points (v1.1.1) (local only, never mixed with real data) ================= */
 let SIMS=[], SIM_ARM=false, SIM_N=0;
-const SIM_COL="#7B3FA0";
+const SIM_COL="#0A7CFF";
 function simRadii(){ const a=(document.getElementById("simr").value.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).filter(x=>x>0&&x<=50);
   const u=[...new Set(a)].sort((x,y)=>x-y).slice(0,5); return u.length?u:[1,3,5]; }
 function tambonsWithin(lat,lon,R){ const pad=R/100+0.02, hits=[];
@@ -1319,7 +1391,7 @@ function simMsg(t,err){ const el=document.getElementById("simmsg"); el.textConte
 function simIcon(n){ return L.divIcon({className:"",iconSize:[0,0],html:`<div class="simpin"><span>${n}</span></div>`}); }
 function addSim(lat,lon){ if(!map) return; const n=++SIM_N;
   const s={n,lat:+lat.toFixed(6),lon:+lon.toFixed(6),open:true};
-  s.marker=L.marker([s.lat,s.lon],{icon:simIcon(n),draggable:true,zIndexOffset:2000,title:`จุดจำลอง ${n} (ลากเพื่อย้าย)`}).addTo(simLayer);
+  s.marker=L.marker([s.lat,s.lon],{icon:simIcon(n),draggable:true,zIndexOffset:2000,title:`จุดเกิดโรค ${n} (ลากเพื่อย้าย)`}).addTo(simLayer);
   s.marker.on("dragend",e=>{ const ll=e.target.getLatLng(); s.lat=+ll.lat.toFixed(6); s.lon=+ll.lng.toFixed(6); computeSim(s); drawSims(); renderSims(); });
   s.marker.bindPopup(()=>simPopup(s),{maxWidth:340});
   SIMS.push(s); computeSim(s); drawSims(); renderSims(); return s; }
@@ -1337,14 +1409,14 @@ function bandHTML(s,arr,r,isFirst){ const h=s.home, amps=new Set(arr.map(t=>t.p+
   const names=arr.map(t=>{ const other=!h||t.a!==h.a||t.p!==h.p; return `${t.dist===0?"<b>":""}ต.${esc(t.n)}${other?` <small>(อ.${esc(t.a)}${!h||t.p!==h.p?` จ.${esc(t.p)}`:""})</small>`:""}${t.dist===0?"</b>":""}`; }).join(", ");
   const warn=provs.size>1?`<span class="simw">ข้ามจังหวัด</span>`:amps.size>1?`<span class="simw">ข้ามอำเภอ</span>`:"";
   return `<div class="simb"><div><b>≤ ${r} km</b> · ${arr.length} ตำบล ${warn}</div><div class="simn">${names||"–"}</div></div>`; }
-function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>จุดจำลอง ${s.n} <span class="tag" style="color:${SIM_COL};border:1px solid ${SIM_COL};background:none">ไม่ใช่เคสจริง</span></h3><div class="loc">${esc(simLoc(s))}<br>${s.lat}, ${s.lon}</div>${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</div>`; }
-function simCaseHTML(s){ const Rmax=s.R[s.R.length-1];
+function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>จุดเกิดโรค ${s.n} <span class="tag" style="color:${SIM_COL};border:1px solid ${SIM_COL};background:none">ยังไม่บันทึกในระบบ</span></h3><div class="loc">${esc(simLoc(s))}<br>${s.lat}, ${s.lon}</div>${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</div>`; }
+function simCaseHTML(s){ if(RONLY) return ""; const Rmax=s.R[s.R.length-1];
   const near=s.nearest?`เคสจริงที่ใกล้ที่สุด <b>${s.nearest.d.toFixed(1)} km</b> · ผลแล็บ ${thd(s.nearest.c.dd)} · ต.${esc(s.nearest.c.tambon)} อ.${esc(s.nearest.c.amphoe)}`:"ไม่มีเคสผลบวกในไฟล์";
   return `<div class="simc">เคสผลบวกจริงในรัศมี ${Rmax} km: <b>${s.cases.length}</b> เคส (ทุกปีในไฟล์) · ใน${esc(simPeriod().label)} <b>${s.casesPer}</b> เคส<br>${near}</div>`; }
 function renderSims(){ const box=document.getElementById("simlist");
   document.getElementById("simtools").hidden=!SIMS.length;
   if(!SIMS.length){ box.innerHTML=""; return; }
-  let h=SIMS.map(s=>`<details class="simit" data-n="${s.n}" ${s.open?"open":""}><summary><span class="simdot"></span><b>จุดจำลอง ${s.n}</b> <small>${esc(simLoc(s))}</small></summary>
+  let h=SIMS.map(s=>`<details class="simit" data-n="${s.n}" ${s.open?"open":""}><summary><span class="simdot"></span><b>จุดเกิดโรค ${s.n}</b> <small>${esc(simLoc(s))}</small></summary>
     <div class="simll">${s.lat}, ${s.lon} <button type="button" data-z="${s.n}">ซูม</button><button type="button" data-d="${s.n}">ลบ</button></div>
     ${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</details>`).join("");
   if(SIMS.length>1){ const Rmax=simRadii().slice(-1)[0], cnt=new Map();
@@ -1359,24 +1431,25 @@ document.getElementById("simclick").addEventListener("click",()=>armSim(!SIM_ARM
 document.getElementById("simadd").addEventListener("click",()=>{ const p=parseLL(document.getElementById("simll").value);
   if(!p) return simMsg("อ่านพิกัดไม่ได้ ให้วางในรูปแบบ ละติจูด, ลองจิจูด เช่น 16.4362, 103.4968",true);
   if(!inTH(p)) return simMsg(`พิกัด ${p.lat}, ${p.lon} อยู่นอกประเทศไทย ตรวจว่าลำดับเป็น ละติจูด, ลองจิจูด`,true);
-  const s=addSim(p.lat,p.lon); document.getElementById("simll").value=""; simMsg(`ปักจุดจำลอง ${s.n} แล้ว · ${simLoc(s)}`); map.setView([s.lat,s.lon],Math.max(map.getZoom(),11)); });
+  const s=addSim(p.lat,p.lon); document.getElementById("simll").value=""; simMsg(`ปักจุดเกิดโรค ${s.n} แล้ว · ${simLoc(s)}`); map.setView([s.lat,s.lon],Math.max(map.getZoom(),11)); });
 document.getElementById("simll").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("simadd").click(); } });
 document.getElementById("simr").addEventListener("change",()=>{ document.getElementById("simr").value=simRadii().join(", "); SIMS.forEach(computeSim); drawSims(); renderSims(); });
 document.getElementById("simlist").addEventListener("toggle",e=>{ const d=e.target.closest&&e.target.closest("details[data-n]"); if(!d) return; const s=SIMS.find(x=>x.n===+d.dataset.n); if(s) s.open=d.open; },true);
 document.getElementById("simlist").addEventListener("click",e=>{ const z=e.target.closest("button[data-z]"), d=e.target.closest("button[data-d]");
   if(z){ const s=SIMS.find(x=>x.n===+z.dataset.z); map.fitBounds(L.latLng(s.lat,s.lon).toBounds(s.R[s.R.length-1]*2000),{padding:[30,30]}); setTimeout(()=>s.marker.openPopup(),400); }
   if(d){ const i=SIMS.findIndex(x=>x.n===+d.dataset.d); simLayer.removeLayer(SIMS[i].marker); SIMS.splice(i,1); drawSims(); renderSims(); simMsg(""); } });
-document.getElementById("simclear").addEventListener("click",()=>{ SIMS.forEach(s=>simLayer.removeLayer(s.marker)); SIMS=[]; SIM_N=0; drawSims(); renderSims(); simMsg("ล้างจุดจำลองแล้ว"); });
+document.getElementById("simclear").addEventListener("click",()=>{ SIMS.forEach(s=>simLayer.removeLayer(s.marker)); SIMS=[]; SIM_N=0; drawSims(); renderSims(); simMsg("ล้างจุดเกิดโรคแล้ว"); });
 document.getElementById("simx").addEventListener("click",()=>{ if(!SIMS.length) return; const wb=XLSX.utils.book_new();
-  const pts=SIMS.map(s=>({"จุดจำลอง":s.n,"ละติจูด":s.lat,"ลองจิจูด":s.lon,"ตำบลที่ตั้ง":s.home?s.home.n:"","อำเภอ":s.home?s.home.a:"","จังหวัด":s.home?s.home.p:"",
+  const pts=SIMS.map(s=>({"จุดเกิดโรค":s.n,"ละติจูด":s.lat,"ลองจิจูด":s.lon,"ตำบลที่ตั้ง":s.home?s.home.n:"","อำเภอ":s.home?s.home.a:"","จังหวัด":s.home?s.home.p:"",
     ...Object.fromEntries(s.R.map((r,i)=>[`จำนวนตำบล ≤${r} km`,s.bands[i].length])),[`เคสผลบวกจริง ≤${s.R[s.R.length-1]} km (ทุกปี)`]:s.cases.length,
     "เคสจริงใกล้สุด (km)":s.nearest?+s.nearest.d.toFixed(2):"","วันที่ผลแล็บเคสใกล้สุด":s.nearest?s.nearest.c.dd:""}));
-  const tams=[]; SIMS.forEach(s=>s.bands[s.bands.length-1].forEach(t=>{ const r=s.R.find(r=>t.dist<=r); tams.push({"จุดจำลอง":s.n,"อยู่ในรัศมี (km)":r,"ตำบล":t.n,"อำเภอ":t.a,"จังหวัด":t.p,"ระยะถึงเขตตำบล (km)":+t.dist.toFixed(2),"จุดอยู่ในตำบลนี้":t.dist===0?"ใช่":""}); }));
-  const cs=[]; SIMS.forEach(s=>s.cases.forEach(x=>cs.push({"จุดจำลอง":s.n,"ระยะ (km)":+x.d.toFixed(2),"วันที่ผลแล็บออก (ค.ศ.)":x.c.dd,"ชนิดสัตว์":x.c.species,"ตำบล":x.c.tambon,"อำเภอ":x.c.amphoe,"จังหวัด":x.c.pn,"เลขทะเบียนรับ":x.c.reg})));
+  const tams=[]; SIMS.forEach(s=>s.bands[s.bands.length-1].forEach(t=>{ const r=s.R.find(r=>t.dist<=r); tams.push({"จุดเกิดโรค":s.n,"อยู่ในรัศมี (km)":r,"ตำบล":t.n,"อำเภอ":t.a,"จังหวัด":t.p,"ระยะถึงเขตตำบล (km)":+t.dist.toFixed(2),"จุดอยู่ในตำบลนี้":t.dist===0?"ใช่":""}); }));
+  const cs=[]; SIMS.forEach(s=>s.cases.forEach(x=>cs.push({"จุดเกิดโรค":s.n,"ระยะ (km)":+x.d.toFixed(2),"วันที่ผลแล็บออก (ค.ศ.)":x.c.dd,"ชนิดสัตว์":x.c.species,"ตำบล":x.c.tambon,"อำเภอ":x.c.amphoe,"จังหวัด":x.c.pn,"เลขทะเบียนรับ":x.c.reg})));
   const add=(rows,name)=>{ const ws=XLSX.utils.json_to_sheet(rows.length?rows:[{"หมายเหตุ":"ไม่มีข้อมูล"}]); const ks=Object.keys(rows[0]||{"หมายเหตุ":1}); ws["!cols"]=ks.map(k=>({wch:Math.min(36,Math.max(8,k.length+2))})); XLSX.utils.book_append_sheet(wb,ws,name); };
-  add(pts,"จุดจำลอง"); add(tams,"ตำบลในรัศมี"); add(cs,"เคสจริงในรัศมี");
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER}`],["ส่งออกเมื่อ",nowTh()],["หมายเหตุ","จุดจำลองเป็นจุดสมมติที่ผู้ใช้ปักเอง ไม่ใช่เคสจริง และไม่ถูกบันทึกในระบบ"],["รัศมี",simRadii().join(", ")+" km (วัดระยะตรงจากจุด ถึงเขตตำบลที่ใกล้ที่สุด)"],["เคสจริง","นับจากเคสผลบวกที่มีพิกัด ในจังหวัดที่เลือก ทุกปีในไฟล์"]]),"คำอธิบาย");
-  XLSX.writeFile(wb,`RabiesGeoWatch_จุดจำลอง_${stampTag()}.xlsx`); });
+  if(RONLY) pts.forEach(p=>Object.keys(p).filter(k=>/เคส/.test(k)).forEach(k=>delete p[k]));
+  add(pts,"จุดเกิดโรค"); add(tams,"ตำบลในรัศมี"); if(!RONLY) add(cs,"เคสจริงในรัศมี");
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([["Rabies GeoWatch",`เวอร์ชัน ${APP_VER}`],["ส่งออกเมื่อ",nowTh()],["หมายเหตุ","จุดเกิดโรคที่ผู้ใช้ระบุเอง ยังไม่บันทึกในระบบ ThaiRabies Net"],["รัศมี",simRadii().join(", ")+" km (วัดระยะตรงจากจุด ถึงเขตตำบลที่ใกล้ที่สุด)"],["เคสจริง","นับจากเคสผลบวกที่มีพิกัด ในจังหวัดที่เลือก ทุกปีในไฟล์"]]),"คำอธิบาย");
+  XLSX.writeFile(wb,`RabiesGeoWatch_จุดเกิดโรค_${stampTag()}.xlsx`); });
 
 </script>
 </body></html>
