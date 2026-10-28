@@ -342,6 +342,7 @@ ul.notes{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .shead{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
 .shead.nologo{display:block}
 body.ronly .nr{display:none!important}
+[data-cat]{filter:grayscale(1) contrast(1.15)}
 .reg-label{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;background:#F26B00;color:#fff;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);opacity:.92}
 .reglbl{font-size:14px}.reglbl small{color:var(--muted)}
 .regchips{display:inline-flex;flex-wrap:wrap;gap:6px}
@@ -377,6 +378,12 @@ body.ronly .nr{display:none!important}
 .chip-y{display:inline-flex;align-items:center;gap:6px}
 @media (max-width:640px){.drops{grid-template-columns:1fr}}
 </style>
+<!-- Google Analytics: counts page views and button use only; no file names, case data or coordinates are sent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+if(location.protocol==="https:"){ /* only on the published site, never for local copies (file paths) */
+  const t=document.createElement("script"); t.async=true; t.src="https://www.googletagmanager.com/gtag/js?id=G-KJTXNGR7PR"; document.head.appendChild(t);
+  gtag("js",new Date()); gtag("config","G-KJTXNGR7PR",{page_location:location.origin+location.pathname,page_title:"Rabies GeoWatch"});
+} else { window.gtag=function(){}; }</script>
 </head><body>
 
 <div class="start" id="start">
@@ -414,12 +421,12 @@ body.ronly .nr{display:none!important}
       <li>ดูหลายจังหวัดพร้อมกัน (เช่น ระดับเขต): วางไฟล์ของทุกจังหวัดได้เลย แล้วเลือกจังหวัดหรือเขตที่จะแสดง</li>
       <li>ลากทั้งสองไฟล์มาวางในช่องด้านบน (วางพร้อมกันทั้งสองไฟล์ในช่องไหนก็ได้ ระบบแยกให้เอง)</li>
     </ol>
-    <div class="privacy">ไฟล์ถูกอ่านในเครื่องของคุณเท่านั้น ไม่มีการส่งข้อมูลไปที่ใด · ภาพดาวเทียมต้องต่ออินเทอร์เน็ต · ชื่อ-ที่อยู่เจ้าของสัตว์แสดงเฉพาะบนหน้าจอ ไม่อยู่ในรายงานและไฟล์ที่ส่งออก</div>
+    <div class="privacy">ไฟล์ถูกอ่านในเครื่องของคุณเท่านั้น ไฟล์ข้อมูลไม่ถูกส่งไปที่ใด · เว็บใช้ Google Analytics นับจำนวนผู้เข้าชมและการกดปุ่ม · ภาพดาวเทียมต้องต่ออินเทอร์เน็ต · ชื่อ-ที่อยู่เจ้าของสัตว์แสดงเฉพาะบนหน้าจอ ไม่อยู่ในรายงานและไฟล์ที่ส่งออก</div>
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
     <div class="manual"><b>คู่มือการใช้งาน</b><a href="https://drive.google.com/drive/folders/1l3qvckbtAbve4cqfWoEhhlMzn5pSp3Lz?usp=sharing" target="_blank" rel="noopener">📘 เปิดคู่มือการใช้งาน (Google Drive) ↗</a></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2 · อัปเดต 26 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2.1 · อัปเดต 28 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -497,7 +504,7 @@ body.ronly .nr{display:none!important}
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2 · อัปเดต 26 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.2.1 · อัปเดต 28 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -687,7 +694,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.2", APP_DATE="26 ต.ค. 2569";
+const APP_VER="1.2.1", APP_DATE="28 ต.ค. 2569";
 let RONLY=false,lazyL=null,REGL=null;
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
@@ -714,6 +721,8 @@ function startQuick(){
   setTimeout(()=>{ const el=document.getElementById("simcard"); if(el) el.scrollIntoView({block:"start"}); },200);
 }
 document.getElementById("quick").addEventListener("click",startQuick);
+const GA_EV={go:"show_map",quick:"radius_only_mode",exportdoc:"export_word",printmap:"print_map",openepi:"open_epi",xall:"export_excel_all",xpos:"export_excel_pos",dqx:"export_dq",simclick:"sim_click_mode",simadd:"sim_paste",simx:"export_sim",epng:"download_epi_png"};
+document.addEventListener("click",e=>{ const b=e.target.closest("button[id]"); if(!b||!GA_EV[b.id]||typeof gtag!=="function") return; try{ gtag("event",GA_EV[b.id],{mode:RONLY?"radius_only":"files"}); }catch(_){} },true);
 document.getElementById("reload").addEventListener("click",()=>{ document.getElementById("start").hidden=false; setStatus(); });
 
 function initMap(){
@@ -915,7 +924,7 @@ function tamList(arr,c){ return arr.map(h=>{ const other=h.p!==c.pn; const lab=`
 /* ---------- popup ---------- */
 function popup(c){
   const rows=a=>a.map(([k,x])=>`<tr><td>${k}</td><td>${esc(v(x))}</td></tr>`).join("");
-  let h=`<div class="pp"><h3><span>${c.emoji}</span>${esc(c.species)} ผลบวก · ผลแล็บ ${thd(c.dd)} <span class="tag" style="color:${c.yc};border:1px solid ${c.yc};background:none">${YL()} ${c.y+543}</span></h3>
+  let h=`<div class="pp"><h3><span${c.species==="แมว"?" data-cat":""}>${c.emoji}</span>${esc(c.species)} ผลบวก · ผลแล็บ ${thd(c.dd)} <span class="tag" style="color:${c.yc};border:1px solid ${c.yc};background:none">${YL()} ${c.y+543}</span></h3>
   <div class="loc">${esc(v(c.placeRaw||c.place))}${c.moo?` ม.${esc(c.moo)}`:""} ต.${esc(c.tambon)} อ.${esc(c.amphoe)} จ.${esc(c.pn)}${c===LATEST?"<br><b>เคสล่าสุดตามตัวกรอง</b>":""}</div>
   <table>${rows([...(c.owner||c.ownerAddr?[["เจ้าของสัตว์",c.owner||"–"],["ที่อยู่เจ้าของ",c.ownerAddr||"–"]]:[]),["เลขทะเบียนรับ / ตัวอย่าง",`${c.reg||"–"} / ${c.sample||"–"}`],["วันที่ผลแล็บออก",`${thd(c.dd)}${c.ddSrc==="วันที่แจ้งผล"?"":` (${c.ddSrc})`}`],["วันรับตัวอย่าง",thd(c.date)],...(c.bad.length?[["⚠ วันที่ผิดปกติ (ไม่นำมาใช้)",esc(c.bad.join(", "))+" — อยู่ในอนาคตหรือก่อนปี 2543 น่าจะบันทึกผิด"]]:[]),["วันตาย",c.death?`${thd(c.death)} (${c.deathSrc})`:"ไม่ทราบ"],
     ["ห้องปฏิบัติการ (วิธี)",`${v(c.lab)} (${v(c.method)})`],["เพศ / พันธุ์ / สี",`${v(c.sex)} / ${v(c.breed)} / ${v(c.color)}`],["อายุ",c.age||"ไม่ทราบ"],
@@ -940,7 +949,7 @@ function popup(c){
 function icon(c,dx,lvl,compact){
   const lift=14+lvl*(compact?24:27), lt=c===LATEST;
   const stem = dx||lvl ? `<svg class="lead" width="1" height="1" style="overflow:visible;position:absolute;left:0;top:0"><line x1="0" y1="0" x2="${dx}" y2="${-lift+2}" stroke="currentColor" stroke-width="1.3"/></svg>` : `<div class="stem" style="height:${lift-4}px"></div>`;
-  const html=`<div class="pin${lt?" lt":""}" style="--yc:${c.yc}">${lt?'<div class="halo"></div><div class="halo h2"></div>':""}${stem}<div class="lab" style="bottom:${lift}px;left:${dx}px"><span class="e">${c.emoji}</span>${compact&&!lt?"":`<span class="t">${thd(c.dd)}</span>`}${lt?'<span class="nw">ล่าสุด</span>':""}</div><div class="dot"></div></div>`;
+  const html=`<div class="pin${lt?" lt":""}" style="--yc:${c.yc}">${lt?'<div class="halo"></div><div class="halo h2"></div>':""}${stem}<div class="lab" style="bottom:${lift}px;left:${dx}px"><span${c.species==="แมว"?" data-cat":""} class="e">${c.emoji}</span>${compact&&!lt?"":`<span class="t">${thd(c.dd)}</span>`}${lt?'<span class="nw">ล่าสุด</span>':""}</div><div class="dot"></div></div>`;
   return L.divIcon({className:"",html,iconSize:[0,0]});
 }
 function layout(S){
@@ -994,7 +1003,7 @@ function render(fit){
   if(LATEST){ const c=LATEST, days=Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5);
     const scope=ft.value?`ต.${ft.value.split("|")[2]}`:fa.value?`อ.${fa.value.split("|")[1]}`:fp.value?`จ.${PN[fp.value]}`:MULTI?`${PROVS.size} จังหวัดที่เลือก`:`จ.${PN[[...PROVS][0]]}`;
     lb.hidden=false; lb.dataset.i=c.i;
-    lb.innerHTML=`<span class="big">${c.emoji}</span><span class="k">${fc.value?"เคสที่เลือก":"เคสล่าสุดใน "+esc(scope)}</span><span class="w">ผลแล็บ ${thd(c.dd)} · ${esc(v(c.place))}${c.moo?" ม."+esc(c.moo):""}</span><span class="s">ต.${esc(c.tambon)} อ.${esc(c.amphoe)} · ${esc(c.species)} · ผ่านมา ${days} วัน · กดเพื่อดูบนแผนที่</span>`;
+    lb.innerHTML=`<span${c.species==="แมว"?" data-cat":""} class="big">${c.emoji}</span><span class="k">${fc.value?"เคสที่เลือก":"เคสล่าสุดใน "+esc(scope)}</span><span class="w">ผลแล็บ ${thd(c.dd)} · ${esc(v(c.place))}${c.moo?" ม."+esc(c.moo):""}</span><span class="s">ต.${esc(c.tambon)} อ.${esc(c.amphoe)} · ${esc(c.species)} · ผ่านมา ${days} วัน · กดเพื่อดูบนแผนที่</span>`;
   } else lb.hidden=true;
   const ysel=checkedYears(); document.querySelectorAll("#plegend button").forEach(b=>{ const s=b.querySelector("small"); if(s) s.textContent=POS.filter(c=>c.pc===b.dataset.pc&&ysel.has(c.y)).length; });
   const pb=document.getElementById("plat");
@@ -1002,7 +1011,7 @@ function render(fit){
     const rows=[...PROVS].map(pc=>({pc,c:[...ALL].filter(x=>x.pc===pc).sort((a,b)=>b.dd.localeCompare(a.dd))[0]}))
       .sort((a,b)=>(b.c?b.c.dd:"").localeCompare(a.c?a.c.dd:"")||PN[a.pc].localeCompare(PN[b.pc],"th"));
     pb.hidden=false;
-    pb.innerHTML=`<h4>เคสล่าสุดรายจังหวัด (กดเพื่อไปที่เคส)</h4>`+rows.map(({pc,c})=>c?`<button type="button" data-i="${c.i}" style="--pc:${PCOL[pc]}"><i></i><b>จ.${esc(PN[pc])}</b><span>${c.emoji}</span><span class="dt">${thd(c.dd)}</span><small>ต.${esc(c.tambon)} อ.${esc(c.amphoe)} · ${esc(c.species)} · ผ่านมา ${Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5)} วัน</small></button>`
+    pb.innerHTML=`<h4>เคสล่าสุดรายจังหวัด (กดเพื่อไปที่เคส)</h4>`+rows.map(({pc,c})=>c?`<button type="button" data-i="${c.i}" style="--pc:${PCOL[pc]}"><i></i><b>จ.${esc(PN[pc])}</b><span${c.species==="แมว"?" data-cat":""}>${c.emoji}</span><span class="dt">${thd(c.dd)}</span><small>ต.${esc(c.tambon)} อ.${esc(c.amphoe)} · ${esc(c.species)} · ผ่านมา ${Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5)} วัน</small></button>`
       :`<button type="button" disabled style="--pc:${PCOL[pc]}"><i></i><b>จ.${esc(PN[pc])}</b><span></span><span>–</span><small>ไม่มีเคสผลบวกตามปีที่เลือก</small></button>`).join("");
   } else pb.hidden=true;
   /* stats: latest fiscal year (main) + whole file (dropdown); follow province/amphoe/tambon filters only */
@@ -1026,7 +1035,7 @@ function render(fit){
   document.getElementById("viscount").textContent=`แสดง ${S.length} จาก ${ALL.length} เคส`;
   document.getElementById("list").innerHTML=L2.length?L2.map(c=>{const off=HIDDEN.has(c.key); return `<div class="case${c===LATEST?" lt":""}${off?" off":""}" data-i="${c.i}" role="button" tabindex="0">
     <input type="checkbox" class="vis" ${off?"":"checked"} aria-label="แสดงเคส ${thd(c.dd)} ต.${esc(c.tambon)} บนแผนที่">
-    <span class="ic">${c.emoji}</span><span class="d" style="color:${c.yc};font-weight:600">${thd(c.dd)}</span>
+    <span${c.species==="แมว"?" data-cat":""} class="ic">${c.emoji}</span><span class="d" style="color:${c.yc};font-weight:600">${thd(c.dd)}</span>
     <span class="p">ต.${esc(c.tambon)} อ.${esc(c.amphoe)}${MULTI?` จ.${esc(c.pn)}`:""}${c.mismatch?' <span style="color:var(--r1)" title="จุดพิกัดตกนอกตำบลที่บันทึก">⚠</span>':""}<small>${esc(v(c.place))}${c.moo?` ม.${esc(c.moo)}`:""}</small></span>
     <span style="display:flex;flex-direction:column;gap:3px;align-items:flex-end">${c.inv?`<span class="tag">${c.bitten?c.bitten+" คนถูกกัด":"สอบสวนแล้ว"}</span>`:`<span class="tag no">${files.inv.length?"ไม่มีสอบสวน":"–"}</span>`}</span></div>`;}).join("")
     :`<div class="note" style="padding:12px 4px">ไม่มีเคสผลบวกตามตัวกรองนี้</div>`;
