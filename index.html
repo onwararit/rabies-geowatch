@@ -224,8 +224,9 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .simctl button+button{border-top:1px solid #ccc}
 .simctl button.mon{background:#F59E0B}
 #map.measuring{cursor:crosshair}
-.mlabel{position:absolute;transform:translate(10px,-50%);white-space:nowrap;background:#1f2937;color:#fff;font:600 12px/1.2 var(--sans);padding:3px 7px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.mlabel.tot{background:#F59E0B;color:#111}
+.mlabel{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;background:#1f2937;color:#fff;font:600 12px/1.2 var(--sans);padding:3px 7px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.mlabel.tot{background:#F59E0B;color:#111;border:1.5px solid #fff}
+.mlabel.end{transform:translate(10px,-50%);background:#1f2937;color:#fff}
 .mdot{position:absolute;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#F59E0B;border:2px solid #fff;box-shadow:0 0 0 1px #111}
 .mhint{position:absolute;z-index:800;left:56px;top:10px;background:#1f2937;color:#fff;font:13px/1.4 var(--sans);padding:6px 10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.3);max-width:330px}
 .mhint button{font:inherit;font-size:12px;margin-left:6px;padding:1px 8px;border-radius:6px;border:0;cursor:pointer}
@@ -321,6 +322,8 @@ body.printing .printhdr{display:block;width:1060px;padding:0 0 6px;color:#1d2421
 .sth small{font-weight:400;color:var(--muted)}
 .stall summary{cursor:pointer;font-size:12.5px;color:var(--muted);width:max-content}
 .stall .stats{margin-top:4px}
+.stat.wide{grid-column:1/-1;display:flex;align-items:baseline;gap:10px}
+.stat.wide b{display:inline}
 .sth2{font-size:12px;font-weight:700;margin-top:8px}
 .sth2 small{font-weight:400;color:var(--muted)}
 .stall .stat{background:transparent;border:1px dashed var(--line)}
@@ -1070,7 +1073,8 @@ function render(fit){
   const FY=latestFY(), LF=LOC.filter(c=>fyOf(c.dd)===FY), LP=LOC.filter(c=>fyOf(c.dd)===FY-1);
   const stat=A=>{ const sum=k=>A.reduce((t,c)=>t+(Number(c[k])||0),0);
     return [[A.length,"เคสผลบวก"],MULTI&&!fp.value?[new Set(A.map(c=>c.pc)).size,"จังหวัด"]:[new Set(A.map(c=>c.ak)).size,"อำเภอ"],[files.inv.length?sum("bitten"):"–","คนถูกกัด"],[files.inv.length?sum("saliva"):"–","คนสัมผัสน้ำลาย"]]
-      .map(([n,l])=>`<div class="stat"><b>${typeof n==="number"?n.toLocaleString():n}</b><span>${l}</span></div>`).join(""); };
+      .map(([n,l])=>`<div class="stat"><b>${typeof n==="number"?n.toLocaleString():n}</b><span>${l}</span></div>`).join("")
+      +(files.inv.length?`<div class="stat wide"><b>${(sum("abit_dog")+sum("abit_cat")).toLocaleString()}</b><span>สัตว์ถูกกัด (สุนัข ${sum("abit_dog").toLocaleString()} · แมว ${sum("abit_cat").toLocaleString()})</span></div>`:`<div class="stat wide"><b>–</b><span>สัตว์ถูกกัด (ต้องวางไฟล์สอบสวนโรค)</span></div>`); };
   const be=y=>String(y+543).slice(-2);
   document.getElementById("sth").textContent=`(1 ต.ค. ${be(FY-1)} – 30 ก.ย. ${be(FY)})`;
   document.getElementById("stats").innerHTML=stat(LF);
@@ -1474,7 +1478,11 @@ function bandHTML(s,arr,r,isFirst){ const h=s.home, amps=new Set(arr.map(t=>t.p+
   const names=arr.map(t=>{ const other=!h||t.a!==h.a||t.p!==h.p; return `${t.dist===0?"<b>":""}ต.${esc(t.n)}${other?` <small>(อ.${esc(t.a)}${!h||t.p!==h.p?` จ.${esc(t.p)}`:""})</small>`:""}${t.dist===0?"</b>":""}`; }).join(", ");
   const warn=provs.size>1?`<span class="simw">ข้ามจังหวัด</span>`:amps.size>1?`<span class="simw">ข้ามอำเภอ</span>`:"";
   return `<div class="simb"><div><b>≤ ${r} km</b> · ${arr.length} ตำบล ${warn}</div><div class="simn">${names||"–"}</div></div>`; }
-function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>จุดเกิดโรค ${s.n} <span class="tag" style="color:${SIM_COL};border:1px solid ${SIM_COL};background:none">ยังไม่บันทึกในระบบ</span></h3><div class="loc">${esc(simLoc(s))}<br>${s.lat}, ${s.lon}</div>${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simCaseHTML(s)}</div>`; }
+function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>จุดเกิดโรค ${s.n} <span class="tag" style="color:${SIM_COL};border:1px solid ${SIM_COL};background:none">ยังไม่บันทึกในระบบ</span></h3><div class="loc">${esc(simLoc(s))}<br>${s.lat}, ${s.lon}</div>${s.R.map((r,i)=>bandHTML(s,s.bands[i],r)).join("")}${simVillHTML(s)}${simCaseHTML(s)}</div>`; }
+function simVillHTML(s){ if(!Object.keys(VILL).length) return ""; const Rmax=s.R[s.R.length-1], pad=Rmax/100+.01, me={lat:+s.lat,lon:+s.lon}, home=s.home&&s.home.n;
+  const all=villOf(Object.keys(VILL)).filter(v=>Math.abs(v[0]-me.lat)<pad&&Math.abs(v[1]-me.lon)<pad*1.05).map(v=>({v,d:km(me,{lat:v[0],lon:v[1]})})).filter(x=>x.d<=Rmax).sort((a,b)=>a.d-b.d);
+  const MAX=80, nm=v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==home?` <small>(ต.${esc(v[4])})</small>`:""}`;
+  return `<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${s.R.map(r=>{ const a=all.filter(x=>x.d<=r).map(x=>x.v); return `<tr><td>≤${r} km<br><small>${a.length} หมู่บ้าน</small></td><td>${a.slice(0,MAX).map(nm).join(", ")||"–"}${a.length>MAX?` <small>…และอีก ${a.length-MAX} หมู่บ้าน</small>`:""}</td></tr>`; }).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">จุดหมู่บ้าน: กรมการปกครอง (9 มิถุนายน 2568)</div>`; }
 function simCaseHTML(s){ if(RONLY) return ""; const Rmax=s.R[s.R.length-1];
   const near=s.nearest?`เคสจริงที่ใกล้ที่สุด <b>${s.nearest.d.toFixed(1)} km</b> · ผลแล็บ ${thd(s.nearest.c.dd)} · ต.${esc(s.nearest.c.tambon)} อ.${esc(s.nearest.c.amphoe)}`:"ไม่มีเคสผลบวกในไฟล์";
   return `<div class="simc">เคสผลบวกจริงในรัศมี ${Rmax} km: <b>${s.cases.length}</b> เคส (ทุกปีในไฟล์) · ใน${esc(simPeriod().label)} <b>${s.casesPer}</b> เคส<br>${near}</div>`; }
@@ -1521,7 +1529,10 @@ function measHint(){ let h=document.getElementById("mhint"); if(!MEAS.on){ if(h)
   const tot=MEAS.pts.reduce((a,p,i)=>i?a+map.distance(MEAS.pts[i-1],p):0,0);
   h.innerHTML=(MEAS.pts.length<2?"📏 คลิกจุดเริ่มต้น แล้วคลิกจุดถัดไปบนแผนที่":`📏 ระยะรวม <b>${fmtD(tot)}</b> · คลิกต่อเพื่อเพิ่มจุด`)+`<br><button type="button" data-m="undo">ย้อนจุดล่าสุด</button><button type="button" data-m="done">เสร็จ</button>`; }
 function measDraw(){ measLayer.clearLayers(); const P=MEAS.pts; if(P.length>1) L.polyline(P,{color:"#F59E0B",weight:3,dashArray:"6 5",interactive:false}).addTo(measLayer);
-  let acc=0; P.forEach((p,i)=>{ if(i) acc+=map.distance(P[i-1],p); L.marker(p,{interactive:false,keyboard:false,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="mdot"></div>${i?`<div class="mlabel${i===P.length-1?" tot":""}">${fmtD(acc)}</div>`:""}`})}).addTo(measLayer); }); measHint(); }
+  P.forEach((p,i)=>{ L.marker(p,{interactive:false,keyboard:false,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="mdot"></div>`})}).addTo(measLayer);
+    if(i){ const a=P[i-1], m=L.latLng((a.lat+p.lat)/2,(a.lng+p.lng)/2); L.marker(m,{interactive:false,keyboard:false,zIndexOffset:1000,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="mlabel tot">${fmtD(map.distance(a,p))}</div>`})}).addTo(measLayer); } });
+  if(P.length>2){ let t=0; P.forEach((p,i)=>{ if(i) t+=map.distance(P[i-1],p); }); L.marker(P[P.length-1],{interactive:false,keyboard:false,zIndexOffset:1000,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="mlabel end">รวม ${fmtD(t)}</div>`})}).addTo(measLayer); }
+  measHint(); }
 function measAdd(ll){ MEAS.pts.push(ll); measDraw(); }
 function measToggle(on){ on=on===undefined?!MEAS.on:on; if(on&&SIM_ARM) armSim(false); if(on&&RK_ARM) rkArm(false); MEAS.on=on; if(on){ MEAS.pts=[]; measDraw(); map.doubleClickZoom.disable(); } else { map.doubleClickZoom.enable(); if(MEAS.pts.length<2){ measLayer.clearLayers(); } }
   map.getContainer().classList.toggle("measuring",on); const b=document.getElementById("measbtn"); if(b) b.classList.toggle("mon",on); measHint(); }
