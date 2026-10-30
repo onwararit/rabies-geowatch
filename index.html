@@ -220,6 +220,30 @@ select{font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);
 .simpin span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11.5px;font-weight:700;font-family:var(--sans)}
 .simctl button{width:34px;height:34px;border:0;background:var(--panel);font-size:17px;cursor:pointer;display:block}
 .simctl button.on{background:#0A7CFF}
+.credit .dsrc{font-size:11.5px;color:var(--muted);margin:8px 0;line-height:1.5}
+.simctl button+button{border-top:1px solid #ccc}
+.simctl button.mon{background:#F59E0B}
+#map.measuring{cursor:crosshair}
+.mlabel{position:absolute;transform:translate(10px,-50%);white-space:nowrap;background:#1f2937;color:#fff;font:600 12px/1.2 var(--sans);padding:3px 7px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.mlabel.tot{background:#F59E0B;color:#111}
+.mdot{position:absolute;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#F59E0B;border:2px solid #fff;box-shadow:0 0 0 1px #111}
+.mhint{position:absolute;z-index:800;left:56px;top:10px;background:#1f2937;color:#fff;font:13px/1.4 var(--sans);padding:6px 10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.3);max-width:330px}
+.mhint button{font:inherit;font-size:12px;margin-left:6px;padding:1px 8px;border-radius:6px;border:0;cursor:pointer}
+body.printing .mhint{display:none}
+@media print{.mhint{display:none!important}}
+details.grp.riskd>summary{list-style:none;cursor:pointer;margin:0 -12px;padding:9px 12px;border-radius:11px;border-left:5px solid var(--sc);background:color-mix(in srgb,var(--sc) 13%,var(--panel));font-size:14px;font-weight:700;color:var(--ink)}
+details.grp.riskd>summary::-webkit-details-marker{display:none}
+details.grp.riskd>summary::after{content:"▸";float:right;color:var(--muted)}
+details.grp.riskd[open]>summary{border-radius:11px 11px 0 0;margin-bottom:10px}
+details.grp.riskd[open]>summary::after{content:"▾"}
+details.grp.riskd:not([open]){padding-bottom:0}
+.rkrow{display:grid;grid-template-columns:1fr 1fr 74px 24px;gap:4px;margin-bottom:6px;align-items:center}
+.rkrow input,.rkrow select{font:inherit;font-size:12.5px;min-width:0;width:100%;padding:5px 6px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--ink);box-sizing:border-box}
+.rkrow input.bad{border-color:#d93025;background:color-mix(in srgb,#d93025 8%,var(--panel))}
+.rkrow .rkx{border:0;background:none;color:var(--muted);cursor:pointer;font-size:15px;padding:0}
+.rkhead{display:grid;grid-template-columns:1fr 1fr 74px 24px;gap:4px;font-size:11.5px;color:var(--muted);margin-bottom:3px}
+.rkpin{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#fff;border:2.5px solid #7c3aed;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.rklab{position:absolute;transform:translate(18px,-50%);white-space:nowrap;background:rgba(255,255,255,.92);color:#3b1d72;border:1px solid #c4b5fd;font:600 11.5px/1.2 var(--sans);padding:2px 6px;border-radius:5px}
 .simarm,.simarm .leaflet-interactive{cursor:crosshair!important}
 .simarm .leaflet-marker-icon,.simarm .leaflet-tooltip{pointer-events:none!important}
 body.printing .simctl{display:none}
@@ -429,7 +453,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
     <div class="manual"><b>คู่มือการใช้งาน</b><a href="https://drive.google.com/drive/folders/1l3qvckbtAbve4cqfWoEhhlMzn5pSp3Lz?usp=sharing" target="_blank" rel="noopener">📘 เปิดคู่มือการใช้งาน (Google Drive) ↗</a></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.3 · อัปเดต 29 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.4 · อัปเดต 30 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -503,12 +527,20 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
       <div id="simlist"></div>
       <div class="simrow" id="simtools" hidden><button type="button" class="btn sm sec" id="simx">ส่งออก Excel</button><button type="button" class="btn sm sec" id="simclear">ล้างจุดเกิดโรคทั้งหมด</button></div>
     </div>
+    <details class="grp riskd" style="--sc:#7c3aed" id="riskcard"><summary>📍 เพิ่มจุดเสี่ยงด้วยตนเอง</summary>
+      <div class="lhint">เช่น จุดสัตว์จรรวมตัว จุดทิ้งขยะ ตลาด วัด · คลิกวางบนแผนที่ หรือวางพิกัดจาก Google Maps แล้วตั้งชื่อและเลือกไอคอน · ลากหมุดเพื่อย้ายได้</div>
+      <div class="simrow"><button type="button" class="btn sm simbtn" id="rkclick" aria-pressed="false">📌 คลิกบนแผนที่เพื่อวางจุดเสี่ยง</button></div>
+      <div class="rkhead"><span>พิกัด (lat, lon)</span><span>ชื่อจุด</span><span>ไอคอน</span><span></span></div>
+      <div id="rkrows"></div>
+      <div class="simrow"><button type="button" class="btn sm sec" id="rkadd">+ เพิ่มบรรทัด</button><button type="button" class="btn sm sec" id="rkzoom">ซูมไปที่จุดเสี่ยง</button><button type="button" class="btn sm sec" id="rkclear">ล้างทั้งหมด</button></div>
+      <div class="simmsg" id="rkmsg"></div>
+    </details>
     <div class="note nr" id="notes"></div>
     <details class="dq nr" id="dq"><summary id="dqs">🔎 ตรวจคุณภาพข้อมูล</summary><div id="dqb"></div></details>
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="ver">Rabies GeoWatch เวอร์ชัน 1.3 · อัปเดต 29 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.4 · อัปเดต 30 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -702,7 +734,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.3", APP_DATE="29 ต.ค. 2569";
+const APP_VER="1.4", APP_DATE="30 ต.ค. 2569";
 let RONLY=false,lazyL=null,REGL=null,VL=null,VPTS=[],VLAB=null,VR=null;
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
@@ -735,7 +767,7 @@ document.getElementById("reload").addEventListener("click",()=>{ document.getEle
 
 function initMap(){
   map=L.map("map",{zoomSnap:0.25});
-  map.attributionControl.setPrefix(false).addAttribution("ขอบเขต: Province/District/Subdistrict_77PGeo · ข้อมูล: ThaiRabies Net");
+  map.attributionControl.setPrefix(false).addAttribution("ขอบเขต: Province/District/Subdistrict_77PGeo · ข้อมูล: ThaiRabies Net · จุดหมู่บ้าน: กรมการปกครอง (9 มิ.ย. 2568)");
   L.control.scale({imperial:false,position:"bottomleft"}).addTo(map);
   map.createPane("labels").style.zIndex=450;
   satLayer=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,maxNativeZoom:18,attribution:"ภาพดาวเทียม © Esri, Maxar, Earthstar Geographics"});
@@ -797,8 +829,9 @@ function initMap(){
   rings={5:L.layerGroup().addTo(map),3:L.layerGroup().addTo(map),1:L.layerGroup().addTo(map)};
   negLayer=L.layerGroup().addTo(map); markers=L.layerGroup().addTo(map); tamSel=L.layerGroup().addTo(map);
   simRings=L.layerGroup().addTo(map); simLayer=L.layerGroup().addTo(map); SIMS=[]; SIM_N=0; SIM_ARM=false;
-  map.on("click",e=>{ if(!SIM_ARM) return; const s=addSim(e.latlng.lat,e.latlng.lng); armSim(false); simMsg(`ปักจุดเกิดโรค ${s.n} แล้ว · ${simLoc(s)} · ลากหมุดเพื่อย้ายได้`); setTimeout(()=>s.marker.openPopup(),150); });
-  const SimCtl=L.Control.extend({options:{position:"topleft"},onAdd(){ const d=L.DomUtil.create("div","leaflet-bar simctl"); d.innerHTML='<button type="button" id="simmapbtn" title="ระบุจุดเกิดโรคด้วยตนเอง: คลิกแล้วคลิกบนแผนที่" aria-label="ระบุจุดเกิดโรค">🎯</button>'; L.DomEvent.disableClickPropagation(d); d.querySelector("button").addEventListener("click",()=>{ armSim(!SIM_ARM); const c=document.getElementById("simcard"); c.classList.remove("closed"); }); return d; }});
+  riskLayer=L.layerGroup().addTo(map); drawRisks(); rkArm(false); measLayer=L.layerGroup().addTo(map); MEAS={on:false,pts:[]};
+  map.on("click",e=>{ if(MEAS.on){ measAdd(e.latlng); return; } if(RK_ARM){ rkPlace(e.latlng); return; } if(!SIM_ARM) return; const s=addSim(e.latlng.lat,e.latlng.lng); armSim(false); simMsg(`ปักจุดเกิดโรค ${s.n} แล้ว · ${simLoc(s)} · ลากหมุดเพื่อย้ายได้`); setTimeout(()=>s.marker.openPopup(),150); });
+  const SimCtl=L.Control.extend({options:{position:"topleft"},onAdd(){ const d=L.DomUtil.create("div","leaflet-bar simctl"); d.innerHTML='<button type="button" id="simmapbtn" title="ระบุจุดเกิดโรคด้วยตนเอง: คลิกแล้วคลิกบนแผนที่" aria-label="ระบุจุดเกิดโรค">🎯</button><button type="button" id="measbtn" title="วัดระยะทาง: คลิกจุดเริ่ม แล้วคลิกจุดถัดไป" aria-label="วัดระยะทาง">📏</button>'; L.DomEvent.disableClickPropagation(d); d.querySelector("#measbtn").addEventListener("click",()=>measToggle()); d.querySelector("#simmapbtn").addEventListener("click",()=>{ if(MEAS.on) measToggle(false); armSim(!SIM_ARM); const c=document.getElementById("simcard"); c.classList.remove("closed"); }); return d; }});
   new SimCtl().addTo(map);
   GEO.P.filter(p=>PROVS.has(p.c)&&p.l).forEach(p=>L.marker([p.l[1],p.l[0]],{pane:"labels",interactive:false,keyboard:false,icon:L.divIcon({className:"",html:`<div class="prov-label" data-pc="${p.c}" style="--pc:${PCOL[p.c]}">จ.${esc(p.n)}</div>`,iconSize:[0,0]})}).addTo(ampLabels));
   const b=L.geoJSON(PG.filter(f=>PROVS.has(f.properties.c))).getBounds();
@@ -951,7 +984,7 @@ function popup(c){
   else h+=`<div class="sec" style="color:var(--r1)">${files.inv.length?"ไม่พบรายงานสอบสวนโรคของเคสนี้":"ไม่ได้ใส่ไฟล์สอบสวนโรค"}</div>`;
   h+=`<div class="sec">ผลบวกอื่นในรัศมี (ทุกปีในไฟล์)</div><div class="near"><span><b>${c.near[0]}</b>≤1 km</span><span><b>${c.near[1]}</b>≤3 km</span><span><b>${c.near[2]}</b>≤5 km</span></div>`;
   const vin=ringVillages(c);
-  if(vin) h+=`<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${vin[k].length} หมู่บ้าน</small></td><td>${vin[k].map(v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==c.tambon?` <small>(ต.${esc(v[4])})</small>`:""}`).join(", ")||"–"}</td></tr>`).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">${c.pc==="10"?"จุดหมู่บ้าน: TH_VILLAGE2012 (ข้อมูลปี 2555)":"จุดหมู่บ้าน: ข้อมูลที่ตั้งหมู่บ้าน กรมการปกครอง"}</div>`;
+  if(vin) h+=`<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${vin[k].length} หมู่บ้าน</small></td><td>${vin[k].map(v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==c.tambon?` <small>(ต.${esc(v[4])})</small>`:""}`).join(", ")||"–"}</td></tr>`).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">${c.pc==="10"?"จุดหมู่บ้าน: TH_VILLAGE2012 (ข้อมูลปี 2555)":"จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568)"}</div>`;
   const rt=ringTambons(c);
   h+=`<div class="sec">ตำบลที่อยู่ในรัศมี (นับตำบลที่วงรัศมีแตะถึง)</div><table class="rt">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${rt[k].length} ตำบล</small></td><td>${tamList(rt[k],c)||"–"}</td></tr>`).join("")}</table>`;
   if(c.prior5.length) h+=`<div class="loc" style="margin-top:6px">เคสก่อนหน้าใน 5 km: ${c.prior5.slice(-8).map(o=>`${thd(o.dd)} (${km(c,o).toFixed(1)} km)`).join(", ")}${c.prior5.length>8?` และอีก ${c.prior5.length-8} เคส`:""}</div>`;
@@ -1456,7 +1489,44 @@ function renderSims(){ const box=document.getElementById("simlist");
     const all=[...cnt.values()], ov=all.filter(x=>x.n>1);
     h+=`<div class="simsum"><b>รวม ${SIMS.length} จุด</b> · ตำบลในรัศมี ${Rmax} km รวม <b>${all.length}</b> ตำบล · อยู่ในรัศมีของมากกว่า 1 จุด <b>${ov.length}</b> ตำบล${ov.length?`<div class="simn">${ov.map(x=>`ต.${esc(x.t.n)} <small>(อ.${esc(x.t.a)})</small> ×${x.n}`).join(", ")}</div>`:""}</div>`; }
   box.innerHTML=h; }
-function armSim(on){ SIM_ARM=on; const b=document.getElementById("simclick"); b.setAttribute("aria-pressed",String(on)); b.classList.toggle("on",on);
+let riskLayer=null, measLayer=null, MEAS={on:false,pts:[]};
+const RK_ICONS=[["🐕","สัตว์จรรวมตัว"],["🗑️","จุดทิ้งขยะ"],["🏪","ตลาด"],["🛕","วัด"],["🏫","โรงเรียน"],["🏥","สถานพยาบาล"],["🏠","ชุมชน/บ้าน"],["🐄","ฟาร์ม/คอกสัตว์"],["⚠️","อื่น ๆ"]];
+let RK_ARM=false;
+function rkArm(on){ if(on){ if(SIM_ARM) armSim(false); if(MEAS.on) measToggle(false); } RK_ARM=on; const b=document.getElementById("rkclick"); b.setAttribute("aria-pressed",String(on)); b.classList.toggle("on",on);
+  b.textContent=on?"คลิกบนแผนที่ 1 ครั้งเพื่อวางจุด… (กดอีกครั้งเพื่อยกเลิก)":"📌 คลิกบนแผนที่เพื่อวางจุดเสี่ยง"; if(map) map.getContainer().classList.toggle("simarm",on); }
+function rkPlace(ll){ let i=RISKS.findIndex(r=>!r.ll.trim()); if(i<0){ RISKS.push({ll:"",lab:"",ic:0}); i=RISKS.length-1; }
+  RISKS[i].ll=`${ll.lat.toFixed(5)}, ${ll.lng.toFixed(5)}`; rkArm(false); rkRows(); rkUpd(); clearTimeout(rkT); drawRisks();
+  const m=document.getElementById("rkmsg"); m.textContent=`วางจุดในบรรทัดที่ ${i+1} แล้ว · พิมพ์ชื่อและเลือกไอคอนได้เลย`; m.className="simmsg";
+  const el=document.querySelector(`.rkrow[data-i="${i}"] input[data-f="lab"]`); if(el) el.focus({preventScroll:false}); }
+let RISKS=[]; try{ RISKS=JSON.parse(localStorage.getItem("rgw_risks")||"[]"); }catch(e){ RISKS=[]; }
+if(!Array.isArray(RISKS)) RISKS=[]; while(RISKS.length<5) RISKS.push({ll:"",lab:"",ic:0});
+function rkSave(){ try{ localStorage.setItem("rgw_risks",JSON.stringify(RISKS)); }catch(e){} }
+function rkRows(){ document.getElementById("rkrows").innerHTML=RISKS.map((r,i)=>`<div class="rkrow" data-i="${i}"><input type="text" data-f="ll" value="${esc(r.ll)}" placeholder="16.4362, 103.4968" aria-label="พิกัดจุดเสี่ยง ${i+1}"><input type="text" data-f="lab" value="${esc(r.lab)}" placeholder="เช่น ตลาดสด" aria-label="ชื่อจุดเสี่ยง ${i+1}"><select data-f="ic" aria-label="ไอคอนจุดเสี่ยง ${i+1}">${RK_ICONS.map((x,k)=>`<option value="${k}" ${k===r.ic?"selected":""}>${x[0]} ${x[1]}</option>`).join("")}</select><button type="button" class="rkx" data-x="${i}" title="ลบบรรทัดนี้" aria-label="ลบบรรทัด ${i+1}">✕</button></div>`).join(""); rkCheck(); }
+function rkPts(){ return RISKS.map((r,i)=>({r,i,p:r.ll.trim()?parseLL(r.ll):null})); }
+function rkCheck(){ let ok=0,bad=0; rkPts().forEach(({r,i,p})=>{ const el=document.querySelector(`.rkrow[data-i="${i}"] input[data-f="ll"]`); const b=!!r.ll.trim()&&!p; if(el) el.classList.toggle("bad",b); if(p) ok++; if(b) bad++; });
+  const m=document.getElementById("rkmsg"); m.textContent=(ok?`แสดง ${ok} จุดบนแผนที่`:"")+(bad?`${ok?" · ":""}พิกัดอ่านไม่ได้ ${bad} บรรทัด (กรอบสีแดง)`:""); m.className="simmsg"+(bad?" err":""); }
+function drawRisks(){ if(!riskLayer) return; riskLayer.clearLayers(); rkPts().forEach(({r,p})=>{ if(!p) return; const ic=RK_ICONS[r.ic]||RK_ICONS[0];
+  L.marker([p.lat,p.lon],{draggable:true,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="rkpin">${ic[0]}</div>${r.lab?`<div class="rklab">${esc(r.lab)}</div>`:""}`}),zIndexOffset:500}).bindPopup(`<div class="pp"><h3>${ic[0]} ${esc(r.lab||ic[1])}</h3><div class="loc">จุดเสี่ยง (เพิ่มเอง) · ${esc(ic[1])}<br>${p.lat.toFixed(5)}, ${p.lon.toFixed(5)}</div></div>`).on("dragend",ev=>{ const q=ev.target.getLatLng(); r.ll=`${q.lat.toFixed(5)}, ${q.lng.toFixed(5)}`; rkRows(); rkUpd(); }).addTo(riskLayer); }); }
+let rkT=null; function rkUpd(){ rkSave(); rkCheck(); clearTimeout(rkT); rkT=setTimeout(drawRisks,250); }
+document.getElementById("rkrows").addEventListener("input",e=>{ const row=e.target.closest(".rkrow"); if(!row) return; const r=RISKS[+row.dataset.i], f=e.target.dataset.f; r[f]=f==="ic"?+e.target.value:e.target.value; rkUpd(); });
+document.getElementById("rkrows").addEventListener("change",e=>{ if(e.target.dataset.f==="ic"){ RISKS[+e.target.closest(".rkrow").dataset.i].ic=+e.target.value; rkUpd(); } });
+document.getElementById("rkrows").addEventListener("click",e=>{ const x=e.target.closest("[data-x]"); if(!x) return; RISKS.splice(+x.dataset.x,1); if(!RISKS.length) RISKS.push({ll:"",lab:"",ic:0}); rkRows(); rkUpd(); });
+document.getElementById("rkadd").addEventListener("click",()=>{ RISKS.push({ll:"",lab:"",ic:0}); rkRows(); rkSave(); const ins=document.querySelectorAll('#rkrows input[data-f="ll"]'); ins[ins.length-1].focus(); });
+document.getElementById("rkclear").addEventListener("click",()=>{ RISKS=Array.from({length:5},()=>({ll:"",lab:"",ic:0})); rkRows(); rkUpd(); });
+document.getElementById("rkzoom").addEventListener("click",()=>{ const P=rkPts().filter(x=>x.p).map(x=>[x.p.lat,x.p.lon]); if(!map||!P.length){ const m=document.getElementById("rkmsg"); m.textContent="ยังไม่มีจุดที่พิกัดถูกต้อง"; m.className="simmsg err"; return; } P.length===1?map.setView(P[0],Math.max(map.getZoom(),14)):map.fitBounds(P,{padding:[40,40],maxZoom:15}); });
+document.getElementById("rkclick").addEventListener("click",()=>{ if(!map){ const m=document.getElementById("rkmsg"); m.textContent="เปิดแผนที่ก่อน แล้วค่อยคลิกวางจุด"; m.className="simmsg err"; return; } rkArm(!RK_ARM); });
+rkRows();
+const fmtD=m=>m<1000?`${Math.round(m)} ม.`:`${(m/1000).toFixed(m<10000?2:1)} กม.`;
+function measHint(){ let h=document.getElementById("mhint"); if(!MEAS.on){ if(h) h.remove(); return; } if(!h){ h=document.createElement("div"); h.id="mhint"; h.className="mhint"; map.getContainer().appendChild(h); L.DomEvent.disableClickPropagation(h); h.addEventListener("click",e=>{ if(e.target.dataset.m==="undo"){ MEAS.pts.pop(); measDraw(); } if(e.target.dataset.m==="done") measToggle(false); }); }
+  const tot=MEAS.pts.reduce((a,p,i)=>i?a+map.distance(MEAS.pts[i-1],p):0,0);
+  h.innerHTML=(MEAS.pts.length<2?"📏 คลิกจุดเริ่มต้น แล้วคลิกจุดถัดไปบนแผนที่":`📏 ระยะรวม <b>${fmtD(tot)}</b> · คลิกต่อเพื่อเพิ่มจุด`)+`<br><button type="button" data-m="undo">ย้อนจุดล่าสุด</button><button type="button" data-m="done">เสร็จ</button>`; }
+function measDraw(){ measLayer.clearLayers(); const P=MEAS.pts; if(P.length>1) L.polyline(P,{color:"#F59E0B",weight:3,dashArray:"6 5",interactive:false}).addTo(measLayer);
+  let acc=0; P.forEach((p,i)=>{ if(i) acc+=map.distance(P[i-1],p); L.marker(p,{interactive:false,keyboard:false,icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="mdot"></div>${i?`<div class="mlabel${i===P.length-1?" tot":""}">${fmtD(acc)}</div>`:""}`})}).addTo(measLayer); }); measHint(); }
+function measAdd(ll){ MEAS.pts.push(ll); measDraw(); }
+function measToggle(on){ on=on===undefined?!MEAS.on:on; if(on&&SIM_ARM) armSim(false); if(on&&RK_ARM) rkArm(false); MEAS.on=on; if(on){ MEAS.pts=[]; measDraw(); map.doubleClickZoom.disable(); } else { map.doubleClickZoom.enable(); if(MEAS.pts.length<2){ measLayer.clearLayers(); } }
+  map.getContainer().classList.toggle("measuring",on); const b=document.getElementById("measbtn"); if(b) b.classList.toggle("mon",on); measHint(); }
+document.addEventListener("keydown",e=>{ if(e.key!=="Escape") return; if(MEAS.on) measToggle(false); if(RK_ARM) rkArm(false); });
+function armSim(on){ if(on&&MEAS&&MEAS.on) measToggle(false); if(on&&RK_ARM) rkArm(false); SIM_ARM=on; const b=document.getElementById("simclick"); b.setAttribute("aria-pressed",String(on)); b.classList.toggle("on",on);
   b.textContent=on?"คลิกบนแผนที่ 1 ครั้งเพื่อปักจุด… (กดอีกครั้งเพื่อยกเลิก)":"คลิกบนแผนที่เพื่อปักจุด";
   if(map) map.getContainer().classList.toggle("simarm",on); const mb=document.getElementById("simmapbtn"); if(mb) mb.classList.toggle("on",on); }
 document.getElementById("simclick").addEventListener("click",()=>armSim(!SIM_ARM));
