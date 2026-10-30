@@ -1498,7 +1498,8 @@ function renderSims(){ const box=document.getElementById("simlist");
     h+=`<div class="simsum"><b>รวม ${SIMS.length} จุด</b> · ตำบลในรัศมี ${Rmax} km รวม <b>${all.length}</b> ตำบล · อยู่ในรัศมีของมากกว่า 1 จุด <b>${ov.length}</b> ตำบล${ov.length?`<div class="simn">${ov.map(x=>`ต.${esc(x.t.n)} <small>(อ.${esc(x.t.a)})</small> ×${x.n}`).join(", ")}</div>`:""}</div>`; }
   box.innerHTML=h; }
 let riskLayer=null, measLayer=null, MEAS={on:false,pts:[]};
-const RK_ICONS=[["🐕","สัตว์จรรวมตัว"],["🗑️","จุดทิ้งขยะ"],["🏪","ตลาด"],["🛕","วัด"],["🏫","โรงเรียน"],["🏥","สถานพยาบาล"],["🏠","ชุมชน/บ้าน"],["🐄","ฟาร์ม/คอกสัตว์"],["⚠️","อื่น ๆ"]];
+const RK_ICONS=[["🐕","สัตว์จรรวมตัว"],["🗑️","จุดทิ้งขยะ"],["🏪","ตลาด"],["🛕","วัด"],["🏫","โรงเรียน"],["🏥","สถานพยาบาล"],["🏠","ชุมชน/บ้าน"],["🐄","ฟาร์ม/คอกสัตว์"],["⚠️","อื่น ๆ"],["🤕","คนถูกกัด"],["🐾","สัตว์ถูกกัด"]];
+const RK_ORDER=[9,10,0,1,2,3,4,5,6,7,8];
 let RK_ARM=false;
 function rkArm(on){ if(on){ if(SIM_ARM) armSim(false); if(MEAS.on) measToggle(false); } RK_ARM=on; const b=document.getElementById("rkclick"); b.setAttribute("aria-pressed",String(on)); b.classList.toggle("on",on);
   b.textContent=on?"คลิกบนแผนที่ 1 ครั้งเพื่อวางจุด… (กดอีกครั้งเพื่อยกเลิก)":"📌 คลิกบนแผนที่เพื่อวางจุดเสี่ยง"; if(map) map.getContainer().classList.toggle("simarm",on); }
@@ -1509,7 +1510,7 @@ function rkPlace(ll){ let i=RISKS.findIndex(r=>!r.ll.trim()); if(i<0){ RISKS.pus
 let RISKS=[]; try{ RISKS=JSON.parse(localStorage.getItem("rgw_risks")||"[]"); }catch(e){ RISKS=[]; }
 if(!Array.isArray(RISKS)) RISKS=[]; while(RISKS.length<5) RISKS.push({ll:"",lab:"",ic:0});
 function rkSave(){ try{ localStorage.setItem("rgw_risks",JSON.stringify(RISKS)); }catch(e){} }
-function rkRows(){ document.getElementById("rkrows").innerHTML=RISKS.map((r,i)=>`<div class="rkrow" data-i="${i}"><input type="text" data-f="ll" value="${esc(r.ll)}" placeholder="16.4362, 103.4968" aria-label="พิกัดจุดเสี่ยง ${i+1}"><input type="text" data-f="lab" value="${esc(r.lab)}" placeholder="เช่น ตลาดสด" aria-label="ชื่อจุดเสี่ยง ${i+1}"><select data-f="ic" aria-label="ไอคอนจุดเสี่ยง ${i+1}">${RK_ICONS.map((x,k)=>`<option value="${k}" ${k===r.ic?"selected":""}>${x[0]} ${x[1]}</option>`).join("")}</select><button type="button" class="rkx" data-x="${i}" title="ลบบรรทัดนี้" aria-label="ลบบรรทัด ${i+1}">✕</button></div>`).join(""); rkCheck(); }
+function rkRows(){ document.getElementById("rkrows").innerHTML=RISKS.map((r,i)=>`<div class="rkrow" data-i="${i}"><input type="text" data-f="ll" value="${esc(r.ll)}" placeholder="16.4362, 103.4968" aria-label="พิกัดจุดเสี่ยง ${i+1}"><input type="text" data-f="lab" value="${esc(r.lab)}" placeholder="เช่น ตลาดสด" aria-label="ชื่อจุดเสี่ยง ${i+1}"><select data-f="ic" aria-label="ไอคอนจุดเสี่ยง ${i+1}">${RK_ORDER.map(k=>`<option value="${k}" ${k===r.ic?"selected":""}>${RK_ICONS[k][0]} ${RK_ICONS[k][1]}</option>`).join("")}</select><button type="button" class="rkx" data-x="${i}" title="ลบบรรทัดนี้" aria-label="ลบบรรทัด ${i+1}">✕</button></div>`).join(""); rkCheck(); }
 function rkPts(){ return RISKS.map((r,i)=>({r,i,p:r.ll.trim()?parseLL(r.ll):null})); }
 function rkCheck(){ let ok=0,bad=0; rkPts().forEach(({r,i,p})=>{ const el=document.querySelector(`.rkrow[data-i="${i}"] input[data-f="ll"]`); const b=!!r.ll.trim()&&!p; if(el) el.classList.toggle("bad",b); if(p) ok++; if(b) bad++; });
   const m=document.getElementById("rkmsg"); m.textContent=(ok?`แสดง ${ok} จุดบนแผนที่`:"")+(bad?`${ok?" · ":""}พิกัดอ่านไม่ได้ ${bad} บรรทัด (กรอบสีแดง)`:""); m.className="simmsg"+(bad?" err":""); }
