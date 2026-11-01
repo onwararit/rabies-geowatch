@@ -322,6 +322,16 @@ body.printing .printhdr{display:block;width:1060px;padding:0 0 6px;color:#1d2421
 .sth small{font-weight:400;color:var(--muted)}
 .stall summary{cursor:pointer;font-size:12.5px;color:var(--muted);width:max-content}
 .stall .stats{margin-top:4px}
+.spotdlg{border:0;border-radius:14px;padding:0;max-width:440px;width:calc(100% - 32px);background:var(--panel);color:var(--ink);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.spotdlg::backdrop{background:rgba(0,0,0,.45)}
+.spotdlg form{padding:16px 18px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.spotdlg h3{margin:0;font-size:16px}
+.spotdlg fieldset{border:1px solid var(--line);border-radius:10px;padding:8px 12px 10px;margin:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.spotdlg legend{font-weight:700;font-size:13px;padding:0 4px}
+.spotdlg label.blk{display:flex;align-items:center;gap:8px;width:100%}
+.spotdlg label.blk select{flex:1;font:inherit;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);min-width:0}
+.spotdlg .sphint{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.spotdlg .spbtns{display:flex;justify-content:flex-end;gap:8px}
 .stat.wide{grid-column:1/-1;display:flex;align-items:baseline;gap:10px}
 .stat.wide b{display:inline}
 .sth2{font-size:12px;font-weight:700;margin-top:8px}
@@ -456,7 +466,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
     <div class="manual"><b>คู่มือการใช้งาน</b><a href="https://drive.google.com/drive/folders/1l3qvckbtAbve4cqfWoEhhlMzn5pSp3Lz?usp=sharing" target="_blank" rel="noopener">📘 เปิดคู่มือการใช้งาน (Google Drive) ↗</a></div>
-    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.4 · อัปเดต 30 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.5 · อัปเดต 1 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -468,7 +478,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
       <h1 id="title">–</h1></div></div>
       <details class="plist nr" id="plistd" hidden><summary id="plists"></summary><div id="plistn"></div></details>
       <div class="hbtn"><button class="btn sec sm" id="reload" type="button" title="กลับไปหน้าวางไฟล์">เปลี่ยนไฟล์</button><button class="btn sec sm nr" id="resetall" type="button" title="ล้างตัวกรอง การซ่อนเคส และชั้นข้อมูล กลับเป็นค่าเริ่มต้น">ล้างค่าทั้งหมด</button></div>
-      <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act nr" id="exportdoc" type="button" title="ส่งออกข้อมูลสรุปฝั่งซ้ายเป็นไฟล์ Word (.docx)">📄 ส่งออก Word</button></div>
+      <div class="hbtn"><button class="btn sm act" id="printmap" type="button" title="พิมพ์แผนที่ตามมุมมองและการซูมปัจจุบัน (เลือก Save as PDF ได้)">🖨️ พิมพ์แผนที่</button><button class="btn sm act nr" id="exportdoc" type="button" title="เลือกช่วงเวลาและพื้นที่ แล้วสร้างรายงานสรุป (Spot report) เป็นไฟล์ Word">📄 ส่งออก Word</button></div>
       <div class="hbtn nr"><button class="btn sm act2" id="openepi" type="button">📈 Epi curve และข้อมูลรายเคส (Excel) →</button></div>
     </header>
     <div class="statbox nr"><div class="sth"><label>ปีงบประมาณ <select id="mfy" aria-label="เลือกปีงบประมาณหลัก"></select></label> <small id="sth"></small></div><div class="stats" id="stats"></div>
@@ -543,7 +553,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.4 · อัปเดต 30 ต.ค. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.5 · อัปเดต 1 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -737,7 +747,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.4", APP_DATE="30 ต.ค. 2569";
+const APP_VER="1.5", APP_DATE="1 พ.ย. 2569";
 let RONLY=false,lazyL=null,REGL=null,VL=null,VPTS=[],VLAB=null,VR=null;
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
@@ -1244,85 +1254,157 @@ const W={
 async function logoPng(){ const im=document.querySelector(".htop .logo"); const c=document.createElement("canvas"); c.width=im.naturalWidth||200; c.height=im.naturalHeight||230;
   c.getContext("2d").drawImage(im,0,0,c.width,c.height); const b=await new Promise(r=>c.toBlob(r,"image/png")); return {data:new Uint8Array(await b.arrayBuffer()),w:c.width,h:c.height}; }
 
-document.getElementById("exportdoc").addEventListener("click",async()=>{
-  const btn=document.getElementById("exportdoc"); btn.disabled=true; const old=btn.textContent; btn.textContent="กำลังสร้างไฟล์…";
-  try{
-  const inv=files.inv.length>0, n=x=>inv?Number(x||0).toLocaleString():"–";
-  const FY=latestFY(), LOC=locCases(), LF=LOC.filter(c=>fyOf(c.dd)===FY);
-  const ALL=shown(), S=ALL.filter(c=>!HIDDEN.has(c.key));
-  const unitLbl=MULTI&&!fp.value?"จังหวัด":"อำเภอ", unitN=A=>MULTI&&!fp.value?new Set(A.map(c=>c.pc)).size:new Set(A.map(c=>c.ak)).size;
-  const B=breakdown();
-  const body=[];
-  body.push(W.p([W.run("Rabies GeoWatch",{b:true,sz:28,color:"1F5F4A"})],{align:"center",after:0}));
-  body.push(W.p([W.run(TTL.replace(/\s*กรมปศุสัตว์$/,""),{b:true,sz:40})],{align:"center",after:0}));
-  body.push(W.p([W.run("กรมปศุสัตว์",{b:true,sz:32})],{align:"center",after:60}));
-  body.push(W.p([W.run(`ข้อมูลจาก ThaiRabies Net · ส่งออกเมื่อ ${nowTh()}`,{sz:28,color:"5E6A64"})],{align:"center",after:200}));
-  body.push(W.h("ขอบเขตการแสดงผล",2));
-  body.push(W.table(null,[["พื้นที่",scopeText()],["ปีที่เลือก",yearsText()],["เคสที่แสดงบนแผนที่",`${S.length} จาก ${ALL.length} เคส${fc.value?" (เลือกดูเฉพาะเคส)":""}`]],[2600,7000]));
-  body.push(W.h(`สรุปผล ปีงบประมาณ ${FY+543} (1 ต.ค. ${String(FY+542).slice(-2)} – 30 ก.ย. ${String(FY+543).slice(-2)})`,2));
-  body.push(W.table(["","เคสผลบวก",unitLbl,"คนถูกกัด","คนสัมผัสน้ำลาย"],[
-    [`ปีงบประมาณ ${FY+543} (ปีหลัก)`,LF.length.toLocaleString(),unitN(LF),n(sumK(LF,"bitten")),n(sumK(LF,"saliva"))],
-    [`ปีงบประมาณ ${FY+542}`,LOC.filter(c=>fyOf(c.dd)===FY-1).length.toLocaleString(),unitN(LOC.filter(c=>fyOf(c.dd)===FY-1)),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"bitten")),n(sumK(LOC.filter(c=>fyOf(c.dd)===FY-1),"saliva"))],
-    ["ทั้งไฟล์ (ทุกปี)",LOC.length.toLocaleString(),unitN(LOC),n(sumK(LOC,"bitten")),n(sumK(LOC,"saliva"))]],[2600,1750,1750,1750,1750],{align:[null,"center","center","center","center"]}));
-  if(B){ body.push(W.h(`แยกราย${B.level}`,2));
-    body.push(W.table([B.level,`ผลบวก ปีงบ ${B.FY+543}`,"คนถูกกัด","คนสัมผัสน้ำลาย","ผลบวก ทุกปี"],
-      [...B.rows.map(r=>[r.label,r.fy,r.inv?n(r.bit):"–",r.inv?n(r.sal):"–",r.all]),["รวม",B.tot.fy,n(B.tot.bit),n(B.tot.sal),B.tot.all]],[3000,1650,1650,1650,1650],{align:[null,"center","center","center","center"],boldLast:true})); }
-  if(LATEST){ const c=LATEST, days=Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5);
-    body.push(W.h("เคสล่าสุดตามตัวกรอง",2));
-    body.push(W.table(null,[["วันที่ผลแล็บออก",`${thd(c.dd)} (ผ่านมา ${days} วัน)`],["สถานที่",`${v(c.place)}${c.moo?" ม."+c.moo:""} ต.${c.tambon} อ.${c.amphoe} จ.${c.pn}`],["ชนิดสัตว์",c.species],["คนถูกกัด / สัมผัสน้ำลาย",c.inv?`${v(c.bitten)} / ${v(c.saliva)} ราย`:"ไม่มีรายงานสอบสวนโรค"]],[2600,7000])); }
-  if(MULTI&&!fp.value&&!fa.value&&!ft.value&&!fc.value){
-    const rows=[...PROVS].map(pc=>({pc,c:ALL.filter(x=>x.pc===pc).sort((a,b)=>b.dd.localeCompare(a.dd))[0]})).sort((a,b)=>(b.c?b.c.dd:"").localeCompare(a.c?a.c.dd:"")||PN[a.pc].localeCompare(PN[b.pc],"th"));
-    body.push(W.h("เคสล่าสุดรายจังหวัด",2));
-    body.push(W.table(["จังหวัด","วันที่ผลแล็บออก","ตำบล / อำเภอ","ชนิดสัตว์","ผ่านมา (วัน)"],rows.map(({pc,c})=>c?[PN[pc],thd(c.dd),`ต.${c.tambon} อ.${c.amphoe}`,c.species,Math.floor((Date.now()-new Date(c.dd+"T00:00:00+07:00"))/864e5)]:[PN[pc],"–","ไม่มีเคสผลบวกตามปีที่เลือก","",""]),[1900,1700,3300,1300,1400],{align:[null,"center",null,"center","center"]})); }
-  const dmax=CASES.map(c=>c.date).filter(Boolean).sort().pop();
-  body.push(W.h("ข้อมูลไฟล์ที่ใช้",2));
-  body.push(W.table(null,[["จำนวนไฟล์ส่งตัวอย่าง",`${files.sample.length} ไฟล์`],["จำนวนไฟล์สอบสวนโรค",inv?`${files.inv.length} ไฟล์`:"ไม่มี"],["จำนวนตัวอย่างส่งตรวจ",CASES.length.toLocaleString()],["ผลบวก (ทุกปีในไฟล์)",CASES.filter(c=>c.pos).length.toLocaleString()],["รับตัวอย่างล่าสุด",thd(dmax)]],[4000,5600]));
-  /* samples per province, active vs passive (purpose column V) */
-  const kindOf=purposeKind;
-  const pList=[...PROVS].filter(pc=>!fp.value||pc===fp.value).sort((a,b)=>PN[a].localeCompare(PN[b],"th"));
-  const sampRows=A=>{ const rows=pList.map(pc=>{ const X=A.filter(c=>c.pc===pc), cnt=(k,pos)=>X.filter(c=>kindOf(c)===k&&(!pos||c.pos)).length;
-      return [PN[pc],X.length,cnt("A"),cnt("A",1),cnt("P"),cnt("P",1),cnt("U")]; });
-    if(rows.length>1) rows.push(["รวม",...[1,2,3,4,5,6].map(i=>rows.reduce((t,r)=>t+r[i],0))]);
-    return rows.map(r=>r.map(x=>typeof x==="number"?x.toLocaleString():x)); };
-  const sHead=["จังหวัด","ส่งตรวจทั้งหมด","Active ส่งตรวจ","Active ผลบวก","Passive ส่งตรวจ","Passive ผลบวก","ไม่ระบุ"], sW=[1700,1300,1300,1300,1300,1300,1100], sAl=[null,"center","center","center","center","center","center"];
-  body.push(W.h("จำนวนตัวอย่างส่งตรวจรายจังหวัด แยก Active / Passive",2));
-  body.push(W.p([W.run("Active = เก็บตัวอย่างเพื่อรับรองสถานภาพปลอดโรคพิษสุนัขบ้า · Passive = ส่งชันสูตร (สัตว์ป่วย/ตาย/สงสัย) · ไม่ระบุ = ไม่ได้บันทึกวัตถุประสงค์ (จากช่อง \"วัตถุประสงค์การเก็บตัวอย่าง\" ใน ThaiRabies Net นับตามวันที่ผลแล็บออก)",{sz:26,color:"5E6A64"})],{after:80}));
-  body.push(W.p([W.run(`ปีงบประมาณ ${FY+543}`,{b:true,sz:30})],{after:40}));
-  body.push(W.table(sHead,sampRows(CASES.filter(c=>fyOf(c.dd)===FY)),sW,{align:sAl,boldLast:pList.length>1}));
-  const cd=CASES.map(c=>c.dd).sort();
-  body.push(W.p([W.run(`ทั้งไฟล์ (ทุกปี ${thd(cd[0])} – ${thd(cd[cd.length-1])})`,{b:true,sz:30})],{after:40}));
-  body.push(W.table(sHead,sampRows(CASES),sW,{align:sAl,boldLast:pList.length>1}));
-  const L2=[...S].sort((a,b)=>b.dd.localeCompare(a.dd));
-  body.push(W.h(`รายการเคสผลบวกตามตัวกรอง (${L2.length} เคส)`,2));
-  const multiCol=MULTI&&!fp.value;
-  const head=["ที่","ผลแล็บออก","สัตว์","สถานที่","ตำบล","อำเภอ",...(multiCol?["จังหวัด"]:[]),"ถูกกัด","สัมผัส"];
-  const wid=multiCol?[560,1270,700,1760,1200,1350,1250,740,800]:[560,1300,800,2480,1450,1450,780,810];
-  body.push(W.table(head,L2.map((c,i)=>[i+1,thd(c.dd),c.species,`${v(c.place)}${c.moo?" ม."+c.moo:""}${c.mismatch?" ⚠":""}`,c.tambon,c.amphoe,...(multiCol?[c.pn]:[]),c.inv?v(c.bitten):"–",c.inv?v(c.saliva):"–"]),wid,{sz:24,align:["center","center","center",null,null,null,...(multiCol?[null]:[]),"center","center"]}));
-  body.push(W.h("หมายเหตุ",2));
-  [...document.querySelectorAll("#notes li")].forEach(li=>body.push(W.p([W.run("• "+li.textContent,{sz:28})],{after:40,bullet:true})));
-  if(SIMS.length){ body.push(W.h(`จุดเกิดโรคที่ระบุเอง (ยังไม่บันทึกในระบบ) ${SIMS.length} จุด`,2));
-    body.push(W.p([W.run("จุดสมมติที่ผู้ใช้ปักเพื่อดูขอบเขตรัศมี ไม่ได้มาจาก ThaiRabies Net",{sz:26,color:"5E6A64"})],{after:60}));
-    SIMS.forEach(s=>{ body.push(W.p([W.run(`จุดเกิดโรค ${s.n}: ${simLoc(s)} (${s.lat}, ${s.lon})`,{b:true,sz:28})],{after:40}));
-      body.push(W.table(["รัศมี","จำนวนตำบล","รายชื่อตำบล"],s.R.map((r,i)=>[`≤ ${r} km`,s.bands[i].length,s.bands[i].map(t=>`ต.${t.n}${!s.home||t.a!==s.home.a||t.p!==s.home.p?` (อ.${t.a}${!s.home||t.p!==s.home.p?" จ."+t.p:""})`:""}`).join(", ")||"–"]),[1300,1500,6838],{sz:24,align:["center","center",null]}));
-      body.push(W.p([W.run(`เคสผลบวกจริงในรัศมี ${s.R[s.R.length-1]} km: ${s.cases.length} เคส (ทุกปีในไฟล์)${s.nearest?` · เคสใกล้สุด ${s.nearest.d.toFixed(1)} km ผลแล็บ ${thd(s.nearest.c.dd)} ต.${s.nearest.c.tambon} อ.${s.nearest.c.amphoe}`:""}`,{sz:26})],{after:120})); }); }
-  { const items=dqItems(); body.push(W.h("ตรวจคุณภาพข้อมูล",2));
-    body.push(W.table(["ประเด็น (ทุกจังหวัดที่เลือก ทุกปี)","จำนวน"],items.map(x=>[x.t,x.A.length.toLocaleString()]),[7600,2000],{sz:26,align:[null,"center"]})); }
-  body.push(W.p([W.run("หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (onwara.rit@gmail.com)",{sz:26,color:"5E6A64"})],{before:120,after:0}));
-  body.push(W.p([W.run(`Rabies GeoWatch เวอร์ชัน ${APP_VER} · อัปเดต ${APP_DATE}`,{sz:24,color:"5E6A64"})],{after:0}));
-  const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>${body.join("")}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr></w:body></w:document>`;
+/* ================= v1.5: Spot report (Word) with options dialog ================= */
+const MTH=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+const thFull=s=>{ if(!s) return "–"; const [y,m,d]=s.split("-").map(Number); return `${d} ${MTH[m-1]} ${y+543}`; };
+const dayDiff=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5);
+function spotOpts(){ /* area options from loaded provinces */
+  const P=[...PROVS].filter(c=>PN[c]).sort((a,b)=>PN[a].localeCompare(PN[b],"th"));
+  const R=[...new Set(P.map(c=>REGION[c]).filter(Boolean))].sort((a,b)=>a-b);
+  return {P,R}; }
+function spotFill(){ const d=document.getElementById("spotdlg"), {P,R}=spotOpts();
+  const lvl=d.querySelector("#sp-lvl"), sr=d.querySelector("#sp-reg"), sp=d.querySelector("#sp-prov"), sa=d.querySelector("#sp-amp"), st=d.querySelector("#sp-tam");
+  const L=lvl.value, show=(el,on)=>el.closest("label").hidden=!on;
+  show(sr,L==="R"); show(sp,L!=="R"); show(sa,L==="A"||L==="T"); show(st,L==="T");
+  if(!sr.options.length) sr.innerHTML=R.map(r=>`<option value="${r}">ปศุสัตว์เขต ${r}</option>`).join("");
+  if(!sp.options.length){ sp.innerHTML=P.map(c=>`<option value="${c}">จ.${esc(PN[c])}</option>`).join(""); if(fp.value) sp.value=fp.value; }
+  const pc=sp.value, amps=GEO.A.filter(a=>a.c.slice(0,2)===pc).map(a=>a.n).sort((a,b)=>a.localeCompare(b,"th"));
+  if(sa.dataset.pc!==pc){ sa.innerHTML=amps.map(n=>`<option value="${esc(n)}">อ.${esc(n)}</option>`).join(""); sa.dataset.pc=pc; if(fa.value&&fa.value.startsWith(pc+"|")) sa.value=fa.value.split("|")[1]; st.dataset.k=""; }
+  const ak=pc+"|"+sa.value, tams=GEO.T.filter(t=>t.c.slice(0,2)===pc&&t.a===sa.value).map(t=>t.n).sort((a,b)=>a.localeCompare(b,"th"));
+  if(st.dataset.k!==ak){ st.innerHTML=tams.map(n=>`<option value="${esc(n)}">ต.${esc(n)}</option>`).join(""); st.dataset.k=ak; if(ft.value&&ft.value.startsWith(ak+"|")) st.value=ft.value.split("|")[2]; }
+  /* years */
+  const typ=d.querySelector('input[name="sp-pt"]:checked').value, sy=d.querySelector("#sp-year");
+  const ys=[...new Set([TODAY,...CASES.map(c=>c.dd)].map(x=>typ==="F"?fyOf(x):+x.slice(0,4)))].sort((a,b)=>b-a);
+  if(sy.dataset.t!==typ){ sy.innerHTML=ys.map(y=>`<option value="${y}">${typ==="F"?"ปีงบประมาณ":"ปี"} ${y+543}${typ==="F"?` (1 ต.ค. ${String(y+542).slice(-2)} – 30 ก.ย. ${String(y+543).slice(-2)})`:""}</option>`).join(""); sy.dataset.t=typ;
+    sy.value=String(typ==="F"?latestFY():+TODAY.slice(0,4)); if(!sy.value) sy.selectedIndex=0; } }
+function spotDialog(){ let d=document.getElementById("spotdlg");
+  if(!d){ d=document.createElement("dialog"); d.id="spotdlg"; d.className="spotdlg";
+    d.innerHTML=`<form method="dialog"><h3>📄 ส่งออกรายงานสรุป (Spot report)</h3>
+      <fieldset><legend>ช่วงเวลา</legend><label class="rd"><input type="radio" name="sp-pt" value="F" checked> ปีงบประมาณ</label><label class="rd"><input type="radio" name="sp-pt" value="C"> ปีปฏิทิน</label>
+      <label class="blk">ปี <select id="sp-year"></select></label></fieldset>
+      <fieldset><legend>พื้นที่</legend><label class="blk">ระดับ <select id="sp-lvl"><option value="R">เขต</option><option value="P">จังหวัด</option><option value="A">อำเภอ</option><option value="T">ตำบล</option></select></label>
+      <label class="blk">เขต <select id="sp-reg"></select></label><label class="blk">จังหวัด <select id="sp-prov"></select></label><label class="blk">อำเภอ <select id="sp-amp"></select></label><label class="blk">ตำบล <select id="sp-tam"></select></label></fieldset>
+      <p class="sphint">หน้าแรก = สรุป 1 หน้าสำหรับผู้บริหาร (เวลา สถานที่ สัตว์ ผู้สัมผัส) · เอกสารแนบท้าย = รายการเคสพร้อมหมู่บ้านในรัศมี 1 / 3 / 5 km · ไม่มีชื่อเจ้าของสัตว์ในไฟล์</p>
+      <div class="spbtns"><button type="button" class="btn sm sec" id="sp-cancel">ยกเลิก</button><button type="button" class="btn sm act" id="sp-go">สร้างไฟล์ Word</button></div><div class="simmsg" id="sp-msg"></div></form>`;
+    document.body.appendChild(d);
+    d.addEventListener("change",spotFill);
+    d.querySelector("#sp-cancel").addEventListener("click",()=>d.close());
+    d.querySelector("#sp-go").addEventListener("click",async()=>{ const b=d.querySelector("#sp-go"), m=d.querySelector("#sp-msg"); b.disabled=true; b.textContent="กำลังสร้างไฟล์…"; m.textContent="";
+      try{ await buildSpot(spotRead()); d.close(); } catch(err){ m.textContent="สร้างไฟล์ไม่สำเร็จ: "+(err&&err.message||err); m.className="simmsg err"; }
+      finally{ b.disabled=false; b.textContent="สร้างไฟล์ Word"; } }); }
+  const lvl=d.querySelector("#sp-lvl"), {R}=spotOpts();
+  lvl.value=ft.value?"T":fa.value?"A":fp.value||!MULTI?"P":(R.length===1?"R":"P");
+  lvl.querySelector('option[value="R"]').disabled=!R.length;
+  d.querySelector("#sp-prov").innerHTML=""; d.querySelector("#sp-reg").innerHTML=""; d.querySelector("#sp-amp").dataset.pc=""; d.querySelector("#sp-year").dataset.t="";
+  spotFill(); d.querySelector("#sp-msg").textContent=""; d.showModal(); }
+function spotRead(){ const d=document.getElementById("spotdlg"), q=s=>d.querySelector(s).value;
+  const typ=d.querySelector('input[name="sp-pt"]:checked').value, y=+q("#sp-year"), L=q("#sp-lvl");
+  const pc=q("#sp-prov"), an=q("#sp-amp"), tn=q("#sp-tam"), rg=q("#sp-reg");
+  const area=L==="R"?{lvl:"R",name:`ปศุสัตว์เขต ${rg}`,short:`เขต${rg}`,in:c=>REGION[c.pc]===rg,sub:"จังหวัด",subKey:c=>c.pc,subName:k=>"จ."+PN[k]}
+    :L==="P"?{lvl:"P",name:`จังหวัด${PN[pc]}`,short:PN[pc],in:c=>c.pc===pc,sub:"อำเภอ",subKey:c=>c.amphoe,subName:k=>"อ."+k}
+    :L==="A"?{lvl:"A",name:`อำเภอ${an} จังหวัด${PN[pc]}`,short:`อ.${an}_${PN[pc]}`,in:c=>c.pc===pc&&c.amphoe===an,sub:"ตำบล",subKey:c=>c.tambon,subName:k=>"ต."+k}
+    :{lvl:"T",name:`ตำบล${tn} อำเภอ${an} จังหวัด${PN[pc]}`,short:`ต.${tn}_อ.${an}`,in:c=>c.pc===pc&&c.amphoe===an&&c.tambon===tn,sub:"หมู่บ้าน",subKey:c=>c.moo?"ม."+c.moo:"ไม่ระบุหมู่",subName:k=>k};
+  const per=typ==="F"?{lbl:`ปีงบประมาณ ${y+543}`,range:`1 ต.ค. ${y+542} – 30 ก.ย. ${y+543}`,from:`${y-1}-10-01`,to:`${y}-09-30`,short:`ปีงบ${y+543}`,months:[9,10,11,0,1,2,3,4,5,6,7,8]}
+    :{lbl:`ปี ${y+543}`,range:`1 ม.ค. – 31 ธ.ค. ${y+543}`,from:`${y}-01-01`,to:`${y}-12-31`,short:`ปี${y+543}`,months:[0,1,2,3,4,5,6,7,8,9,10,11]};
+  per.prevFrom=`${+per.from.slice(0,4)-1}${per.from.slice(4)}`; per.prevTo=`${+per.to.slice(0,4)-1}${per.to.slice(4)}`;
+  return {area,per}; }
+function vname(v,tam){ return `บ.${v[2]}${v[3]?" ม."+v[3]:""}${v[4]!==tam?` (ต.${v[4]})`:""}`; }
+async function buildSpot({area,per}){
+  const inv=files.inv.length>0, nf=x=>Number(x||0).toLocaleString();
+  const inP=(c,f,t)=>c.dd>=f&&c.dd<=t;
+  const ALLS=CASES.filter(c=>area.in(c)&&inP(c,per.from,per.to));      /* every sample in area+period */
+  const A=ALLS.filter(c=>c.pos).sort((a,b)=>a.dd<b.dd?-1:1);           /* positives (with or without coords) */
+  const PREV=CASES.filter(c=>c.pos&&area.in(c)&&inP(c,per.prevFrom,per.prevTo)).length;
+  const sum=k=>A.reduce((t,c)=>t+(Number(c[k])||0),0);
+  const cnt=(arr,f)=>{ const m=new Map(); arr.forEach(c=>{ const k=f(c); if(k) m.set(k,(m.get(k)||0)+1); }); return [...m].sort((a,b)=>b[1]-a[1]); };
+  const top=(e,n=3)=>e.slice(0,n).map(([k,v])=>`${k} ${v}`).join(", ");
+  const B=[], P=(t,o={})=>B.push(W.p([W.run(t,{sz:o.sz||28,b:o.b,color:o.color})],{after:o.after??40,align:o.align})), PR=(runs,o={})=>B.push(W.p(runs,{after:o.after??40}));
+  const R=(t,o={})=>W.run(t,{sz:o.sz||28,b:o.b,color:o.color}), H=t=>B.push(W.p([W.run(t,{b:true,sz:30,color:"1F5F4A"})],{after:20,before:80}));
+  /* ---- header ---- */
+  P("รายงานสรุปสถานการณ์โรคพิษสุนัขบ้าในสัตว์ (Spot report)",{b:true,sz:36,align:"center",after:0,color:"1F5F4A"});
+  P(`${area.name} · ${per.lbl} (${per.range})`,{b:true,sz:32,align:"center",after:0});
+  if(area.lvl==="R"){ const rg=area.name.replace(/\D/g,""), all=Object.keys(REGION).filter(c=>REGION[c]===rg&&PN[c]), got=all.filter(c=>PROVS.has(c));
+    if(got.length<all.length) P(`หมายเหตุ: มีข้อมูลจากไฟล์ที่วาง ${got.length} จาก ${all.length} จังหวัดในเขต (${got.map(c=>PN[c]).join(", ")})`,{sz:24,align:"center",color:"B5520F",after:0}); }
+  P(`ข้อมูลจาก ThaiRabies Net · ข้อมูล ณ วันที่ ${thFull(TODAY)} · นับตามวันที่ผลแล็บออก`,{sz:24,align:"center",color:"5E6A64",after:60});
+  /* ---- key numbers ---- */
+  const subE=cnt(A,area.sub==="หมู่บ้าน"?area.subKey:c=>area.subName(area.subKey(c)));
+  const tamE=cnt(A,c=>`ต.${c.tambon} อ.${c.amphoe}`);
+  const kn=[["เคสผลบวก",nf(A.length)],[area.lvl==="T"?"หมู่ที่พบ":`${area.sub}ที่พบ`,nf(subE.length)],["คนถูกกัด",inv?nf(sum("bitten")):"–"],["คนสัมผัสน้ำลาย",inv?nf(sum("saliva")):"–"],["สัตว์ถูกกัด",inv?nf(sum("abit_dog")+sum("abit_cat")):"–"]];
+  B.push(W.table(kn.map(x=>x[0]),[kn.map(x=>x[1])],[1928,1928,1928,1928,1926],{align:Array(5).fill("center"),sz:28}));
+  if(!A.length){ P(`ไม่พบสัตว์ให้ผลบวกโรคพิษสุนัขบ้าใน${area.name} ช่วง${per.lbl}`,{b:true});
+    const pas=ALLS.filter(c=>purposeKind(c)==="P").length; P(`มีการส่งตัวอย่างตรวจ ${nf(ALLS.length)} ตัวอย่าง (Passive/ชันสูตร ${nf(pas)} ตัวอย่าง) · ช่วงเดียวกันปีก่อนพบผลบวก ${nf(PREV)} เคส`);
+    P("หมายเหตุ: ไม่พบเคส ไม่ได้แปลว่าไม่มีโรค ควรพิจารณาจำนวนตัวอย่าง Passive ที่ส่งตรวจประกอบ",{sz:28,color:"5E6A64"}); }
+  else {
+  const first=A[0], last=A[A.length-1], ago=dayDiff(last.dd,TODAY);
+  const sp=cnt(A,c=>c.species), pas=ALLS.filter(c=>purposeKind(c)==="P"), pasPos=pas.filter(c=>c.pos).length;
+  const ch=PREV?Math.round((A.length-PREV)/PREV*100):null;
+  /* ---- summary narrative ---- */
+  H("สรุปสถานการณ์");
+  P(`${per.lbl} (${per.range}) ${area.name} พบสัตว์ให้ผลบวกโรคพิษสุนัขบ้า ${nf(A.length)} ตัว (${top(sp,5)}) ใน ${nf(new Set(A.map(c=>c.ak)).size)} อำเภอ ${nf(new Set(A.map(c=>c.tk)).size)} ตำบล`
+    +` จากการส่งตรวจทั้งหมด ${nf(ALLS.length)} ตัวอย่าง`+(pas.length?` (ตัวอย่าง Passive/ชันสูตร ${nf(pas.length)} ตัวอย่าง ผลบวก ${nf(pasPos)} ตัวอย่าง คิดเป็นร้อยละ ${(pasPos/pas.length*100).toFixed(1)})`:"")
+    +(PREV||A.length?` · ช่วงเดียวกันปีก่อนพบ ${nf(PREV)} เคส${ch!==null?` (${ch>0?"เพิ่มขึ้น":ch<0?"ลดลง":"เท่าเดิม"}${ch?` ร้อยละ ${Math.abs(ch)}`:""})`:""}`:""));
+  /* time */
+  const mc=Array(12).fill(0); A.forEach(c=>mc[+c.dd.slice(5,7)-1]++);
+  const mx=Math.max(...mc), peak=per.months.filter(m=>mc[m]===mx).map(m=>MTH[m]);
+  const d30=A.filter(c=>dayDiff(c.dd,TODAY)<=30&&dayDiff(c.dd,TODAY)>=0).length;
+  PR([R("เวลา: ",{b:true}),R(`เคสแรกผลแล็บออก ${thFull(first.dd)} เคสล่าสุด ${thFull(last.dd)}${ago>=0?` (ผ่านมา ${ago} วัน)`:""} · เดือนที่พบมากที่สุด ${peak.join(", ")} (${mx} เคส) · ใน 30 วันที่ผ่านมาพบ ${d30} เคส`)]);
+  B.push(W.table(per.months.map(m=>MTH[m]),[per.months.map(m=>mc[m]?String(mc[m]):"–")],Array(12).fill(803),{align:Array(12).fill("center"),sz:24}));
+  /* place */
+  const rep2=tamE.filter(x=>x[1]>=2);
+  PR([R("สถานที่: ",{b:true}),R(`${area.sub==="หมู่บ้าน"?"หมู่ที่พบ":`${area.sub}ที่พบมากที่สุด`} ${top(subE,4)}${subE.length>4?` และอีก ${subE.length-4} ${area.lvl==="T"?"หมู่":area.sub}`:""}`
+    +(area.lvl!=="T"&&rep2.length?` · ตำบลที่พบตั้งแต่ 2 เคสขึ้นไป ${rep2.length} ตำบล ได้แก่ ${top(rep2,4)}${rep2.length>4?" …":""}`:""))]);
+  /* animal */
+  const own=inv?cnt(A.filter(c=>c.inv),c=>c.own_status):[], vac=cnt(A,c=>c.vacc||"ไม่ระบุ");
+  PR([R("สัตว์: ",{b:true}),R(`${top(sp,5)}`+(own.length?` · สถานะ ${top(own,3)}`:"")+` · ประวัติวัคซีน ${top(vac,3)}`)]);
+  /* exposure */
+  if(inv){ const ni=A.filter(c=>!c.inv).length;
+    PR([R("ผู้สัมผัส: ",{b:true}),R(`คนถูกกัด ${nf(sum("bitten"))} ราย คนสัมผัสน้ำลาย ${nf(sum("saliva"))} ราย · สัตว์ถูกกัด สุนัข ${nf(sum("abit_dog"))} แมว ${nf(sum("abit_cat"))} ตัว · สัตว์สัมผัสน้ำลาย สุนัข ${nf(sum("asal_dog"))} แมว ${nf(sum("asal_cat"))} ตัว`+(ni?` (นับจากเคสที่มีรายงานสอบสวนโรค ${nf(A.length-ni)} จาก ${nf(A.length)} เคส)`:""))]); }
+  else PR([R("ผู้สัมผัส: ",{b:true}),R("ไม่ได้วางไฟล์รายงานสอบสวนโรค จึงไม่มีจำนวนคนและสัตว์ที่ถูกกัด/สัมผัส",{color:"5E6A64"})]);
+  /* latest case */
+  H("เคสล่าสุด");
+  const rv=last.hasLL?ringVillages(last):null;
+  var plc=c=>[c.place&&c.place!=="–"?c.place:"",c.moo?"ม."+c.moo:"",`ต.${c.tambon} อ.${c.amphoe}`].filter(Boolean).join(" ");
+  PR([R(`${thFull(last.dd)}${ago>=0?` (ผ่านมา ${ago} วัน)`:""}`,{b:true}),R(` · ${plc(last)} จ.${last.pn} · ${[last.species,last.sex,last.age,last.own_status].filter(Boolean).join(" ")}${last.vacc?` · วัคซีน: ${last.vacc}`:""}`
+    +(inv&&last.inv?` · คนถูกกัด ${nf(last.bitten)} สัมผัสน้ำลาย ${nf(last.saliva)} สัตว์ถูกกัด ${nf((+last.abit_dog||0)+(+last.abit_cat||0))}`:"")
+    +(rv?` · หมู่บ้านในรัศมี 1 / 3 / 5 km: ${rv[0].length} / ${rv[1].length} / ${rv[2].length} หมู่บ้าน`:""))]);
+  /* executive points */
+  H("ประเด็นที่ควรทราบ");
+  const pts=[];
+  if(d30) pts.push(`มีเคสผลบวกใน 30 วันที่ผ่านมา ${d30} เคส พื้นที่เหล่านี้ยังอยู่ในช่วงที่ต้องควบคุมโรคและติดตามผู้สัมผัส`);
+  if(ch!==null&&PREV) pts.push(`จำนวนเคส${ch>0?"เพิ่มขึ้นจาก":ch<0?"ลดลงจาก":"เท่ากับ"}ช่วงเดียวกันปีก่อน (${nf(PREV)} → ${nf(A.length)} เคส)`);
+  if(rep2.length&&area.lvl!=="T") pts.push(`มี ${rep2.length} ตำบลที่พบเคสซ้ำตั้งแต่ 2 เคส ควรพิจารณาเป็นพื้นที่เสี่ยงสูง`);
+  if(inv&&(sum("bitten")+sum("saliva"))) pts.push(`มีผู้สัมผัสโรค (ถูกกัดหรือสัมผัสน้ำลาย) รวม ${nf(sum("bitten")+sum("saliva"))} ราย ควรติดตามให้ได้รับวัคซีนหลังสัมผัสโรคครบ`);
+  if(inv){ const ni=A.filter(c=>!c.inv).length; if(ni) pts.push(`เคสผลบวกที่ยังไม่มีรายงานสอบสวนโรคในไฟล์ ${ni} เคส`); }
+  const nc=A.filter(c=>!c.hasLL).length; if(nc) pts.push(`เคสผลบวกที่ไม่มีพิกัด ${nc} เคส (นับรวมในสรุป แต่ไม่มีรายชื่อหมู่บ้านในรัศมี)`);
+  if(!pts.length) pts.push("–");
+  pts.forEach(t=>B.push(W.p([W.run("• "+t,{sz:28})],{after:20,bullet:true})));
+  }
+  P(`Rabies GeoWatch v${APP_VER} · จุดหมู่บ้าน: กรมการปกครอง (9 มิ.ย. 2568) · ไม่มีเคส ≠ ไม่มีโรค`,{sz:22,color:"5E6A64",after:0});
+  /* ---- annex (landscape) ---- */
+  const portrait=`<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="680" w:right="851" w:bottom="567" w:left="851" w:header="454" w:footer="454" w:gutter="0"/></w:sectPr>`;
+  const landscape=`<w:sectPr><w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/><w:pgMar w:top="851" w:right="851" w:bottom="851" w:left="851" w:header="454" w:footer="454" w:gutter="0"/></w:sectPr>`;
+  let annex="";
+  if(A.length){ const X2=[];
+    X2.push(W.p([W.run(`เอกสารแนบท้าย: รายการเคสผลบวกและหมู่บ้านในรัศมี 1 / 3 / 5 km (${A.length} เคส)`,{b:true,sz:32,color:"1F5F4A"})],{after:20}));
+    X2.push(W.p([W.run(`${area.name} · ${per.lbl} · หมู่บ้าน = จุดที่ตั้งหมู่บ้าน กรมการปกครอง (9 มิ.ย. 2568) วัดระยะเป็นเส้นตรงจากพิกัดเคส · ชื่อตำบลในวงเล็บ = หมู่บ้านนอกตำบลที่เกิดเหตุ`,{sz:24,color:"5E6A64"})],{after:60}));
+    const rows=A.map((c,i)=>{ const r=c.hasLL?ringVillages(c):null; const s1=r?r[0]:[], s3=r?r[1].filter(v=>!s1.includes(v)):[], s5=r?r[2].filter(v=>!r[1].includes(v)):[];
+      const L=a=>r?(a.length?`(${a.length}) `+a.map(v=>vname(v,c.tambon)).join(", "):"–"):"ไม่มีพิกัด";
+      return [i+1,thd(c.dd),c.species,`${plc(c)}${area.lvl==="R"?" จ."+c.pn:""}`,inv&&c.inv?`${nf(c.bitten)}/${nf(c.saliva)}/${nf((+c.abit_dog||0)+(+c.abit_cat||0))}`:"–",L(s1),L(s3),L(s5)]; });
+    X2.push(W.table(["#","วันที่ผลแล็บ","สัตว์","สถานที่","คนกัด/สัมผัส/สัตว์กัด","≤ 1 km","> 1–3 km","> 3–5 km"],rows,[450,1050,800,2600,1150,2500,3100,3486],{sz:20,align:["center","center","center","","center"]}));
+    annex=X2.join(""); }
+  const docBody=B.join("")+(annex?`<w:p><w:pPr>${portrait}</w:pPr></w:p>`+annex+landscape:portrait);
+  const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>${docBody}</w:body></w:document>`;
   const FONT="TH Sarabun New";
-  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:eastAsia="${FONT}" w:cs="${FONT}"/><w:sz w:val="32"/><w:szCs w:val="32"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
-  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>`;
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:eastAsia="${FONT}" w:cs="${FONT}"/><w:sz w:val="30"/><w:szCs w:val="30"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>`;
   const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
   const drels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;
   const te=new TextEncoder();
   const blob=zipStore([{name:"[Content_Types].xml",data:te.encode(ct)},{name:"_rels/.rels",data:te.encode(rels)},{name:"word/document.xml",data:te.encode(doc)},{name:"word/styles.xml",data:te.encode(styles)},{name:"word/_rels/document.xml.rels",data:te.encode(drels)}]);
   const d=new Date(), stamp=`${d.getFullYear()+543}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
-  const area=fp.value?PN[fp.value]:MULTI?document.getElementById("title").textContent.replace(/\s+/g,""):PN[[...PROVS][0]];
-  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`RabiesGeoWatch_สรุป_${area}_${stamp}.docx`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  } catch(err){ alert("สร้างไฟล์ Word ไม่สำเร็จ: "+(err&&err.message||err)); }
-  finally{ btn.disabled=false; btn.textContent=old; }
-});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`RabiesGeoWatch_SpotReport_${area.short}_${per.short}_${stamp}.docx`.replace(/\s+/g,""); const dlg=document.getElementById("spotdlg"); (dlg&&dlg.open?dlg:document.body).appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+}
+document.getElementById("exportdoc").addEventListener("click",spotDialog);
 
 /* ================= v1.1: main fiscal year, epi curve page, Excel export, data quality ================= */
 const purposeKind=c=>/รับรอง|ปลอดโรค/.test(c.purpose||"")?"A":/ชันสูตร/.test(c.purpose||"")?"P":"U";
