@@ -424,6 +424,9 @@ body.ronly .nr{display:none!important}
 .btn.sm{font-size:13px;padding:6px 12px;border-radius:8px}
 .chip-y{display:inline-flex;align-items:center;gap:6px}
 @media (max-width:640px){.drops{grid-template-columns:1fr}}
+.leaflet-popup-content{max-height:calc(100vh - 170px);max-height:calc(100dvh - 170px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+details.vd>summary{cursor:pointer;color:#0b6b52;font-weight:600;font-size:12.5px}
+details.vd[open]>summary{margin-bottom:3px}
 </style>
 <!-- Google Analytics: counts page views and button use only; no file names, case data or coordinates are sent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -473,7 +476,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
     <div class="manual"><b>คู่มือการใช้งาน</b><a href="https://drive.google.com/drive/folders/1l3qvckbtAbve4cqfWoEhhlMzn5pSp3Lz?usp=sharing" target="_blank" rel="noopener">📘 เปิดคู่มือการใช้งาน (Google Drive) ↗</a></div>
-    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.6 · อัปเดต 7 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.6.1 · อัปเดต 10 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </div>
 </div>
 
@@ -560,7 +563,7 @@ if(location.protocol==="https:"){ /* only on the published site, never for local
     <div class="credit"><div class="devs"><b>ผู้พัฒนา</b>
       <div>สัตวแพทย์หญิง ดร. อรพรรณ อาจคำภา<small>นายสัตวแพทย์ชำนาญการพิเศษ ส่วนสุขภาพสัตว์ สำนักงานปศุสัตว์เขต 4 กรมปศุสัตว์</small></div>
       <div>สัตวแพทย์หญิง อรวรา ฤทธิสุนทร<small>นายสัตวแพทย์ปฏิบัติการ กลุ่มพัฒนานักระบาดวิทยาภาคสนาม กองระบาดวิทยา กรมควบคุมโรค</small></div></div>
-    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.6 · อัปเดต 7 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
+    <div class="dsrc"><b>แหล่งข้อมูล</b> เคส: ThaiRabies Net · ขอบเขต: Province/District/Subdistrict_77PGeo · จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) กรุงเทพฯ ใช้ TH_VILLAGE2012</div><div class="ver">Rabies GeoWatch เวอร์ชัน 1.6.1 · อัปเดต 10 พ.ย. 2569</div><div class="help"><b>แจ้งปัญหาการใช้งาน</b><span>หากพบปัญหาการใช้งาน ติดต่อ Onwara Rittisunthorn (<a href="mailto:onwara.rit@gmail.com">onwara.rit@gmail.com</a>)</span></div></div>
   </aside>
   <div class="printhdr" id="printhdr"></div>
   <div id="map" role="region" aria-label="แผนที่"></div>
@@ -754,7 +757,7 @@ function buildCases(provs){
 
 /* ---------- map state ---------- */
 let TTL="", DROPPED=[];
-const APP_VER="1.6", APP_DATE="7 พ.ย. 2569";
+const APP_VER="1.6.1", APP_DATE="10 พ.ย. 2569";
 let RONLY=false,lazyL=null,REGL=null,VL=null,VPTS=[],VLAB=null,VR=null;
 let map,CASES=[],POS=[],NEG=[],PROVS=new Set(),MULTI=false,YEARS=[],YC={},LATEST=null,HIDDEN=new Set(),current=[];
 let simRings,simLayer,prov,pfillL,plineC,plineL,PCOL={},PBOUNDS={},amp,tam,ampLabels,tamLabels,rings,markers,negLayer,tamSel,satLayer,TAMS=[];
@@ -896,7 +899,7 @@ function initData(){
     c.mismatch = !t ? "นอกจังหวัดที่เลือก" : (c.tamcode&&t.c!==c.tamcode&&!(t.n===c.tambon&&t.a===c.amphoe)) ? `ต.${t.n} อ.${t.a}` : null; });
   POS.forEach((c,i)=>{ c.i=i; c.emoji=EMOJI[c.species]||"🐾";
     c.rings=[5,3,1].map(r=>{const s=RS[r]; return L.circle([c.lat,c.lon],{radius:r*1000,color:css(s.c),weight:r===5?1.2:1,dashArray:s.dash,fillColor:css(s.c),fillOpacity:s.fo,interactive:false});});
-    c.marker=L.marker([c.lat,c.lon],{icon:icon(c,0,0,false),title:`${c.species} ${thd(c.dd)} ต.${c.tambon}`}).bindPopup(()=>popup(c),{maxWidth:360,maxHeight:440,autoPanPadding:[30,30]}); });
+    c.marker=L.marker([c.lat,c.lon],{icon:icon(c,0,0,false),title:`${c.species} ${thd(c.dd)} ต.${c.tambon}`}).bindPopup(()=>popup(c),{maxWidth:360,maxHeight:Math.max(220,Math.min(440,innerHeight-170)),autoPanPadding:[30,30]}); });
   POS.forEach(c=>{ c.near=[1,3,5].map(r=>POS.filter(o=>o!==c&&km(c,o)<=r).length); c.prior5=POS.filter(o=>o!==c&&o.dd<c.dd&&km(c,o)<=5); c.samept=POS.filter(o=>o!==c&&o.lat===c.lat&&o.lon===c.lon); });
   buildYears();
   const pl=[...PROVS].sort((a,b)=>POS.filter(c=>c.pc===b).length-POS.filter(c=>c.pc===a).length);
@@ -1004,7 +1007,7 @@ function popup(c){
   else h+=`<div class="sec" style="color:var(--r1)">${files.inv.length?"ไม่พบรายงานสอบสวนโรคของเคสนี้":"ไม่ได้ใส่ไฟล์สอบสวนโรค"}</div>`;
   h+=`<div class="sec">ผลบวกอื่นในรัศมี (ทุกปีในไฟล์)</div><div class="near"><span><b>${c.near[0]}</b>≤1 km</span><span><b>${c.near[1]}</b>≤3 km</span><span><b>${c.near[2]}</b>≤5 km</span></div>`;
   const vin=ringVillages(c);
-  if(vin) h+=`<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${vin[k].length} หมู่บ้าน</small></td><td>${vin[k].map(v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==c.tambon?` <small>(ต.${esc(v[4])})</small>`:""}`).join(", ")||"–"}</td></tr>`).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">${c.pc==="10"?"จุดหมู่บ้าน: TH_VILLAGE2012 (ข้อมูลปี 2555)":"จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) · * พิกัดโดยประมาณ"}</div>`;
+  if(vin) h+=`<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${vin[k].length} หมู่บ้าน</small></td><td>${(L=>k&&vin[k].length?`<details class="vd"><summary>ดูรายชื่อ ${vin[k].length} หมู่บ้าน</summary>${L}</details>`:L)(vin[k].map(v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==c.tambon?` <small>(ต.${esc(v[4])})</small>`:""}`).join(", ")||"–")}</td></tr>`).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">${c.pc==="10"?"จุดหมู่บ้าน: TH_VILLAGE2012 (ข้อมูลปี 2555)":"จุดหมู่บ้าน: ข้อมูลที่ตั้งและสภาพทั่วไปของหมู่บ้าน กรมการปกครอง (9 มิถุนายน 2568) · * พิกัดโดยประมาณ"}</div>`;
   const rt=ringTambons(c);
   h+=`<div class="sec">ตำบลที่อยู่ในรัศมี (นับตำบลที่วงรัศมีแตะถึง)</div><table class="rt">${[1,3,5].map((r,k)=>`<tr><td>≤${r} km<br><small>${rt[k].length} ตำบล</small></td><td>${tamList(rt[k],c)||"–"}</td></tr>`).join("")}</table>`;
   if(c.prior5.length) h+=`<div class="loc" style="margin-top:6px">เคสก่อนหน้าใน 5 km: ${c.prior5.slice(-8).map(o=>`${thd(o.dd)} (${km(c,o).toFixed(1)} km)`).join(", ")}${c.prior5.length>8?` และอีก ${c.prior5.length-8} เคส`:""}</div>`;
@@ -1561,7 +1564,7 @@ function addSim(lat,lon){ if(!map) return; const n=++SIM_N;
   const s={n,lat:+lat.toFixed(6),lon:+lon.toFixed(6),open:true};
   s.marker=L.marker([s.lat,s.lon],{icon:simIcon(n),draggable:true,zIndexOffset:2000,title:`จุดเกิดโรค ${n} (ลากเพื่อย้าย)`}).addTo(simLayer);
   s.marker.on("dragend",e=>{ const ll=e.target.getLatLng(); s.lat=+ll.lat.toFixed(6); s.lon=+ll.lng.toFixed(6); computeSim(s); drawSims(); renderSims(); });
-  s.marker.bindPopup(()=>simPopup(s),{maxWidth:340});
+  s.marker.bindPopup(()=>simPopup(s),{maxWidth:340,maxHeight:Math.max(220,Math.min(440,innerHeight-170)),autoPanPadding:[30,30]});
   SIMS.push(s); computeSim(s); drawSims(); renderSims(); return s; }
 function computeSim(s){ const R=simRadii(), Rmax=R[R.length-1];
   const hits=tambonsWithin(s.lat,s.lon,Rmax); s.R=R; s.home=hits.find(h=>h.dist===0)||null;
@@ -1581,7 +1584,7 @@ function simPopup(s){ return `<div class="pp"><h3><span class="simdot"></span>�
 function simVillHTML(s){ if(!Object.keys(VILL).length) return ""; const Rmax=s.R[s.R.length-1], pad=Rmax/100+.01, me={lat:+s.lat,lon:+s.lon}, home=s.home&&s.home.n;
   const all=villOf(Object.keys(VILL)).filter(v=>Math.abs(v[0]-me.lat)<pad&&Math.abs(v[1]-me.lon)<pad*1.05).map(v=>({v,d:km(me,{lat:v[0],lon:v[1]})})).filter(x=>x.d<=Rmax).sort((a,b)=>a.d-b.d);
   const MAX=80, nm=v=>`บ.${esc(v[2])}${mtx(v)}${v[4]!==home?` <small>(ต.${esc(v[4])})</small>`:""}`;
-  return `<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${s.R.map(r=>{ const a=all.filter(x=>x.d<=r).map(x=>x.v); return `<tr><td>≤${r} km<br><small>${a.length} หมู่บ้าน</small></td><td>${a.slice(0,MAX).map(nm).join(", ")||"–"}${a.length>MAX?` <small>…และอีก ${a.length-MAX} หมู่บ้าน</small>`:""}</td></tr>`; }).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">จุดหมู่บ้าน: กรมการปกครอง (9 มิถุนายน 2568) · * พิกัดโดยประมาณ</div>`; }
+  return `<div class="sec">หมู่บ้านในรัศมี (จุดที่ตั้งหมู่บ้าน)</div><table class="rt rv">${s.R.map((r,k)=>{ const a=all.filter(x=>x.d<=r).map(x=>x.v); const L=`${a.slice(0,MAX).map(nm).join(", ")||"–"}${a.length>MAX?` <small>…และอีก ${a.length-MAX} หมู่บ้าน</small>`:""}`; return `<tr><td>≤${r} km<br><small>${a.length} หมู่บ้าน</small></td><td>${k&&a.length?`<details class="vd"><summary>ดูรายชื่อ ${a.length} หมู่บ้าน</summary>${L}</details>`:L}</td></tr>`; }).join("")}</table><div class="note" style="font-size:11px;color:#6b7280;margin-top:2px">จุดหมู่บ้าน: กรมการปกครอง (9 มิถุนายน 2568) · * พิกัดโดยประมาณ</div>`; }
 function simCaseHTML(s){ if(RONLY) return ""; const Rmax=s.R[s.R.length-1];
   const near=s.nearest?`เคสจริงที่ใกล้ที่สุด <b>${s.nearest.d.toFixed(1)} km</b> · ผลแล็บ ${thd(s.nearest.c.dd)} · ต.${esc(s.nearest.c.tambon)} อ.${esc(s.nearest.c.amphoe)}`:"ไม่มีเคสผลบวกในไฟล์";
   return `<div class="simc">เคสผลบวกจริงในรัศมี ${Rmax} km: <b>${s.cases.length}</b> เคส (ทุกปีในไฟล์) · ใน${esc(simPeriod().label)} <b>${s.casesPer}</b> เคส<br>${near}</div>`; }
